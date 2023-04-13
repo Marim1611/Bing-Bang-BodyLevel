@@ -1,0 +1,36 @@
+{
+    "info": {
+        "time": "true",
+        "date": "true",
+        "duration": "true",
+        "id": "true"
+    },
+    "read_data": {
+        "encode": "true",
+        "split": "true",
+        "display": "true"
+    },
+    "LogisticRegression": {
+        "multi_class": "true",
+        "penalty": "true",
+        "dual": "true",
+        "tol": "true",
+        "C": "true",
+        "fit_intercept": "true",
+        "intercept_scaling": "true",
+        "solver": "true",
+        "max_iter": "true",
+        "verbose": "true",
+        "warm_start": "true"
+    },
+    "cross_val_predict": {
+        "estimator": "true",
+        "cv": "true",
+        "verbose": "true",
+        "pre_dispatch": "true",
+        "method": "true"
+    },
+    "metrics": {
+        "accuracy": "true"
+    }
+}

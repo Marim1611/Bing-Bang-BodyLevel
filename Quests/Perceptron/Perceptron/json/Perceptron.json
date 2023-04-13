@@ -1,0 +1,90 @@
+{
+    "info": {
+        "time": [
+            "20:43:22"
+        ],
+        "date": [
+            "04/13/23"
+        ],
+        "duration": [
+            "12.60 s"
+        ],
+        "id": [
+            1
+        ]
+    },
+    "read_data": {
+        "kind": [
+            "Numerical"
+        ],
+        "split": [
+            "train"
+        ],
+        "display": [
+            "False"
+        ]
+    },
+    "Perceptron": {
+        "tol": [
+            "0.001"
+        ],
+        "random_state": [
+            "0"
+        ],
+        "alpha": [
+            "0.0"
+        ],
+        "l1_ratio": [
+            "0.15"
+        ],
+        "fit_intercept": [
+            "True"
+        ],
+        "max_iter": [
+            "1000"
+        ],
+        "shuffle": [
+            "True"
+        ],
+        "verbose": [
+            "0"
+        ],
+        "eta0": [
+            "1.0"
+        ],
+        "early_stopping": [
+            "False"
+        ],
+        "validation_fraction": [
+            "0.1"
+        ],
+        "n_iter_no_change": [
+            "5"
+        ],
+        "warm_start": [
+            "False"
+        ]
+    },
+    "cross_val_predict": {
+        "estimator": [
+            "Perceptron()"
+        ],
+        "cv": [
+            "4"
+        ],
+        "verbose": [
+            "0"
+        ],
+        "pre_dispatch": [
+            "2*n_jobs"
+        ],
+        "method": [
+            "predict"
+        ]
+    },
+    "metrics": {
+        "accuracy": [
+            0.5949152542372881
+        ]
+    }
+}

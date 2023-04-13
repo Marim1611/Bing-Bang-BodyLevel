@@ -1,0 +1,84 @@
+{
+    "info": {
+        "time": [
+            "20:42:15"
+        ],
+        "date": [
+            "04/13/23"
+        ],
+        "duration": [
+            "1.16 s"
+        ],
+        "id": [
+            1
+        ]
+    },
+    "read_data": {
+        "encode": [
+            "OneHot"
+        ],
+        "split": [
+            "train"
+        ],
+        "display": [
+            "False"
+        ]
+    },
+    "LogisticRegression": {
+        "multi_class": [
+            "ovr"
+        ],
+        "penalty": [
+            "l2"
+        ],
+        "dual": [
+            "False"
+        ],
+        "tol": [
+            "0.0"
+        ],
+        "C": [
+            "1.0"
+        ],
+        "fit_intercept": [
+            "True"
+        ],
+        "intercept_scaling": [
+            "1"
+        ],
+        "solver": [
+            "lbfgs"
+        ],
+        "max_iter": [
+            "100"
+        ],
+        "verbose": [
+            "0"
+        ],
+        "warm_start": [
+            "False"
+        ]
+    },
+    "cross_val_predict": {
+        "estimator": [
+            "LogisticRegression(multi_class='ovr')"
+        ],
+        "cv": [
+            "4"
+        ],
+        "verbose": [
+            "0"
+        ],
+        "pre_dispatch": [
+            "2*n_jobs"
+        ],
+        "method": [
+            "predict"
+        ]
+    },
+    "metrics": {
+        "accuracy": [
+            0.8415254237288136
+        ]
+    }
+}

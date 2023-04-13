@@ -7,7 +7,7 @@ import seaborn as sns
 
 
 
-def read_data(kind=None, encode=None, split="train", display=False):
+def read_data(kind=None, encode=None, split="train", standardize=True):
     '''
     reads the dataset from the folder and return it. 
     If kind is specified, it returns only the categorical or numerical features.
@@ -50,19 +50,20 @@ def read_data(kind=None, encode=None, split="train", display=False):
         for feat in x_data.columns:
             if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) == str:
                 x_data[feat] = x_data[feat].map(x_data[feat].value_counts())/len(x_data)
-        
+    
+    
+    if standardize:
+        # standardize the numerical features
+        for feat in x_data.columns:
+            if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) != str:
+                x_data[feat] = (x_data[feat] - x_data[feat].mean())/x_data[feat].std()
                     
-        
-                
     
     # Body_Level goes to y_data
     y_data = ds['Body_Level']
     # transform the classes into integers
     y_data = pd.factorize(y_data)[0]
-    
-    
-    if display: print(x_data.head())
-    
+        
     return x_data, y_data
 
     

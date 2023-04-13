@@ -1,0 +1,25 @@
+{
+    "info": {
+        "time": "true",
+        "date": "true",
+        "duration": "true",
+        "id": "true"
+    },
+    "read_data": {
+        "split": "true",
+        "standardize": "true"
+    },
+    "GaussianNB": {
+        "var_smoothing": "true"
+    },
+    "cross_val_predict": {
+        "estimator": "true",
+        "cv": "true",
+        "verbose": "true",
+        "pre_dispatch": "true",
+        "method": "true"
+    },
+    "metrics": {
+        "accuracy": "true"
+    }
+}

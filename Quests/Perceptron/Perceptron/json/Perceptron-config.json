@@ -8,6 +8,7 @@
     "read_data": {
         "kind": "true",
         "split": "true",
+        "standardize": "true",
         "display": "true"
     },
     "Perceptron": {

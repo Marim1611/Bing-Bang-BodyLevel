@@ -1,0 +1,51 @@
+{
+    "info": {
+        "time": [
+            "23:17:10"
+        ],
+        "date": [
+            "04/13/23"
+        ],
+        "duration": [
+            "137.02 ms"
+        ],
+        "id": [
+            1
+        ]
+    },
+    "read_data": {
+        "split": [
+            "train"
+        ],
+        "standardize": [
+            "True"
+        ]
+    },
+    "GaussianNB": {
+        "var_smoothing": [
+            "0.0"
+        ]
+    },
+    "cross_val_predict": {
+        "estimator": [
+            "GaussianNB()"
+        ],
+        "cv": [
+            "4"
+        ],
+        "verbose": [
+            "0"
+        ],
+        "pre_dispatch": [
+            "2*n_jobs"
+        ],
+        "method": [
+            "predict"
+        ]
+    },
+    "metrics": {
+        "accuracy": [
+            0.75
+        ]
+    }
+}

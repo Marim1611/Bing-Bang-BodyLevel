@@ -1,84 +1,112 @@
 {
     "info": {
         "time": [
-            "20:42:15"
+            "20:42:15",
+            "23:16:58"
         ],
         "date": [
+            "04/13/23",
             "04/13/23"
         ],
         "duration": [
-            "1.16 s"
+            "1.16 s",
+            "394.79 ms"
         ],
         "id": [
-            1
+            1,
+            2
         ]
     },
     "read_data": {
         "encode": [
+            "OneHot",
             "OneHot"
         ],
         "split": [
+            "train",
             "train"
         ],
+        "standardize": [
+            null,
+            "True"
+        ],
         "display": [
-            "False"
+            "False",
+            null
         ]
     },
     "LogisticRegression": {
         "multi_class": [
+            "ovr",
             "ovr"
         ],
         "penalty": [
+            "l2",
             "l2"
         ],
         "dual": [
+            "False",
             "False"
         ],
         "tol": [
+            "0.0",
             "0.0"
         ],
         "C": [
+            "1.0",
             "1.0"
         ],
         "fit_intercept": [
+            "True",
             "True"
         ],
         "intercept_scaling": [
+            "1",
             "1"
         ],
         "solver": [
+            "lbfgs",
             "lbfgs"
         ],
         "max_iter": [
+            "100",
             "100"
         ],
         "verbose": [
+            "0",
             "0"
         ],
         "warm_start": [
+            "False",
             "False"
         ]
     },
     "cross_val_predict": {
         "estimator": [
+            "LogisticRegression(multi_class='ovr')",
             "LogisticRegression(multi_class='ovr')"
         ],
         "cv": [
+            "4",
             "4"
         ],
         "verbose": [
+            "0",
             "0"
         ],
         "pre_dispatch": [
+            "2*n_jobs",
             "2*n_jobs"
         ],
         "method": [
+            "predict",
             "predict"
         ]
     },
     "metrics": {
         "accuracy": [
-            0.8415254237288136
+            0.8415254237288136,
+            0.8703389830508474
         ]
     }
 }

@@ -6,23 +6,24 @@
         "id": "true"
     },
     "read_data": {
-        "encode": "true",
+        "kind": "true",
         "split": "true",
-        "standardize": "true",
-        "display": "true"
+        "standardize": "true"
     },
-    "LogisticRegression": {
-        "multi_class": "true",
-        "penalty": "true",
-        "dual": "true",
-        "tol": "true",
+    "SVC": {
+        "kernel": "true",
         "C": "true",
-        "fit_intercept": "true",
-        "intercept_scaling": "true",
-        "solver": "true",
-        "max_iter": "true",
+        "degree": "true",
+        "gamma": "true",
+        "coef0": "true",
+        "shrinking": "true",
+        "probability": "true",
+        "tol": "true",
+        "cache_size": "true",
         "verbose": "true",
-        "warm_start": "true"
+        "max_iter": "true",
+        "decision_function_shape": "true",
+        "break_ties": "true"
     },
     "cross_val_predict": {
         "estimator": "true",

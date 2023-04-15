@@ -4,7 +4,10 @@ import itertools
 import pandas as pd
 import numpy as np
 import seaborn as sns
-
+from IPython.display import display, HTML, Markdown, Latex
+import sys
+sys.path.append('../')
+from utils import nice_table
 
 
 def read_data(kind=None, encode=None, split="train", standardize=True):
@@ -71,16 +74,11 @@ def basic_info(x_data, y_data):
     '''
     prints basic info about the dataset like the number of rows, columns, features and possible classes
     '''
-    # print the number of samples in the dataset
-    print('\nNumber of samples in the dataset: ', len(x_data))
-    
-    # print the number of features in the dataset and their names in a table
-    print('\nNumber of features in the dataset: ', len(x_data.columns))
-    features = pd.DataFrame(x_data.columns)
-    print('\nFeatures in the dataset: ', features)
-    
-    # print the number of classes in the dataset
-    print('\nNumber of classes in the dataset: ', len(np.unique(y_data)))
+    dic = {'Number of samples': len(x_data), 'Number of features': len(x_data.columns), 'Number of classes': len(np.unique(y_data))}
+    display(HTML(nice_table(dic, title='Basic Counts')))
+    column_dict = {}
+    for column in x_data.columns:   column_dict[column] = ''
+    display(HTML(nice_table(column_dict, title='Features')))
 
 
 def prior_distribution(y_data):
@@ -95,9 +93,10 @@ def prior_distribution(y_data):
     plt.ylabel('Number of samples')
     plt.show()
     
-    # print the number of samples in each class
-    print('\nNumber of samples in each class:\n')
-    for i in range(len(np.unique(y_data))): print('Class', i, ':', len(y_data[y_data == i]))
+    class_dict = {}
+    for i in range(len(np.unique(y_data))):
+        class_dict['Class '+str(i)] = len(y_data[y_data == i])
+    display(HTML(nice_table(class_dict, title='Number of samples in each class')))
 
 
 def features_histograms(x_data):
@@ -115,17 +114,20 @@ def features_histograms(x_data):
     
     # print number of unique values of each feature
     print('\nNumber of unique values of each feature:\n')
+    feats = {}
     c = 0
     for i in range(len(x_data.columns)):
         feature_type = type(x_data.iloc[0, i])
         if feature_type == str:
-            print(x_data.columns[i], ': ', len(x_data.iloc[:, i].unique()))
+            feats[x_data.columns[i]] = len(x_data.iloc[:, i].unique())
             c+=1
         else:
-            print(x_data.columns[i], ':', '(numerical)')
-                        
-    print("Number of categorical features: ", c)
-    print("Number of numerical features: ", len(x_data.columns)-c)
+            feats[x_data.columns[i]] = "numerical"
+    display(HTML(nice_table(feats, title='Number of unique values of each feature')))
+    
+    stats = {"Number of Categorical": c, "Number of Numerical": len(x_data.columns)-c}
+    display(HTML(nice_table(stats, title='Features Statistics')))
+
         
 
 def visualize_continuous_data(x_data, y_data):
@@ -188,4 +190,43 @@ def visualize_categorical_data(x_data, y_data, normalize=True):
     plt.show()
     
     
-  
+def HoeffdingCheck(dataset, ratio=None, ϵ=None, δ=None):
+    '''
+    Given a two of the three parameters:
+    N (validation set size), ϵ (allowed gen. error), σ (upper bound probability of deviation) , 
+    this function returns the third.
+    '''
+    if ratio:
+        N = len(dataset) * ratio
+    
+    assert [ratio, ϵ, δ].count(None) == 1, "You must provide two of the three parameters: N, ϵ, δ"
+    if δ is None:
+        δ = 2 * np.exp(-2 * ϵ**2 * N)
+        if δ >=1: return f"Nothing can be guaranteed with N={N} and ϵ={ϵ} as δ={δ} is greater than 1"
+    
+    if ϵ is None:
+        ϵ = np.sqrt(np.log(2/δ)/(2*N))
+    
+    if ratio is None:
+        N = np.log(2/δ)/(2*ϵ**2)
+        ratio = N/len(dataset)
+    
+    # round to 3 decimal places
+    N, ϵ, δ = int(N), round(ϵ, 3), round(δ, 3)
+    
+    analysis = f'''<font size=4>Hoeffding's Inequality states:
+                    $$P[|E_{{out}}(g)-E_{{test}}(g)| \leq \epsilon] \geq 1-2e^{{-2N_{{test}}\epsilon^2}}$$
+                    If we use validation set of size ${ratio}N_{{train}}={N}$ then with $\epsilon={ϵ}$ we have 
+                    $$P[|E_{{out}}(g)-E_{{test}}(g)| \leq {ϵ}] \geq {1-δ}$$
+                    In other words, 
+                    with probability at least ${1-δ}$, the generalization error of our model will be at most {ϵ} given a validation set of size {N}.
+                    </font>
+                    '''
+    display(Markdown(analysis))
+
+
+                        
+    
+        
+        
+    

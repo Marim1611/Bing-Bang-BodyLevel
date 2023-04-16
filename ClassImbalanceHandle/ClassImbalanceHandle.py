@@ -1,19 +1,21 @@
-from imblearn.over_sampling import SMOTE,SMOTENC,SMOTEN
+from imblearn.over_sampling import SMOTE,SMOTENC,SMOTEN,BorderlineSMOTE
 from imblearn.under_sampling import NearMiss,RandomUnderSampler
 import numpy as np
 
-def handle_class_imbalance(X,y,kind=None, method=None,k=None, sampling_strategy=None):
+def handle_class_imbalance(X,y, method=None,k=None, sampling_strategy=None):
     '''
-    this function handles the class imbalance problem in the dataset
-    takes the dataset as input X, y
-    takes kind of features as input => 'Categorical', 'Numerical', default: mixed
-    takes type of class imbalance handling method as input => 'over', 'under', 'cost'
-    k nearest neighbors used to define the neighborhood of samples in case of oversampling
-    returns balanced data set bal_X, bal_y
-     or return weights of classes in case of cost sensitive 
+    - this function handles the class imbalance problem in the dataset
+    - takes the dataset as input X, y
+    - takes required class imbalance handling method as input =>'SMOTE','SMOTENC',
+      'SMOTEN',"BorderlineSMOTE","under","cost"
+    - k nearest neighbors used to define the neighborhood of samples in case of oversampling
+    - sampling_strategy: float corresponds to the desired ratio of the number of samples in the minority class over
+      the number of samples in the majority class after resampling. 
+    - returns balanced data set bal_X, bal_y or return weights of classes in case of cost sensitive 
     '''
-    if method == 'over':
-        bal_X, bal_y = over_sampling(X,y,k, sampling_strategy,kind)
+    over_sampling_methods = ['SMOTE','SMOTENC','SMOTEN',"BorderlineSMOTE"]
+    if method in over_sampling_methods:
+        bal_X, bal_y = over_sampling(X,y,k, sampling_strategy,method)
         return bal_X,bal_y
     
     elif method == 'under':
@@ -23,26 +25,23 @@ def handle_class_imbalance(X,y,kind=None, method=None,k=None, sampling_strategy=
     elif method == 'cost':
         weights = cost_sensitive(y)
         return weights
-    
-def over_sampling( X,y,k,sampling_strategy,kind ):
-    '''
-    k: int corresponds to the number of nearest neighbors to used to construct synthetic samples.
-    sampling_strategy: float corresponds to the desired ratio of the number of samples in the minority class over
-    the number of samples in the majority class after resampling. 
-
-    '''
-    
-    if kind == "Numerical":
-        sm = SMOTE(k_neighbors=k , sampling_strategy=sampling_strategy)
-        X_sm, y_sm = sm.fit_resample(X, y)
-
-    elif kind == "Categorical":
-        sm = SMOTEN(k_neighbors=5)
-        X_sm, y_sm = sm.fit_resample(X, y,sampling_strategy=sampling_strategy)
-
     else:
+        return X,y
+def over_sampling( X,y,k,sampling_strategy,method ):
+
+    if method == "SMOTE":
+        sm = SMOTE(k_neighbors=k , sampling_strategy=sampling_strategy)
+
+    elif method == "SMOTEN":
+        sm = SMOTEN(k_neighbors=5 ,sampling_strategy=sampling_strategy)
+
+    elif method == "SMOTENC":
         sm = SMOTENC(k_neighbors=k, sampling_strategy=sampling_strategy, categorical_features=[0,4,7,8,10,11,12,15])
-        X_sm, y_sm = sm.fit_resample(X, y)
+
+    elif method == "BorderlineSMOTE":
+        sm = BorderlineSMOTE(k_neighbors=k, sampling_strategy=sampling_strategy)
+
+    X_sm, y_sm = sm.fit_resample(X, y)
     return X_sm, y_sm
 
 

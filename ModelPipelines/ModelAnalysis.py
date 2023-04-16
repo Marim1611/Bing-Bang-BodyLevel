@@ -161,8 +161,6 @@ def display_curves(parameter, train_score, test_score,scoring_name,x_label, titl
                 test = test_score[1:] - test_score[:-1] > 0.001
                 train = train_score[1:] - train_score[:-1] < 0.001     
 
-                # print("test", test)
-                # print("train", train)
                 optimal_param = parameter[np.where(test & train)[0][0]] 
                 print( "Optimal "+ x_label +" is around:", optimal_param)
 

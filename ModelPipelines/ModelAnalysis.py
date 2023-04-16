@@ -1,4 +1,4 @@
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, validation_curve, learning_curve
 from sklearn.feature_selection import RFECV
 import matplotlib.pyplot as plt
 import numpy as np
@@ -86,4 +86,88 @@ def show_hyperparams(clf):
     return display(HTML(nice_table(clf.get_params(), title="Hyperparameters")))
 
 
+
+def validation_curves(clf,x_data,y_data,cv, param_name,param_range,scoring="neg_mean_squared_error",
+                      scoring_name="Error", display=True, print_scores=False,categorical=False):
+    '''
+    Plot the validation curve for a given model and hyperparameter.
+    '''
+    train_scores, test_scores = validation_curve(clf, x_data, y_data, param_name=param_name, param_range=param_range,
+                                  cv=StratifiedKFold(cv), scoring=scoring, n_jobs=4)
+    
+
+    display_curves(param_range, train_scores, test_scores, scoring_name, param_name,
+                   "Validation Curve", display, print_scores, overfit_measure=True,
+                   categorical=categorical)
+    
+
+
+def learning_curves(clf, x_data, y_data, cv,N,scoring="neg_mean_squared_error",
+                    scoring_name="Error", display=True, print_scores=False):
+
+    '''
+    Plot the learning curve for a given model.
+    '''
+    train_sizes, train_scores, test_scores = learning_curve(clf, x_data, y_data, cv=StratifiedKFold(cv), n_jobs=4, 
+                                                            train_sizes=N, scoring=scoring)
+
+    
+    display_curves(train_sizes, train_scores, test_scores, scoring_name, "N", 
+                   "Learning Curve", display, print_scores)
+    
+
+def display_curves(parameter, train_score, test_score,scoring_name,x_label, title,
+                   display=True, print_scores=False,overfit_measure=False, categorical=False):
+
+    '''
+    For learning or validation curves, display them and/or printing the scores if needed.
+    '''
+
+    if scoring_name == "Error": # The score measure is neg mean squared error,so we need to flip the sign
+        train_score =-train_score.mean(axis=1)
+        test_score = -test_score.mean(axis=1)
+    else:
+        train_score = train_score.mean(axis=1)
+        test_score = test_score.mean(axis=1)
+
+    if print_scores:
+        print("Training Error", train_score) 
+        print("Validation Error", test_score)
+
+    if display:
+        plt.rcParams['figure.dpi'] = 300
+        plt.style.use('dark_background')
+        plt.figure()
+        plt.xlabel(x_label)
+        plt.ylabel(scoring_name)
         
+
+        if categorical: #print the points instead of lines
+            plt.scatter(parameter, train_score,marker='x',  label='Training '+scoring_name )
+            plt.scatter(parameter, test_score,marker='x', label='Validation '+scoring_name)
+
+            OF= test_score-train_score 
+            print("Overfitting measure")
+            for i in range(len(parameter)): 
+                print(parameter[i], ":" , OF[i])
+
+        else:
+            plt.plot(parameter, train_score, markersize=5, label='Training '+scoring_name )
+            plt.plot(parameter, test_score, markersize=5, label='Validation '+scoring_name)
+        
+        # check the point at which test score will start to increase and training score will start to decrease
+            if overfit_measure: 
+                # check if the difference between the consecutive scores is less/more than 0.001
+                test = test_score[1:] - test_score[:-1] > 0.001
+                train = train_score[1:] - train_score[:-1] < 0.001     
+
+                # print("test", test)
+                # print("train", train)
+                optimal_param = parameter[np.where(test & train)[0][0]] 
+                print( "Optimal "+ x_label +" is around:", optimal_param)
+
+                plt.axvline(optimal_param, color='red', linestyle='--', label='Optimal '+x_label)
+
+        plt.title(title)
+        plt.legend(loc="best")
+        plt.show()

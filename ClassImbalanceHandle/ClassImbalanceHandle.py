@@ -2,7 +2,7 @@ from imblearn.over_sampling import SMOTE,SMOTENC,SMOTEN
 from imblearn.under_sampling import NearMiss,RandomUnderSampler
 import numpy as np
 
-def handle_class_imbalance(X,y,kind=None, method=None,k=None):
+def handle_class_imbalance(X,y,kind=None, method=None,k=None, sampling_strategy=None):
     '''
     this function handles the class imbalance problem in the dataset
     takes the dataset as input X, y
@@ -13,7 +13,7 @@ def handle_class_imbalance(X,y,kind=None, method=None,k=None):
      or return weights of classes in case of cost sensitive 
     '''
     if method == 'over':
-        bal_X, bal_y = over_sampling(X,y,k, kind)
+        bal_X, bal_y = over_sampling(X,y,k, sampling_strategy,kind)
         return bal_X,bal_y
     
     elif method == 'under':
@@ -24,19 +24,24 @@ def handle_class_imbalance(X,y,kind=None, method=None,k=None):
         weights = cost_sensitive(y)
         return weights
     
-def over_sampling( X,y,k,kind ):
+def over_sampling( X,y,k,sampling_strategy,kind ):
+    '''
+    k: int corresponds to the number of nearest neighbors to used to construct synthetic samples.
+    sampling_strategy: float corresponds to the desired ratio of the number of samples in the minority class over
+    the number of samples in the majority class after resampling. 
+
+    '''
     
     if kind == "Numerical":
-        sm = SMOTE(k_neighbors=k)
+        sm = SMOTE(k_neighbors=k , sampling_strategy=sampling_strategy)
         X_sm, y_sm = sm.fit_resample(X, y)
 
     elif kind == "Categorical":
         sm = SMOTEN(k_neighbors=5)
-        X_sm, y_sm = sm.fit_resample(X, y)
+        X_sm, y_sm = sm.fit_resample(X, y,sampling_strategy=sampling_strategy)
 
     else:
-        # categorical_features=X.loc[:,["Food_Between_Meals","Gender","Smoking","Alcohol_Consump","H_Cal_Consump","H_Cal_Burn", "Fam_Hist","Transport"]] 
-        sm = SMOTENC(k_neighbors=k, categorical_features=[0,4,7,8,10,11,12,15])
+        sm = SMOTENC(k_neighbors=k, sampling_strategy=sampling_strategy, categorical_features=[0,4,7,8,10,11,12,15])
         X_sm, y_sm = sm.fit_resample(X, y)
     return X_sm, y_sm
 

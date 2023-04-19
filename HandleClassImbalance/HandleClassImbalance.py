@@ -6,6 +6,8 @@ from IPython.display import display
 import pandas as pd
 from sklearn.model_selection import cross_val_predict
 from mlpath import mlquest as mlq
+import matplotlib.pyplot as plt
+
 
 # columns names for the dataset and thier types 
 CATEGORICAL=['Gender', 'H_Cal_Consump', 'Alcohol_Consump', 'Smoking','Food_Between_Meals', 'Fam_Hist', 'H_Cal_Burn', 'Transport']
@@ -98,21 +100,32 @@ def cost_sensitive(y):
         weights[i]=1 /len(y[y == i])
     return weights
 
-#--------------------------------Evaluation Functions --------------------------------
+#-------------------------------- Visualization Functions --------------------------------
 
 def show_difference(y,y_bal):
-    #TODO: show the difference between the original and balanced data
-    # plt.pie(y)
-    # plt.title("before balancing")
-    # plt.show()
-    # plt.pie(y_bal)
-    # plt.title("after balancing")
-    # plt.show()
-    print('\nNumber of samples in each class before resampling:\n')
-    for i in range(len(np.unique(y))): print('Class', i, ':', len(y[y == i]))
-    print('\nNumber of samples in each class after resampling:\n')
-    for i in range(len(np.unique(y_bal))): print('Class', i, ':', len(y_bal[y_bal == i]))
+    labels=['Class 0', 'Class 1', 'Class 2', 'Class 3'] 
+    fig, (ax1,ax2) = plt.subplots(1,2,figsize=(10,10)) #ax1,ax2 refer to your two pies
+    ax1.pie(np.bincount(y),labels = labels,autopct = '%1.1f%%') #plot first pie
+    # TODO ax1.title('Before Balancing')
+    ax2.pie(np.bincount(y_bal) ,labels = labels,autopct = '%1.1f%%') #plot second pie
+    # ax2.title('After Balancing')
+    fig.show()
+   
+#-----------------------------------------------------------------------------
+def plot_results(accuracies,methods=None, k=None , sample_ratio=None, title=""):
 
+    if methods: labels = methods
+    if sample_ratio: 
+        for i in range(len(sample_ratio)):
+            sample_ratio[i]= map(str, sample_ratio[i])
+            sample_ratio[i]=', '.join(sample_ratio[i])
+        labels = sample_ratio
+    if k: labels = k
+    plt.figure(figsize=(7,5))
+    plt.bar(labels, accuracies, color ='maroon',width = 0.4)
+    plt.title(title)
+    plt.show()
+ 
 #-----------------------------------------------------------------------------
 def show_results(accuracies, methods=[], k=[] , sample_ratio=[], title=""):
     perf=dict()
@@ -134,7 +147,7 @@ def show_results(accuracies, methods=[], k=[] , sample_ratio=[], title=""):
     print(title)
     display(df)
 
-#-----------------------------------------------------------------------------
+#------------------------------------- Evaluation Functions ----------------------------------------
 def evaluate_class_imbalance_handler_over_methods(X,y ,clf , methods=[] , sample_ratio=[1,1,1], k=5):
     '''
     this function is used to evaluate the performance of the class imbalance handler over different methods
@@ -158,7 +171,7 @@ def evaluate_class_imbalance_handler_over_methods(X,y ,clf , methods=[] , sample
             y_pred = cross_val_predict(clf, X, y, cv=4)
             accuracies.append( np.mean(y_pred == y))
 
-    show_results(accuracies, methods, title="K = "+str(k)+", Sampling Ratio = "+str(sample_ratio))
+    plot_results(accuracies, methods, title="K = "+str(k)+", Sampling Ratio = "+str(sample_ratio))
 
 #---------------------------------------------------------------------------------
 
@@ -184,7 +197,7 @@ def evaluate_const_k_diff_sample_ratios(X,y ,clf , method , k=5, sample_ratios=[
             clf.fit(X, y)
             y_pred = cross_val_predict(clf, X, y, cv=4)
             accuracies.append( np.mean(y_pred == y))        
-    show_results(accuracies, sample_ratio=sample_ratios,title="Method = "+method+", K = "+str(k))
+    plot_results(accuracies, sample_ratio=sample_ratios,title="Method = "+method+", K = "+str(k))
 
 #------------------------------------------------------------------------------------
 
@@ -211,7 +224,7 @@ def evaluate_const_sample_ratios_diff_k(X,y ,clf , method , Ks, sample_ratio=[1,
             y_pred = cross_val_predict(clf, X, y, cv=4)
             accuracies.append( np.mean(y_pred == y))  
 
-    show_results(accuracies, k=Ks, title="Method = "+method+", Sampling Ratio = "+str(sample_ratio))
+    plot_results(accuracies, k=Ks, title="Method = "+method+", Sampling Ratio = "+str(sample_ratio))
 
     
  

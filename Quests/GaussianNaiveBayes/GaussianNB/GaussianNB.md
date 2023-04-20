@@ -21,17 +21,17 @@
 <th style="text-align: center; vertical-align: middle;">accuracy</th>
 </tr>
 <tr>
-<td style="text-align: center; vertical-align: middle;">23:17:10</td>
-<td style="text-align: center; vertical-align: middle;">04/13/23</td>
-<td style="text-align: center; vertical-align: middle;">137.02 ms</td>
-<td style="text-align: center; vertical-align: middle;">1</td>
-<td style="text-align: center; vertical-align: middle;">train</td>
-<td style="text-align: center; vertical-align: middle;">True</td>
-<td style="text-align: center; vertical-align: middle;">0.0</td>
-<td style="text-align: center; vertical-align: middle;">GaussianNB()</td>
-<td style="text-align: center; vertical-align: middle;">4</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">2*n_jobs</td>
-<td style="text-align: center; vertical-align: middle;">predict</td>
-<td style="text-align: center; vertical-align: middle;">0.75</td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>23:17:10</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>04/13/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>137.02 ms</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>GaussianNB()</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.75</font></td>
 </tr>

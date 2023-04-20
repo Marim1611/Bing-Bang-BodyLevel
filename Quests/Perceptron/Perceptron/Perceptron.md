@@ -35,60 +35,60 @@
 <th style="text-align: center; vertical-align: middle;">accuracy</th>
 </tr>
 <tr>
-<td style="text-align: center; vertical-align: middle;">20:43:22</td>
-<td style="text-align: center; vertical-align: middle;">04/13/23</td>
-<td style="text-align: center; vertical-align: middle;">12.60 s</td>
-<td style="text-align: center; vertical-align: middle;">1</td>
-<td style="text-align: center; vertical-align: middle;">Numerical</td>
-<td style="text-align: center; vertical-align: middle;">train</td>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td style="text-align: center; vertical-align: middle;">False</td>
-<td style="text-align: center; vertical-align: middle;">0.001</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">0.0</td>
-<td style="text-align: center; vertical-align: middle;">0.15</td>
-<td style="text-align: center; vertical-align: middle;">True</td>
-<td style="text-align: center; vertical-align: middle;">1000</td>
-<td style="text-align: center; vertical-align: middle;">True</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">1.0</td>
-<td style="text-align: center; vertical-align: middle;">False</td>
-<td style="text-align: center; vertical-align: middle;">0.1</td>
-<td style="text-align: center; vertical-align: middle;">5</td>
-<td style="text-align: center; vertical-align: middle;">False</td>
-<td style="text-align: center; vertical-align: middle;">Perceptron()</td>
-<td style="text-align: center; vertical-align: middle;">4</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">2*n_jobs</td>
-<td style="text-align: center; vertical-align: middle;">predict</td>
-<td style="text-align: center; vertical-align: middle;">0.5949152542372881</td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>20:43:22</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>04/13/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>12.60 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.001</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.15</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1000</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.1</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>Perceptron()</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.5949152542372881</font></td>
 </tr>
 <tr>
-<td style="text-align: center; vertical-align: middle;">23:16:40</td>
-<td style="text-align: center; vertical-align: middle;">04/13/23</td>
-<td style="text-align: center; vertical-align: middle;">119.36 ms</td>
-<td style="text-align: center; vertical-align: middle;">2</td>
-<td style="text-align: center; vertical-align: middle;">Numerical</td>
-<td style="text-align: center; vertical-align: middle;">train</td>
-<td style="text-align: center; vertical-align: middle;">True</td>
-<td style="text-align: center; vertical-align: middle;"></td>
-<td style="text-align: center; vertical-align: middle;">0.001</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">0.0</td>
-<td style="text-align: center; vertical-align: middle;">0.15</td>
-<td style="text-align: center; vertical-align: middle;">True</td>
-<td style="text-align: center; vertical-align: middle;">1000</td>
-<td style="text-align: center; vertical-align: middle;">True</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">1.0</td>
-<td style="text-align: center; vertical-align: middle;">False</td>
-<td style="text-align: center; vertical-align: middle;">0.1</td>
-<td style="text-align: center; vertical-align: middle;">5</td>
-<td style="text-align: center; vertical-align: middle;">False</td>
-<td style="text-align: center; vertical-align: middle;">Perceptron()</td>
-<td style="text-align: center; vertical-align: middle;">4</td>
-<td style="text-align: center; vertical-align: middle;">0</td>
-<td style="text-align: center; vertical-align: middle;">2*n_jobs</td>
-<td style="text-align: center; vertical-align: middle;">predict</td>
-<td style="text-align: center; vertical-align: middle;">0.7991525423728814</td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>23:16:40</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>04/13/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>119.36 ms</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.001</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.15</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1000</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.1</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>Perceptron()</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7991525423728814</font></td>
 </tr>

@@ -1,50 +1,63 @@
 {
     "info": {
         "time": [
-            "23:17:10"
+            "23:17:10",
+            "18:30:40"
         ],
         "date": [
-            "04/13/23"
+            "04/13/23",
+            "04/20/23"
         ],
         "duration": [
-            "137.02 ms"
+            "137.02 ms",
+            "129.85 ms"
         ],
         "id": [
-            1
+            1,
+            2
         ]
     },
     "read_data": {
         "split": [
+            "train",
             "train"
         ],
         "standardize": [
+            "True",
             "True"
         ]
     },
     "GaussianNB": {
         "var_smoothing": [
+            "0.0",
             "0.0"
         ]
     },
     "cross_val_predict": {
         "estimator": [
+            "GaussianNB()",
             "GaussianNB()"
         ],
         "cv": [
+            "4",
             "4"
         ],
         "verbose": [
+            "0",
             "0"
         ],
         "pre_dispatch": [
+            "2*n_jobs",
             "2*n_jobs"
         ],
         "method": [
+            "predict",
             "predict"
         ]
     },
     "metrics": {
         "accuracy": [
+            0.75,
             0.75
         ]
     }

@@ -16,21 +16,21 @@
         "degree": "true",
         "gamma": "true",
         "coef0": "true",
-        "shrinking": "false",
+        "shrinking": "true",
         "probability": "true",
-        "tol": "false",
-        "cache_size": "false",
-        "verbose": "false",
-        "max_iter": "false",
-        "decision_function_shape": "false",
-        "break_ties": "false"
+        "tol": "true",
+        "cache_size": "true",
+        "verbose": "true",
+        "max_iter": "true",
+        "decision_function_shape": "true",
+        "break_ties": "true"
     },
     "cross_val_predict": {
         "estimator": "true",
         "cv": "true",
-        "verbose": "false",
-        "pre_dispatch": "false",
-        "method": "false"
+        "verbose": "true",
+        "pre_dispatch": "true",
+        "method": "true"
     },
     "metrics": {
         "accuracy": "true"

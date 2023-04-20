@@ -2,89 +2,110 @@
     "info": {
         "time": [
             "20:43:22",
-            "23:16:40"
+            "23:16:40",
+            "18:31:15"
         ],
         "date": [
             "04/13/23",
-            "04/13/23"
+            "04/13/23",
+            "04/20/23"
         ],
         "duration": [
             "12.60 s",
-            "119.36 ms"
+            "119.36 ms",
+            "146.50 ms"
         ],
         "id": [
             1,
-            2
+            2,
+            3
         ]
     },
     "read_data": {
         "kind": [
             "Numerical",
+            "Numerical",
             "Numerical"
         ],
         "split": [
+            "train",
             "train",
             "train"
         ],
         "standardize": [
             null,
+            "True",
             "True"
         ],
         "display": [
             "False",
+            null,
             null
         ]
     },
     "Perceptron": {
         "tol": [
             "0.001",
+            "0.001",
             "0.001"
         ],
         "random_state": [
+            "0",
             "0",
             "0"
         ],
         "alpha": [
             "0.0",
+            "0.0",
             "0.0"
         ],
         "l1_ratio": [
+            "0.15",
             "0.15",
             "0.15"
         ],
         "fit_intercept": [
             "True",
+            "True",
             "True"
         ],
         "max_iter": [
+            "1000",
             "1000",
             "1000"
         ],
         "shuffle": [
             "True",
+            "True",
             "True"
         ],
         "verbose": [
+            "0",
             "0",
             "0"
         ],
         "eta0": [
             "1.0",
+            "1.0",
             "1.0"
         ],
         "early_stopping": [
+            "False",
             "False",
             "False"
         ],
         "validation_fraction": [
             "0.1",
+            "0.1",
             "0.1"
         ],
         "n_iter_no_change": [
             "5",
+            "5",
             "5"
         ],
         "warm_start": [
+            "False",
             "False",
             "False"
         ]
@@ -92,21 +113,26 @@
     "cross_val_predict": {
         "estimator": [
             "Perceptron()",
+            "Perceptron()",
             "Perceptron()"
         ],
         "cv": [
+            "4",
             "4",
             "4"
         ],
         "verbose": [
             "0",
+            "0",
             "0"
         ],
         "pre_dispatch": [
             "2*n_jobs",
+            "2*n_jobs",
             "2*n_jobs"
         ],
         "method": [
+            "predict",
             "predict",
             "predict"
         ]
@@ -114,6 +140,7 @@
     "metrics": {
         "accuracy": [
             0.5949152542372881,
+            0.7991525423728814,
             0.7991525423728814
         ]
     }

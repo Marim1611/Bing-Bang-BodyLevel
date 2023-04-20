@@ -7,30 +7,30 @@
     },
     "read_data": {
         "kind": "true",
-        "split": "true",
-        "standardize": "true",
-        "encode": "true",
-        "display": "true"
+        "split": "false",
+        "standardize": "false",
+        "encode": "false",
+        "display": "false"
     },
     "LogisticRegression": {
         "multi_class": "true",
-        "penalty": "true",
-        "dual": "true",
-        "tol": "true",
-        "C": "true",
-        "fit_intercept": "true",
-        "intercept_scaling": "true",
-        "solver": "true",
-        "max_iter": "true",
-        "verbose": "true",
-        "warm_start": "true"
+        "penalty": "false",
+        "dual": "false",
+        "tol": "false",
+        "C": "false",
+        "fit_intercept": "false",
+        "intercept_scaling": "false",
+        "solver": "false",
+        "max_iter": "false",
+        "verbose": "false",
+        "warm_start": "false"
     },
     "cross_val_predict": {
         "estimator": "true",
         "cv": "true",
-        "verbose": "true",
-        "pre_dispatch": "true",
-        "method": "true"
+        "verbose": "false",
+        "pre_dispatch": "false",
+        "method": "false"
     },
     "metrics": {
         "accuracy": "true"

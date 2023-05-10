@@ -78,15 +78,12 @@ def log_weights_analysis(clf,x_data_d):
     plt.style.use('dark_background')
     fig, axs = plt.subplots(4, 1, figsize=(20, 28))
     plt.subplots_adjust(hspace=0.2)
-
     for i in range(4):    
         axs[i].bar(range(len(weights[i])), weights[i], width=0.3)
         axs[i].axhline(y=0)
-    
         axs[i].set_title(f"Class {i}", fontsize=20)
         axs[i].set_xlabel("Feature")
         axs[i].set_ylabel("Weight")
-
         # make x-ticks be the feature names
         axs[i].set_xticks(range(len(weights[i])))
         axs[i].set_xticklabels(x_data_d.columns)
@@ -242,7 +239,3 @@ def learning_curves(clf, x_data, y_data, cv,N):
     plt.plot(train_sizes, 1- test_scores.mean(axis=1), markersize=5, label='Validation Error' )
     plt.legend(loc="best")
     plt.show()
-
-
-def cross_validation(mlq, clf, x_data, y_data,k, repititions):
-    pass

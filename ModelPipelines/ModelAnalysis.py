@@ -146,6 +146,8 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
 
         if len(hyperparameters) == 1:
             ax= axs
+        elif len(hyperparameters) == 2:
+            ax = axs[index]
         else:
             ax = axs[index // 2, index % 2]
 
@@ -212,7 +214,7 @@ def optimal_hyperparameter(train_scores, test_scores, parameter):
         train_score_curr = np.mean(train_scores[:i])  
         test_score_curr = np.mean(test_scores[:i])  
 
-        if train_score_curr - train_score_prev <= 0.001 and test_score_prev - test_score_curr >= 0.001:
+        if train_score_curr - train_score_prev <= 0.001 and test_score_prev - test_score_curr >= 0.001 and i+1 < len(train_scores):
             optimal_param = parameter[i + 1] 
 
         train_score_prev = train_score_curr  

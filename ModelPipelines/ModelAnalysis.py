@@ -6,7 +6,7 @@ import sys
 sys.path.append("../../")
 from utils import nice_table
 from IPython.display import display, HTML
-
+import warnings
 
 def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, display=True):
     '''
@@ -86,7 +86,6 @@ def show_hyperparams(clf):
     return display(HTML(nice_table(clf.get_params(), title="Hyperparameters")))
 
 
-
 def validation_curves(clf,x_data,y_data,cv, hyperparameters):
     '''
     Plot the validation curve for a given model and hyperparameter.
@@ -131,7 +130,10 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
             nan_indices= np.argwhere(np.isnan(train_scores)) 
 
             if len(nan_indices) > 0:
-                # warnings.warn(f"Validation curve for {param_name} contains nan values for values {param_range[nan_indices]}.") 
+                nan_values= [param_range[i] for i in nan_indices.flatten()]
+                
+                warnings.warn(f"Validation curve for {param_name} contains NaN values for values {nan_values}. These values will be removed.")
+
                 train_scores= np.delete(train_scores, nan_indices)
                 test_scores= np.delete(test_scores, nan_indices)
                 param_range= np.delete(param_range, nan_indices)
@@ -148,7 +150,8 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
             ax.plot(param_range, test_scores, label="Validation Error")
             
             optimal_param= optimal_hyperparameter(train_scores, test_scores, param_range)
-            ax.axvline(optimal_param, color='red', linestyle='--', label="Optimal "+param_name+" is around "+str(np.ceil(optimal_param)))
+            ax.axvline(optimal_param, color='red', linestyle='--', label="Optimal "+param_name+\
+                       " is around "+str(np.ceil(optimal_param)))
 
         ax.set_title(f"Validation Curve for {param_name}")
         ax.set_xlabel(param_name)
@@ -160,27 +163,38 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
 
 
 def optimal_hyperparameter(train_scores, test_scores, parameter):
-        
-        optimal_param = parameter[0]
+    '''
+    Given the training and validation scores, find the most probable optimal hyperparameter:
 
-        train_score_prev= train_scores[0]
-        test_score_prev= test_scores[0]
+    The difference between the current and previous train scores serves as an estimate of the gradient,
+    while the difference between the previous and current test scores serves as an estimate of the curvature,
 
-        train_score_curr= 0
-        test_score_curr= 0
+    If the gradient is small (less than or equal to 0.001) and the curvature is large (greater than or equal to 0.001),
+    then the optimal hyperparameter is updated to the next value.
 
-        for i in range(1,len(train_scores)): 
-             
-            train_score_curr= np.mean(train_scores[:i])
-            test_score_curr= np.mean(test_scores[:i])
+    This update is performed using the gradient information, which ensures that the algorithm moves in the direction
+    of steepest descent towards the optimal parameter value.
+    '''
 
-            if train_score_curr- train_score_prev <= 0.001 and test_score_prev- test_score_curr >= 0.001:
-                optimal_param = parameter[i+1]
+    optimal_param = parameter[0]  
 
-            train_score_prev= train_score_curr
-            test_score_prev= test_score_curr
-        
-        return optimal_param
+    train_score_prev = train_scores[0]  
+    test_score_prev = test_scores[0]  
+
+    train_score_curr = 0  
+    test_score_curr = 0  
+
+    for i in range(1, len(train_scores)):
+        train_score_curr = np.mean(train_scores[:i])  
+        test_score_curr = np.mean(test_scores[:i])  
+
+        if train_score_curr - train_score_prev <= 0.001 and test_score_prev - test_score_curr >= 0.001:
+            optimal_param = parameter[i + 1] 
+
+        train_score_prev = train_score_curr  
+        test_score_prev = test_score_curr  
+
+    return optimal_param
     
 
 def learning_curves(clf, x_data, y_data, cv,N):
@@ -201,86 +215,3 @@ def learning_curves(clf, x_data, y_data, cv,N):
     plt.plot(train_sizes, 1- test_scores.mean(axis=1), markersize=5, label='Validation Error' )
     plt.legend(loc="best")
     plt.show()
-
-
-                
-             # if overfit_measure: 
-            #     # check if the difference between the consecutive scores is less/more than 0.001
-            #     # test = test_score[1:] - test_score[:-1] > 0.001
-            #     # train = train_score[1:] - train_score[:-1] < 0.001     
-
-            #     # optimal_param = parameter[np.where(test & train)[0][0]] 
-                
-            #     train_score_avg=[]
-            #     test_score_avg=[]
-            #     train_score_avg.append(train_score[0])
-            #     test_score_avg.append(test_score[0])
-                # for i in range(1,len(train_score)): 
-                     
-                #     train_score_avg.append(np.mean(train_score[:i]))
-                #     test_score_avg.append(np.mean(test_score[:i]))
-
-                #     if  train_score_avg[i]- train_score_avg[i-1] <= 0.001 and test_score_avg[i-1]- test_score_avg[i] >= 0.001: 
-                #         optimal_param = parameter[i]
-
-            #     # print("TRAAIN",train_score_avg[:9])
-            #     # print("TEST",test_score_avg[:9])
-            #     # print("C",parameter[:9])
-
-            #     print( "Optimal "+ x_label +" is around:", optimal_param)
-
-            #     plt.axvline(optimal_param, color='red', linestyle='--', label='Optimal '+x_label)
-
-
-#  train_avg_prev= train_score[0]
-#         test_avg_prev= test_score[0]
-#         train_avg_next=0
-#         test_avg_next=0
-
-        # for i in range(1,len(train_score)): 
-        #     train_avg_next= np.mean(train_score[:i])
-        #     test_avg_next= np.mean(test_score[:i])
-
-        #     if  train_avg_prev> train_avg_next and test_avg_prev< test_avg_next :
-        #         optimal_param = parameter[i]
-
-        #     train_avg_prev= train_avg_next
-        #     test_avg_prev= test_avg_next
-
-
-# for i in range(1,len(parameter)): 
-
-#             train_avg_right = np.mean(train_score[i:])
-#             train_avg_left = np.mean(train_score[:i])
-
-#             test_avg_right = np.mean(test_score[i:])
-#             test_avg_left = np.mean(test_score[:i])
-
-#             if train_avg_right < train_avg_left and test_avg_right > test_avg_left:
-#                 optimal_param = parameter[i]       
-#                 break
-                
-
-                 # for i in range(1, len(train_score)):
-        #     train_avg_curr= np.mean(train_score[:i])
-        #     test_avg_curr= np.mean(test_score[:i])
-
-        #     if train_avg_curr - train_avg_prev <=0.001 and test_avg_curr- test_avg_prev >= 0.001:
-        #         optimal_param = parameter[i] 
-        #     train_avg_prev = train_avg_curr
-        #     test_avg_prev = test_avg_curr
-        
-
-
-
-# for i in range(1,len(train_scores)):
-        #     test_avg_right= np.mean(test_scores[i:])
-        #     test_avg_left= np.mean(test_scores[:i])
-            
-        #     train_avg_right= np.mean(train_scores[i:])
-        #     train_avg_left= np.mean(train_scores[:i])
-
-        #     if train_avg_left > train_avg_right and test_avg_left < test_avg_right:
-        #         optimal_param = parameter[i]
-
-        # print(f"Optimal Hyperparameter: {optimal_param}")

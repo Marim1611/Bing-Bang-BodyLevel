@@ -87,85 +87,200 @@ def show_hyperparams(clf):
 
 
 
-def validation_curves(clf,x_data,y_data,cv, param_name,param_range,scoring="neg_mean_squared_error",
-                      scoring_name="Error", display=True, print_scores=False,categorical=False):
+def validation_curves(clf,x_data,y_data,cv, hyperparameters):
     '''
     Plot the validation curve for a given model and hyperparameter.
     '''
-    train_scores, test_scores = validation_curve(clf, x_data, y_data, param_name=param_name, param_range=param_range,
-                                  cv=StratifiedKFold(cv), scoring=scoring, n_jobs=4)
+
+    categorical = False
+
+    plt.rcParams['figure.dpi'] = 300
+    plt.style.use('dark_background') 
+
+    nrows = int(np.ceil(len(hyperparameters)/2))
+    ncols= 2 if len(hyperparameters) > 1 else 1
+
+    fig, axs = plt.subplots(nrows, ncols, figsize=(20, 10))
+    fig.subplots_adjust(top=1.0)
+
+    if len(hyperparameters) % 2 == 1 and len(hyperparameters) > 1:
+        fig.delaxes(axs[-1, -1])
+
+    if len(hyperparameters) == 1:
+        fig.set_size_inches(10,5)
+
+    for index, param_name in enumerate(hyperparameters.keys()):
+        param_range = hyperparameters[param_name]
+
+        if isinstance(param_range[0], str):
+            categorical = True
+
+        train_scores, test_scores = validation_curve(clf, x_data, y_data, param_name=param_name, param_range=param_range,
+                                    cv=StratifiedKFold(cv), scoring="accuracy", n_jobs=4)
+        
+        train_scores= 1-np.mean(train_scores, axis=1)
+        test_scores= 1-np.mean(test_scores, axis=1)
+
+        if len(hyperparameters) == 1:
+            ax= axs
+        else:
+            ax = axs[index // 2, index % 2]
+
+        if categorical:
+            # check for nan values and remove them
+            nan_indices= np.argwhere(np.isnan(train_scores)) 
+
+            if len(nan_indices) > 0:
+                # warnings.warn(f"Validation curve for {param_name} contains nan values for values {param_range[nan_indices]}.") 
+                train_scores= np.delete(train_scores, nan_indices)
+                test_scores= np.delete(test_scores, nan_indices)
+                param_range= np.delete(param_range, nan_indices)
+
+            x_axis= np.arange(len(param_range))            
+            ax.bar(x_axis-0.2/2, train_scores,width=0.2, label="Training Error")
+            ax.bar(x_axis+0.2/2, test_scores,width=0.2, label="Validation Error")
+            ax.set_xticks(x_axis)
+            ax.set_xticklabels(param_range)
+
+        else:
+
+            ax.plot(param_range, train_scores, label="Training Error")
+            ax.plot(param_range, test_scores, label="Validation Error")
+            
+            optimal_param= optimal_hyperparameter(train_scores, test_scores, param_range)
+            ax.axvline(optimal_param, color='red', linestyle='--', label="Optimal "+param_name+" is around "+str(np.ceil(optimal_param)))
+
+        ax.set_title(f"Validation Curve for {param_name}")
+        ax.set_xlabel(param_name)
+        ax.set_ylabel("Error")
+        ax.legend(loc="best")  
+
+        
+    plt.show()
+
+
+def optimal_hyperparameter(train_scores, test_scores, parameter):
+        
+        optimal_param = parameter[0]
+
+        train_score_prev= train_scores[0]
+        test_score_prev= test_scores[0]
+
+        train_score_curr= 0
+        test_score_curr= 0
+
+        for i in range(1,len(train_scores)): 
+             
+            train_score_curr= np.mean(train_scores[:i])
+            test_score_curr= np.mean(test_scores[:i])
+
+            if train_score_curr- train_score_prev <= 0.001 and test_score_prev- test_score_curr >= 0.001:
+                optimal_param = parameter[i+1]
+
+            train_score_prev= train_score_curr
+            test_score_prev= test_score_curr
+        
+        return optimal_param
     
 
-    display_curves(param_range, train_scores, test_scores, scoring_name, param_name,
-                   "Validation Curve", display, print_scores, overfit_measure=True,
-                   categorical=categorical)
-    
-
-
-def learning_curves(clf, x_data, y_data, cv,N,scoring="neg_mean_squared_error",
-                    scoring_name="Error", display=True, print_scores=False):
+def learning_curves(clf, x_data, y_data, cv,N):
 
     '''
     Plot the learning curve for a given model.
     '''
     train_sizes, train_scores, test_scores = learning_curve(clf, x_data, y_data, cv=StratifiedKFold(cv), n_jobs=4, 
-                                                            train_sizes=N, scoring=scoring)
+                                                            train_sizes=N, scoring="accuracy")
 
-    
-    display_curves(train_sizes, train_scores, test_scores, scoring_name, "N", 
-                   "Learning Curve", display, print_scores)
-    
+    plt.rcParams['figure.dpi'] = 300
+    plt.style.use('dark_background')
+    plt.figure(figsize=(10,5))
+    plt.xlabel("N")
+    plt.ylabel("Error")
+    plt.title("Learning Curve")
+    plt.plot(train_sizes, 1- train_scores.mean(axis=1), markersize=5, label='Training Error' )
+    plt.plot(train_sizes, 1- test_scores.mean(axis=1), markersize=5, label='Validation Error' )
+    plt.legend(loc="best")
+    plt.show()
 
-def display_curves(parameter, train_score, test_score,scoring_name,x_label, title,
-                   display=True, print_scores=False,overfit_measure=False, categorical=False):
 
-    '''
-    For learning or validation curves, display them and/or printing the scores if needed.
-    '''
+                
+             # if overfit_measure: 
+            #     # check if the difference between the consecutive scores is less/more than 0.001
+            #     # test = test_score[1:] - test_score[:-1] > 0.001
+            #     # train = train_score[1:] - train_score[:-1] < 0.001     
 
-    if scoring_name == "Error": # The score measure is neg mean squared error,so we need to flip the sign
-        train_score =-train_score.mean(axis=1)
-        test_score = -test_score.mean(axis=1)
-    else:
-        train_score = train_score.mean(axis=1)
-        test_score = test_score.mean(axis=1)
+            #     # optimal_param = parameter[np.where(test & train)[0][0]] 
+                
+            #     train_score_avg=[]
+            #     test_score_avg=[]
+            #     train_score_avg.append(train_score[0])
+            #     test_score_avg.append(test_score[0])
+                # for i in range(1,len(train_score)): 
+                     
+                #     train_score_avg.append(np.mean(train_score[:i]))
+                #     test_score_avg.append(np.mean(test_score[:i]))
 
-    if print_scores:
-        print("Training Error", train_score) 
-        print("Validation Error", test_score)
+                #     if  train_score_avg[i]- train_score_avg[i-1] <= 0.001 and test_score_avg[i-1]- test_score_avg[i] >= 0.001: 
+                #         optimal_param = parameter[i]
 
-    if display:
-        plt.rcParams['figure.dpi'] = 300
-        plt.style.use('dark_background')
-        plt.figure()
-        plt.xlabel(x_label)
-        plt.ylabel(scoring_name)
+            #     # print("TRAAIN",train_score_avg[:9])
+            #     # print("TEST",test_score_avg[:9])
+            #     # print("C",parameter[:9])
+
+            #     print( "Optimal "+ x_label +" is around:", optimal_param)
+
+            #     plt.axvline(optimal_param, color='red', linestyle='--', label='Optimal '+x_label)
+
+
+#  train_avg_prev= train_score[0]
+#         test_avg_prev= test_score[0]
+#         train_avg_next=0
+#         test_avg_next=0
+
+        # for i in range(1,len(train_score)): 
+        #     train_avg_next= np.mean(train_score[:i])
+        #     test_avg_next= np.mean(test_score[:i])
+
+        #     if  train_avg_prev> train_avg_next and test_avg_prev< test_avg_next :
+        #         optimal_param = parameter[i]
+
+        #     train_avg_prev= train_avg_next
+        #     test_avg_prev= test_avg_next
+
+
+# for i in range(1,len(parameter)): 
+
+#             train_avg_right = np.mean(train_score[i:])
+#             train_avg_left = np.mean(train_score[:i])
+
+#             test_avg_right = np.mean(test_score[i:])
+#             test_avg_left = np.mean(test_score[:i])
+
+#             if train_avg_right < train_avg_left and test_avg_right > test_avg_left:
+#                 optimal_param = parameter[i]       
+#                 break
+                
+
+                 # for i in range(1, len(train_score)):
+        #     train_avg_curr= np.mean(train_score[:i])
+        #     test_avg_curr= np.mean(test_score[:i])
+
+        #     if train_avg_curr - train_avg_prev <=0.001 and test_avg_curr- test_avg_prev >= 0.001:
+        #         optimal_param = parameter[i] 
+        #     train_avg_prev = train_avg_curr
+        #     test_avg_prev = test_avg_curr
         
 
-        if categorical: #print the points instead of lines
-            plt.scatter(parameter, train_score,marker='x',  label='Training '+scoring_name )
-            plt.scatter(parameter, test_score,marker='x', label='Validation '+scoring_name)
 
-            OF= test_score-train_score 
-            print("Overfitting measure")
-            for i in range(len(parameter)): 
-                print(parameter[i], ":" , OF[i])
 
-        else:
-            plt.plot(parameter, train_score, markersize=5, label='Training '+scoring_name )
-            plt.plot(parameter, test_score, markersize=5, label='Validation '+scoring_name)
-        
-        # check the point at which test score will start to increase and training score will start to decrease
-            if overfit_measure: 
-                # check if the difference between the consecutive scores is less/more than 0.001
-                test = test_score[1:] - test_score[:-1] > 0.001
-                train = train_score[1:] - train_score[:-1] < 0.001     
+# for i in range(1,len(train_scores)):
+        #     test_avg_right= np.mean(test_scores[i:])
+        #     test_avg_left= np.mean(test_scores[:i])
+            
+        #     train_avg_right= np.mean(train_scores[i:])
+        #     train_avg_left= np.mean(train_scores[:i])
 
-                optimal_param = parameter[np.where(test & train)[0][0]] 
-                print( "Optimal "+ x_label +" is around:", optimal_param)
+        #     if train_avg_left > train_avg_right and test_avg_left < test_avg_right:
+        #         optimal_param = parameter[i]
 
-                plt.axvline(optimal_param, color='red', linestyle='--', label='Optimal '+x_label)
-
-        plt.title(title)
-        plt.legend(loc="best")
-        plt.show()
+        # print(f"Optimal Hyperparameter: {optimal_param}")

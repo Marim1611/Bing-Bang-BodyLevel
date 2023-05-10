@@ -1,0 +1,37 @@
+{
+    "info": {
+        "time": "true",
+        "date": "true",
+        "duration": "true",
+        "id": "true"
+    },
+    "read_data": {
+        "kind": "true",
+        "standardize": "true",
+        "split": "false",
+        "encode": "false"
+    },
+    "RandomForestClassifier": {
+        "n_estimators": "false",
+        "criterion": "false",
+        "min_samples_split": "false",
+        "min_samples_leaf": "false",
+        "min_weight_fraction_leaf": "false",
+        "max_features": "false",
+        "min_impurity_decrease": "false",
+        "bootstrap": "false",
+        "oob_score": "false",
+        "verbose": "false",
+        "warm_start": "false",
+        "ccp_alpha": "false"
+    },
+    "cross_val_predict": {
+        "cv": "true",
+        "verbose": "false",
+        "pre_dispatch": "false",
+        "method": "false"
+    },
+    "metrics": {
+        "accuracy": "true"
+    }
+}

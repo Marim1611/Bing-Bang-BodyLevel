@@ -1,0 +1,33 @@
+{
+    "metrics": {
+        "accuracy": "true"
+    },
+    "info": {
+        "time": "true",
+        "date": "true",
+        "duration": "true",
+        "id": "true"
+    },
+    "read_data": {
+        "kind": "true",
+        "standardize": "true",
+        "split": "true"
+    },
+    "BaggingClassifier": {
+        "base_estimator": "true",
+        "n_estimators": "true",
+        "max_samples": "true",
+        "max_features": "true",
+        "bootstrap": "true",
+        "bootstrap_features": "true",
+        "oob_score": "true",
+        "warm_start": "true",
+        "verbose": "true"
+    },
+    "cross_val_predict": {
+        "cv": "true",
+        "verbose": "true",
+        "pre_dispatch": "true",
+        "method": "true"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "info": {
+        "time": "true",
+        "date": "true",
+        "duration": "true",
+        "id": "true"
+    },
+    "read_data": {
+        "encode": "true",
+        "standardize": "false",
+        "split": "false",
+        "kind": "false"
+    },
+    "AdaBoostClassifier": {
+        "n_estimators": "false",
+        "learning_rate": "false",
+        "algorithm": "false",
+        "base_estimator": "false"
+    },
+    "cross_val_predict": {
+        "cv": "true",
+        "verbose": "false",
+        "pre_dispatch": "false",
+        "method": "false"
+    },
+    "metrics": {
+        "accuracy": "true"
+    }
+}

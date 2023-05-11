@@ -203,22 +203,27 @@ def optimal_hyperparameter(train_scores, test_scores, parameter):
     '''
 
     optimal_param = parameter[0]  
-
     train_score_prev = train_scores[0]  
     test_score_prev = test_scores[0]  
-
     train_score_curr = 0  
     test_score_curr = 0  
+
+    patience_counter = 0
+    patience=4
 
     for i in range(1, len(train_scores)):
         train_score_curr = np.mean(train_scores[:i])  
         test_score_curr = np.mean(test_scores[:i])  
 
-        if train_score_curr - train_score_prev <= 0.001 and test_score_prev - test_score_curr >= 0.001 and i+1 < len(train_scores):
-            optimal_param = parameter[i + 1] 
+        if train_score_curr <= train_score_prev and test_score_prev >= test_score_curr and i+1 < len(train_scores):
+            if patience_counter < patience:
+                patience_counter += 1
+                optimal_param = parameter[i + 1] 
+            else:
+                break
 
         train_score_prev = train_score_curr  
-        test_score_prev = test_score_curr  
+        test_score_prev = test_score_curr 
 
     return optimal_param
     

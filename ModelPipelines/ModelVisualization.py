@@ -34,8 +34,8 @@ class VisualizeModel():
         self.clf.fit(x_data_r, y_data_r)                                        # fit the classifier
         
         # Basic Plot Setup
-        fig = plt.figure()
         plt.style.use('dark_background')                                        # dark background           
+        fig = plt.figure()
         fig.set_dpi(200)                                                        # increase resolution
         ax = fig.add_subplot(111, projection='3d')
         ax.grid(False)                                                          # remove grid

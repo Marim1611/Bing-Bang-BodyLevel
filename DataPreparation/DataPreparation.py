@@ -87,7 +87,8 @@ def prior_distribution(y_data):
     '''
     # plot the prior distribution of the dataset
     plt.figure(figsize=(10, 5))
-    plt.hist(y_data, bins=4, color='blue', edgecolor='black', alpha=0.7)
+    # make a bar chart for the unique values of y_data
+    plt.bar(np.unique(y_data), np.bincount(y_data), color='aqua', edgecolor='black', alpha=0.7)
     plt.title('Prior distribution of the dataset')
     plt.xlabel('Body Level')
     plt.ylabel('Number of samples')
@@ -105,15 +106,23 @@ def features_histograms(x_data):
     Also print the number of unique values of each feature and its kind.
     '''
     # plot a 4x4 grid of histograms for each feature in the dataset
+    plt.style.use('dark_background')
     fig, axs = plt.subplots(4, 4, figsize=(20, 20))
+    plt.rcParams['figure.dpi'] = 200
     for i in range(4):
         for j in range(4):
-            axs[i, j].hist(x_data.iloc[:, i*4+j], bins=20, color='blue', edgecolor='black', alpha=0.7)
+            # check if its a categorical or numerical feature
+            if type(x_data.iloc[0, i*4+j]) == str:
+                # if categorical, plot a bar chart
+                names_num = x_data.iloc[:, i*4+j].value_counts().index
+                axs[i, j].bar(names_num, x_data.iloc[:, i*4+j].value_counts(), color='aqua', edgecolor='black', alpha=0.7)
+            else:
+                sns.kdeplot(x_data.iloc[:, i*4+j], color='aqua',  alpha=0.7, ax=axs[i, j])
+            #axs[i, j].hist(x_data.iloc[:, i*4+j], bins=20, color='aqua',  edgecolor='black', alpha=0.7)
             axs[i, j].set_title(x_data.columns[i*4+j])
     plt.show()
     
     # print number of unique values of each feature
-    print('\nNumber of unique values of each feature:\n')
     feats = {}
     c = 0
     for i in range(len(x_data.columns)):
@@ -169,7 +178,7 @@ def visualize_categorical_data(x_data, y_data, normalize=True):
     
     
     # plot each categorical feature (there are 8) in a bar chart with colors representing the classes
-    fig, axs = plt.subplots(2, 4, figsize=(20, 20))
+    fig, axs = plt.subplots(2, 4, figsize=(20, 10))
     for i, feature in enumerate(disc_feats):
         # get the unique values for the feature
         unique_vals = x_data_disc[feature].unique()
@@ -182,10 +191,10 @@ def visualize_categorical_data(x_data, y_data, normalize=True):
             if normalize: counts_class = [count/len(x_data_class) for count in counts_class]
             counts.append(counts_class)                                 # list of value feature counts for each class
         
-        # plot the grouped bar chart with colors for each class
+        # plot the grouped bar chart with same color for each class
         ax = axs.flatten()[i]                                           #  to select the ith subplot
         ax.set_title(feature)
-        sns.barplot(x=np.repeat(unique_vals, 4), y=np.array(counts).flatten(), hue=np.tile(np.arange(4), len(unique_vals)), ax=ax, palette='tab10')
+        sns.barplot(x=np.repeat(unique_vals, 4), y=np.array(counts).flatten(), hue=np.tile(np.arange(4), len(unique_vals)), ax=ax, palette="dark:aqua")
         
     plt.show()
     
@@ -225,8 +234,24 @@ def HoeffdingCheck(dataset, ratio=None, ϵ=None, δ=None):
     display(Markdown(analysis))
 
 
-                        
+                
+
+def convey_insights(bullets_arr):
+    '''
+    Give it a bullet points array, give you bullet points in markdown for insights.
+    '''
+    # make a markdown string with the bullets
+    markdown_str = '<h3><font color="pink" size=5>Insights</font></h3> <font size=4>\n'
     
-        
-        
+    for bullet in bullets_arr:
+        markdown_str += '<font color="pink">✦</font> ' + bullet + '<br><br>'
+    # display the markdown string
+    markdown_str += '</font>'
+    display(Markdown(markdown_str))
     
+
+def read_sample(path):
+    '''
+    A read_sample function for when the model is to be evaluated
+    '''
+    pass

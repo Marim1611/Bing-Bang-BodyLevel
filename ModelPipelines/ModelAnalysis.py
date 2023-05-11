@@ -15,7 +15,9 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, displa
     '''
     rfecv = RFECV(estimator=clf, cv=StratifiedKFold(cv), scoring="accuracy", min_features_to_select=min_feats)
     rfecv.fit(x_data_d, y_data_d)
-    print("Features to keep", rfecv.get_feature_names_out(x_data_d.columns))
+    opt_feats = rfecv.get_feature_names_out(x_data_d.columns)
+    opt_feats = [feat for _, feat in sorted(zip(rfecv.ranking_, opt_feats))]
+    print(f"Features to keep {opt_feats} with ranks {sorted(rfecv.ranking_[0:len(opt_feats)])}")
     
     if display:
         plt.rcParams['figure.dpi'] = 300
@@ -29,6 +31,9 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, displa
    
         plt.show()
     
+    # choose the best features
+    x_data_d = x_data_d[rfecv.get_feature_names_out(x_data_d.columns)]
+    return x_data_d
 
 
 def test_log_linearity(clf, class_index,  x_data_d, y_data_d):
@@ -177,7 +182,7 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
             
             optimal_param= optimal_hyperparameter(train_scores, test_scores, param_range)
             ax.axvline(optimal_param, color='red', linestyle='--', label="Optimal "+param_name+\
-                       " is around "+str(np.ceil(optimal_param)))
+                       " is around "+str(np.round(optimal_param,2)))
 
         ax.set_title(f"Validation Curve for {param_name}")
         ax.set_xlabel(param_name)
@@ -203,22 +208,27 @@ def optimal_hyperparameter(train_scores, test_scores, parameter):
     '''
 
     optimal_param = parameter[0]  
-
     train_score_prev = train_scores[0]  
     test_score_prev = test_scores[0]  
-
     train_score_curr = 0  
     test_score_curr = 0  
+
+    patience_counter = 0
+    patience=4
 
     for i in range(1, len(train_scores)):
         train_score_curr = np.mean(train_scores[:i])  
         test_score_curr = np.mean(test_scores[:i])  
 
-        if train_score_curr - train_score_prev <= 0.001 and test_score_prev - test_score_curr >= 0.001 and i+1 < len(train_scores):
-            optimal_param = parameter[i + 1] 
+        if train_score_curr <= train_score_prev and test_score_prev >= test_score_curr and i+1 < len(train_scores):
+            if patience_counter < patience:
+                patience_counter += 1
+                optimal_param = parameter[i + 1] 
+            else:
+                break
 
         train_score_prev = train_score_curr  
-        test_score_prev = test_score_curr  
+        test_score_prev = test_score_curr 
 
     return optimal_param
     

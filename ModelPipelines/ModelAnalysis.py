@@ -15,7 +15,9 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, displa
     '''
     rfecv = RFECV(estimator=clf, cv=StratifiedKFold(cv), scoring="accuracy", min_features_to_select=min_feats)
     rfecv.fit(x_data_d, y_data_d)
-    print("Features to keep", rfecv.get_feature_names_out(x_data_d.columns))
+    opt_feats = rfecv.get_feature_names_out(x_data_d.columns)
+    opt_feats = [feat for _, feat in sorted(zip(rfecv.ranking_, opt_feats))]
+    print(f"Features to keep {opt_feats} with ranks {sorted(rfecv.ranking_[0:len(opt_feats)])}")
     
     if display:
         plt.rcParams['figure.dpi'] = 300
@@ -29,6 +31,9 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, displa
    
         plt.show()
     
+    # choose the best features
+    x_data_d = x_data_d[rfecv.get_feature_names_out(x_data_d.columns)]
+    return x_data_d
 
 
 def test_log_linearity(clf, class_index,  x_data_d, y_data_d):

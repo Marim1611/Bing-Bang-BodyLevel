@@ -1,0 +1,36 @@
+{
+    "info": {
+        "time": "true",
+        "date": "true",
+        "duration": "true",
+        "id": "true"
+    },
+    "read_data": {
+        "kind": "false",
+        "standardize": "true",
+        "split": "false",
+        "encode": "false"
+    },
+    "StackingClassifier": {
+        "final_estimator": "true",
+        "stack_method": "false",
+        "passthrough": "false",
+        "verbose": "false"
+    },
+    "cross_val_predict": {
+        "estimator": "true",
+        "cv": "true",
+        "verbose": "false",
+        "pre_dispatch": "false",
+        "method": "false"
+    },
+    "metrics": {
+        "accuracy": "true"
+    },
+    "VotingClassifier": {
+        "voting": "true",
+        "flatten_transform": "false",
+        "verbose": "false"
+    },
+    "predict": {}
+}

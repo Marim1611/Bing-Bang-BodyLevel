@@ -131,10 +131,12 @@ def features_histograms(x_data):
     for i in range(len(x_data.columns)):
         feature_type = type(x_data.iloc[0, i])
         if feature_type == str:
-            feats[x_data.columns[i]] = len(x_data.iloc[:, i].unique())
+            feats[x_data.columns[i]] = str(len(x_data.iloc[:, i].unique()))
             c+=1
         else:
             feats[x_data.columns[i]] = "numerical"
+        
+        feats = dict(sorted(feats.items(), key=lambda item: item[1]))
     display(HTML(nice_table(feats, title='Number of unique values of each feature')))
     
     stats = {"Number of Categorical": c, "Number of Numerical": len(x_data.columns)-c}
@@ -209,12 +211,23 @@ def HoeffdingCheck(dataset, ratio=None, ϵ=None, δ=None):
     this function returns the third.
     '''
     if ratio:
-        N = len(dataset) * ratio
+        N = int(len(dataset) * ratio)
     
     assert [ratio, ϵ, δ].count(None) == 1, "You must provide two of the three parameters: N, ϵ, δ"
     if δ is None:
         δ = 2 * np.exp(-2 * ϵ**2 * N)
-        if δ >=1: return f"Nothing can be guaranteed with N={N} and ϵ={ϵ} as δ={δ} is greater than 1"
+        if δ >=1: 
+            N, ϵ, δ = int(N), round(ϵ, 3), round(δ, 3)
+            analysis = f'''<font size=4>Hoeffding's Inequality states:
+                    $$P[|E_{{out}}(g)-E_{{test}}(g)| \leq \epsilon] \geq 1-2e^{{-2N_{{test}}\epsilon^2}}$$
+                    If we use validation set of size ${ratio}N_{{train}}={N}$ then with $\epsilon={ϵ}$ we have 
+                    $$P[|E_{{out}}(g)-E_{{test}}(g)| \leq {ϵ}] \geq {1-δ}$$
+                    In other words, 
+                    There are no generalization guarantees.
+                    </font>
+                    '''
+            display(Markdown(analysis))
+            return None
     
     if ϵ is None:
         ϵ = np.sqrt(np.log(2/δ)/(2*N))

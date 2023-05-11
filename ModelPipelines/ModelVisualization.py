@@ -26,7 +26,7 @@ class VisualizeModel():
         self.filename = name
         self.clf = clf
 
-    def illustrate_features_3D(self, animated=False, show=True):
+    def illustrate_features_3D(self, animated=False, show=False):
         '''
         Show a 3D plot of the feature space using the points in x_data and the labels in y_data
         '''
@@ -78,7 +78,7 @@ class VisualizeModel():
             if show:    display(Im(path))
 
 
-    def illustrate_features_2D(self, show=True):
+    def illustrate_features_2D(self, show=False):
         '''
         Show 2D plot with decision regions
         '''

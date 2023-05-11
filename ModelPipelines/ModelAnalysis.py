@@ -5,7 +5,7 @@ import numpy as np
 import sys
 sys.path.append("../../")
 from utils import nice_table
-from IPython.display import display, HTML
+from IPython.display import display, HTML, Markdown
 import warnings
 
 def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, display=True):
@@ -22,11 +22,14 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, displa
     if display:
         plt.rcParams['figure.dpi'] = 300
         plt.style.use('dark_background')
-        plt.figure()
+        plt.figure(figsize=(10, 6))
         plt.xlabel("Number of features selected")
         plt.ylabel("Mean test accuracy")
         plt.errorbar(range(min_feats, len(rfecv.cv_results_["mean_test_score"])+min_feats), 
-                    rfecv.cv_results_["mean_test_score"], yerr=rfecv.cv_results_["std_test_score"])
+                    rfecv.cv_results_["mean_test_score"])
+        # draw a dashed red line through the selected number of features
+        plt.axvline(x=rfecv.n_features_, color='r', linestyle='--')
+        
         plt.title("Recursive Feature Elimination")
    
         plt.show()
@@ -81,18 +84,21 @@ def log_weights_analysis(clf,x_data_d):
 
     plt.rcParams['figure.dpi'] = 300
     plt.style.use('dark_background')
-    fig, axs = plt.subplots(4, 1, figsize=(20, 28))
-    plt.subplots_adjust(hspace=0.2)
-    for i in range(4):    
-        axs[i].bar(range(len(weights[i])), weights[i], width=0.3)
-        axs[i].axhline(y=0)
-        axs[i].set_title(f"Class {i}", fontsize=20)
-        axs[i].set_xlabel("Feature")
-        axs[i].set_ylabel("Weight")
-        # make x-ticks be the feature names
-        axs[i].set_xticks(range(len(weights[i])))
-        axs[i].set_xticklabels(x_data_d.columns)
-
+    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 8))
+    for i in range(2):
+        for j in range(2):
+            axs[i, j].bar(range(len(weights[i])), weights[i], width=0.3)
+            axs[i, j].axhline(y=0)
+            axs[i, j].set_title(f"Body Level {i}", fontsize=20)
+            axs[i, j].set_xlabel("Feature")
+            axs[i, j].set_ylabel("Importance")
+            # make x-ticks be the feature names
+            axs[i, j].set_xticks(range(len(weights[i])))
+            cols = x_data_d.columns
+            cols = [col.replace("_", "\n") for col in cols]
+            axs[i, j].set_xticklabels(cols, rotation=90)
+            axs[i, j].tick_params(axis='both', which='major', labelsize=7)
+            plt.subplots_adjust(hspace=0.5)
     plt.show()
 
 
@@ -103,10 +109,23 @@ def vc_dimension_check(clf, x_data_d):
     dvc =  (np.sum([param.size for param in clf.coef_]) +  np.sum([param.size for param in clf.intercept_])) + 1
     N = x_data_d.shape[0]
     if 10 * dvc > N:
-        print(f"VC bound is violated. Either increase the number of samples or decrease parameters by atleast {10 * dvc - N}")
+        analysis = f'''<font size=4>By estimating the VC dimension of the model, 
+                    we have $d_{{vc}}={dvc}$. 
+                    Since, $N={N}$, here it holds that that 
+                    $$N < 10d_{{vc}}$$ 
+                    Hence, generalization is not guaranteed and its advised to reduce the model complexity.
+                    </font>
+                    '''
+        display(Markdown(analysis))
     else:
-        print(f"Model generalization is safe. VC Bound is satisfied where 10dvc={10 * dvc} < N={N}")
-
+        analysis = f'''<font size=4>By estimating the VC dimension of the model, 
+                    we have $d_{{vc}}={dvc}$. 
+                    Since, $N={N}$, it holds that 
+                    $$N \\geq 10d_{{vc}}$$
+                    Hence, model is expected to have no issues with generalization.
+                    </font>
+                    '''
+        display(Markdown(analysis))
 
 def show_hyperparams(clf):
     '''

@@ -117,8 +117,11 @@ def features_histograms(x_data):
                 names_num = x_data.iloc[:, i*4+j].value_counts().index
                 axs[i, j].bar(names_num, x_data.iloc[:, i*4+j].value_counts(), color='aqua', edgecolor='black', alpha=0.7)
             else:
-                sns.kdeplot(x_data.iloc[:, i*4+j], color='aqua',  alpha=0.7, ax=axs[i, j])
-            #axs[i, j].hist(x_data.iloc[:, i*4+j], bins=20, color='aqua',  edgecolor='black', alpha=0.7)
+                sns.kdeplot(x_data.iloc[:, i*4+j], color='aqua',  alpha=0.7, ax=axs[i, j])       
+                axs[i, j].set_xlabel('')
+                axs[i, j].set_ylabel('')
+
+                         
             axs[i, j].set_title(x_data.columns[i*4+j])
     plt.show()
     

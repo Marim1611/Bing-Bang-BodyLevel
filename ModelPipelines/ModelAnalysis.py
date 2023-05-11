@@ -177,7 +177,7 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
             
             optimal_param= optimal_hyperparameter(train_scores, test_scores, param_range)
             ax.axvline(optimal_param, color='red', linestyle='--', label="Optimal "+param_name+\
-                       " is around "+str(np.ceil(optimal_param)))
+                       " is around "+str(np.round(optimal_param,2)))
 
         ax.set_title(f"Validation Curve for {param_name}")
         ax.set_xlabel(param_name)

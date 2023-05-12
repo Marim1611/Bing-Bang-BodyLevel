@@ -1,4 +1,6 @@
 from sklearn.model_selection import StratifiedKFold, validation_curve, learning_curve
+from sklearn.metrics import classification_report
+from sklearn.model_selection import cross_val_predict
 from sklearn.feature_selection import RFECV
 import matplotlib.pyplot as plt
 import numpy as np
@@ -6,9 +8,11 @@ import sys
 sys.path.append("../../")
 from utils import nice_table
 from IPython.display import display, HTML, Markdown
+from IPython.display import clear_output, HTML
 import warnings
+from utils import nice_table, get_metrics
 
-def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, display=True):
+def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, disp=True):
     '''
     Recursive feature elimination recursively removes the weakest feature as determined by the given classifier.
     It stops when the desired number of features is reached or accuracy is no longer improving.
@@ -16,10 +20,12 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, displa
     rfecv = RFECV(estimator=clf, cv=StratifiedKFold(cv), scoring="accuracy", min_features_to_select=min_feats)
     rfecv.fit(x_data_d, y_data_d)
     opt_feats = rfecv.get_feature_names_out(x_data_d.columns)
-    opt_feats = [feat for _, feat in sorted(zip(rfecv.ranking_, opt_feats))]
-    print(f"Features to keep {opt_feats} with ranks {sorted(rfecv.ranking_[0:len(opt_feats)])}")
+    # average the weights for the four classes (coef[0], coef[1], coef[2], coef[3])
+    weights = np.mean(np.abs(rfecv.estimator_.coef_), axis=0)
     
-    if display:
+    opt_feats =  dict(sorted(zip( opt_feats, weights), key=lambda item: item[1]))
+    display(HTML(nice_table(opt_feats, 'Features to Keep & Ranking')))
+    if disp:
         plt.rcParams['figure.dpi'] = 300
         plt.style.use('dark_background')
         plt.figure(figsize=(10, 6))
@@ -35,7 +41,8 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, displa
         plt.show()
     
     # choose the best features
-    x_data_d = x_data_d[rfecv.get_feature_names_out(x_data_d.columns)]
+    opt_feat_names = [name for name, rank in opt_feats.items()]
+    x_data_d = x_data_d[opt_feat_names]
     return x_data_d
 
 
@@ -89,7 +96,7 @@ def log_weights_analysis(clf,x_data_d):
         for j in range(2):
             axs[i, j].bar(range(len(weights[i])), weights[i], width=0.3)
             axs[i, j].axhline(y=0)
-            axs[i, j].set_title(f"Body Level {i}", fontsize=20)
+            axs[i, j].set_title(f"Body Level {j+i*2}")
             axs[i, j].set_xlabel("Feature")
             axs[i, j].set_ylabel("Importance")
             # make x-ticks be the feature names
@@ -208,7 +215,7 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
         ax.set_ylabel("Error")
         ax.legend(loc="best")  
 
-        
+    clear_output(wait=False) 
     plt.show()
 
 
@@ -251,6 +258,33 @@ def optimal_hyperparameter(train_scores, test_scores, parameter):
 
     return optimal_param
     
+def BiasVariance(clf, x_data_d, y_data_d, cv=4):
+    '''
+    Given trained model, x_data_d, y_data_d, and cv params, it returns the bias and variance of the model.
+    '''
+    y_pred_train = clf.predict(x_data_d)
+    report_train = classification_report(y_data_d, y_pred_train, digits=3)  
+    train_acc, train_wf1 = get_metrics(report_train)
+    y_pred_val = cross_val_predict(clf, x_data_d, y_data_d, cv=cv)
+    report_val = classification_report(y_data_d, y_pred_val, digits=3)
+    val_acc, val_wf1 = get_metrics(report_val)
+    
+    bias_var_acc = {
+        'Train Accuracy': train_acc,
+        'Val Accuracy': val_acc,
+        'Aviodable Bias <': 1 - train_acc,
+        'Variance': train_acc - val_acc,
+    }
+    
+    bias_var_wf1 = {
+        'Train WF1': train_wf1,
+        'Val WF1': val_wf1,
+        'Aviodable Bias': 1 - train_wf1,
+        'Variance': train_wf1 - val_wf1,
+    }
+    
+    display(HTML(nice_table(bias_var_acc, "BV Analysis Using Accuracy")))
+    display(HTML(nice_table(bias_var_wf1, "BV Analysis Using WF1")))
 
 def learning_curves(clf, x_data, y_data, cv,N):
 

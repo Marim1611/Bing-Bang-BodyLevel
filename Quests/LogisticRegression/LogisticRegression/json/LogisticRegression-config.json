@@ -8,19 +8,17 @@
     "read_data": {
         "kind": "true",
         "split": "false",
-        "standardize": "false",
-        "encode": "false",
-        "display": "false"
+        "standardize": "false"
     },
     "LogisticRegression": {
         "multi_class": "true",
+        "C": "true",
+        "solver": "true",
         "penalty": "false",
         "dual": "false",
         "tol": "false",
-        "C": "false",
         "fit_intercept": "false",
         "intercept_scaling": "false",
-        "solver": "false",
         "max_iter": "false",
         "verbose": "false",
         "warm_start": "false"
@@ -33,6 +31,9 @@
         "method": "false"
     },
     "metrics": {
-        "accuracy": "true"
+        "train_acc": "true",
+        "train_wf1": "true",
+        "val_acc": "true",
+        "val_wf1": "true"
     }
 }

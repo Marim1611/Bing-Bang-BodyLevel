@@ -20,7 +20,7 @@ class VisualizeModel():
         x_data is assumed to be 3D. If it is not, the first three columns are taken.
         '''
         
-        self.x_data = x_data.iloc[:, :3]
+        self.x_data = x_data.iloc[:, -3:]
         self.y_data = y_data
         self.fps = 15
         self.filename = name
@@ -58,6 +58,7 @@ class VisualizeModel():
         if not animated and show:
             plt.show()                  # Show a static plot (code above is enough)
         else:
+            plt.close()
             frames = []
             step = 4
             num_frames = 360//step
@@ -76,7 +77,6 @@ class VisualizeModel():
             path = f'../../Saved/{self.filename}.gif' 
             imageio.mimsave(path, frames, fps=self.fps)          # make a gif out of the frames where there are 15 frames per second
             if show:    display(Im(path))
-
 
     def illustrate_features_2D(self, show=False):
         '''
@@ -112,6 +112,7 @@ class VisualizeModel():
         
         plt.savefig(f'../../Saved/{self.filename}.png', dpi=200, bbox_inches='tight')
         if show:    plt.show()
+        else:       plt.close()
     
     def double_whammy(self, animated=True, useOld=True):
         '''

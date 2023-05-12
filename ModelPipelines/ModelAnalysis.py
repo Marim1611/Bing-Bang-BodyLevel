@@ -306,7 +306,7 @@ def learning_curves(clf, x_data, y_data, cv,N):
     plt.show()
 
 
-def cross_validation(mlq,clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
+def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
     '''
     Performs cross validation on the given data and model using Leave-One-Out and Repeated K-fold.
     '''

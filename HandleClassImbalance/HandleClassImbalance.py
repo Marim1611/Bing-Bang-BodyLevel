@@ -7,12 +7,14 @@ import pandas as pd
 from sklearn.model_selection import cross_val_predict
 from mlpath import mlquest as mlq
 import matplotlib.pyplot as plt
+from sklearn.metrics import f1_score
 
 
 # columns names for the dataset and thier types 
 CATEGORICAL=['Gender', 'H_Cal_Consump', 'Alcohol_Consump', 'Smoking','Food_Between_Meals', 'Fam_Hist', 'H_Cal_Burn', 'Transport']
 NUMERICAL=['Age', 'Height', 'Weight', 'Veg_Consump', 'Water_Consump', 'Meal_Count','Phys_Act', 'Time_E_Dev']
 MIXED=['Gender', 'Age', 'Height', 'Weight', 'H_Cal_Consump', 'Veg_Consump','Water_Consump', 'Alcohol_Consump', 'Smoking', 'Meal_Count','Food_Between_Meals', 'Fam_Hist', 'H_Cal_Burn', 'Phys_Act','Time_E_Dev', 'Transport']
+COLOR= '#ECAF93' # color for the plots
 
 def handle_class_imbalance(X,y, method=None,k=None, sampling_ratio=[1,1,1]):
     '''
@@ -112,8 +114,9 @@ def show_difference(y,y_bal):
     fig.show()
    
 #-----------------------------------------------------------------------------
-def plot_results(accuracies,methods=None, k=None , sample_ratio=None, title=""):
+def plot_results(metric ,methods=None, k=None , sample_ratio=None, title=""):
 
+    plt.style.use('dark_background')
     if methods: labels = methods
     if sample_ratio: 
         for i in range(len(sample_ratio)):
@@ -121,9 +124,12 @@ def plot_results(accuracies,methods=None, k=None , sample_ratio=None, title=""):
             sample_ratio[i]=', '.join(sample_ratio[i])
         labels = sample_ratio
     if k: labels = k
-    plt.figure(figsize=(7,5))
-    plt.bar(labels, accuracies, color ='maroon',width = 0.4)
-    plt.title(title)
+    plt.bar(labels, metric, color =COLOR,width = 0.4)
+    plt.xticks(fontsize=7)
+    plt.title(title,fontsize=10)
+    plt.ylabel('Weighted F1-Score',fontsize=10)
+    # change size of the plot
+    plt.rcParams['figure.figsize'] = [6, 5]
     plt.show()
  
 #-----------------------------------------------------------------------------
@@ -142,7 +148,6 @@ def show_results(accuracies, methods=[], k=[] , sample_ratio=[], title=""):
     for acc in accuracies: perf["Accuracy"].append(acc)
     
     df=pd.DataFrame(perf)
-    #TODO write title for the data frame
     # df.style.set_table_attributes("style='display:inline'").set_caption(title)
     print(title)
     display(df)
@@ -154,12 +159,14 @@ def evaluate_class_imbalance_handler_over_methods(X,y ,clf , methods=[] , sample
     and const value for k and sampling ratio
     '''
     accuracies = []
+    weighted_f1_scores = []
     for method in methods:
         if method != "Cost Sensitive":
             bal_x, bal_y = handle_class_imbalance(X, y, method=method,k=k, sampling_ratio=sample_ratio)
             clf.fit(bal_x, bal_y)
             y_pred = cross_val_predict(clf, bal_x, bal_y, cv=4)
             accuracies.append( np.mean(y_pred == bal_y))
+            weighted_f1_scores.append(f1_score(bal_y, y_pred, average='weighted'))
         else:
             new_weights = handle_class_imbalance(X, y, method=method,k=k, sampling_ratio=sample_ratio)
             try:
@@ -170,8 +177,9 @@ def evaluate_class_imbalance_handler_over_methods(X,y ,clf , methods=[] , sample
             clf.fit(X, y)
             y_pred = cross_val_predict(clf, X, y, cv=4)
             accuracies.append( np.mean(y_pred == y))
-
-    plot_results(accuracies, methods, title="K = "+str(k)+", Sampling Ratio = "+str(sample_ratio))
+            weighted_f1_scores.append(f1_score(y, y_pred, average='weighted'))
+    
+    plot_results(weighted_f1_scores, methods, title="K = "+str(k)+", Sampling Ratio = "+str(sample_ratio))
 
 #---------------------------------------------------------------------------------
 
@@ -181,12 +189,14 @@ def evaluate_const_k_diff_sample_ratios(X,y ,clf , method , k=5, sample_ratios=[
       method, const value for k and multiple values of sampling ratio
     '''
     accuracies = []
+    weighted_f1_scores = []
     for r in sample_ratios:
         if method != "Cost Sensitive":
             bal_x, bal_y = handle_class_imbalance(X, y, method=method,k=k, sampling_ratio=r)
             clf.fit(bal_x, bal_y)
             y_pred = cross_val_predict(clf, bal_x, bal_y, cv=4)
             accuracies.append( np.mean(y_pred == bal_y))
+            weighted_f1_scores.append(f1_score(bal_y, y_pred, average='weighted'))  
         else:
             new_weights = handle_class_imbalance(X, y, method=method,k=k, sampling_ratio=r)
             try:
@@ -196,8 +206,10 @@ def evaluate_const_k_diff_sample_ratios(X,y ,clf , method , k=5, sample_ratios=[
             
             clf.fit(X, y)
             y_pred = cross_val_predict(clf, X, y, cv=4)
-            accuracies.append( np.mean(y_pred == y))        
-    plot_results(accuracies, sample_ratio=sample_ratios,title="Method = "+method+", K = "+str(k))
+            accuracies.append( np.mean(y_pred == y))
+            weighted_f1_scores.append(f1_score(y, y_pred, average='weighted'))   
+
+    return weighted_f1_scores
 
 #------------------------------------------------------------------------------------
 
@@ -207,12 +219,14 @@ def evaluate_const_sample_ratios_diff_k(X,y ,clf , method , Ks, sample_ratio=[1,
       method, const value for sampling ratio and multiple values of k
     '''
     accuracies = []
+    weighted_f1_scores = []
     for k in Ks:
         if method != "Cost Sensitive":
             bal_x, bal_y = handle_class_imbalance(X, y, method=method,k=k, sampling_ratio=sample_ratio)
             clf.fit(bal_x, bal_y)
             y_pred = cross_val_predict(clf, bal_x, bal_y, cv=4)
             accuracies.append( np.mean(y_pred == bal_y))
+            weighted_f1_scores.append(f1_score(bal_y, y_pred, average='weighted'))
         else:
             new_weights = handle_class_imbalance(X, y, method=method,k=k, sampling_ratio=sample_ratio)
             try:
@@ -223,8 +237,67 @@ def evaluate_const_sample_ratios_diff_k(X,y ,clf , method , Ks, sample_ratio=[1,
             clf.fit(X, y)
             y_pred = cross_val_predict(clf, X, y, cv=4)
             accuracies.append( np.mean(y_pred == y))  
+            weighted_f1_scores.append(f1_score(y, y_pred, average='weighted'))
+    return weighted_f1_scores
 
-    plot_results(accuracies, k=Ks, title="Method = "+method+", Sampling Ratio = "+str(sample_ratio))
+def plot_different_evaluations( X,y, clf, methods, sample_ratios , const_sample_ratio,const_k, Ks):
+    '''
+    This function is used to plot the results of the evaluation of the class imbalance handler
+    over different methods, const value for k and different sampling ratios and const value for
+    sampling ratio and different values of k
+    '''
+    Scores= []
+    Labels = []
+    titles = []
+    x_labels = []
+
+    for method in methods:
+        scores1 =evaluate_const_sample_ratios_diff_k(X,y ,clf , method , Ks, const_sample_ratio)
+        Scores.append( scores1)
+        Labels.append( Ks)
+        titles.append("Method: "+method+", Sampling Ratio = "+str(const_sample_ratio))
+        x_labels.append("K")
+        scores2 =evaluate_const_k_diff_sample_ratios(X,y ,clf , method , const_k, sample_ratios)
+        Scores.append( scores2)
+        Labels.append( sample_ratios)
+        titles.append("Method: "+method+", K = "+str(const_k))
+        x_labels.append("Sampling Ratio")
+    
+    #--- plotting
+    plt.rcParams['figure.dpi'] = 300
+    plt.style.use('dark_background')
+    plt.suptitle("Performance of different class imbalance handling methods", fontsize=15)
+
+    fig, axs = plt.subplots(nrows= len(methods), ncols=2, figsize=(20, 8))
+    k=0
+    for i in range(len(methods)):
+        for j in range(2):
+            axs[i, j].bar(range(len(Scores[k])), Scores[k], width=0.3, color=COLOR)
+            # increase margin between the bar and the top of the plot
+            axs[i, j].set_ylim(top=max(Scores[k])+0.1)
+            axs[i, j].axhline(y=0)
+            axs[i, j].set_title(titles[k], fontsize=12)
+            axs[i, j].set_xlabel(x_labels[k])
+            axs[i, j].set_ylabel("Weighted F1 Score")
+            axs[i, j].set_xticks(range(len(Scores[k])))
+            axs[i, j].set_xticklabels(Labels[k], rotation=90)
+            axs[i, j].tick_params(axis='both', which='major', labelsize=8)
+            # write the value on top of each bar
+            for index, value in enumerate(Scores[k]):
+                axs[i, j].text(index-0.1, value+0.01, str(round(value, 3)))
+            plt.subplots_adjust(hspace=0.7)
+            k+=1
+
+    plt.show()
+
+   
+
 
     
+
+
+        
+        
+
+
  

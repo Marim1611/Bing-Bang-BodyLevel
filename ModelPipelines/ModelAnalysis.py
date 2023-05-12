@@ -306,7 +306,7 @@ def learning_curves(clf, x_data, y_data, cv,N):
     plt.show()
 
 
-def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
+def cross_validation(mlq,clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
     '''
     Performs cross validation on the given data and model using Leave-One-Out and Repeated K-fold.
     '''
@@ -316,11 +316,10 @@ def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
     y_pred = cross_val_predict(clf, x_data, y_data, cv=loo)
     loo_report = classification_report(y_data, y_pred, digits=4)
     loo_accuracy, loo_wf1 = get_metrics(loo_report)
-    highest_accuracy = loo_accuracy
-    used_method = 'LOO'
+    loo_dict = { 'loo_acc': loo_accuracy, 'loo_wf1': loo_wf1, 'loo_report': loo_report}
 
     # Repeated K-fold cross-validation
-    kfold_metrics = {} # key=(k, n_repeats), value=(accuracy, wf1, report)
+    kfold = {} # key=(k, n_repeats), value=(accuracy, wf1, report)
     for i in range(len(k)):
         for j in range(len(n_repeats)):
             rkf = RepeatedKFold(n_splits=k[i], n_repeats=n_repeats[j], random_state=random_state)
@@ -333,27 +332,19 @@ def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
 
             report = classification_report(y_data, y_pred, digits=4)
             accuracy, wf1 = get_metrics(report)
-            kfold_metrics[f'{n_repeats[j]}-Repeated {k[i]}-fold'] = (accuracy, wf1, report)
-
-            # Check if this method has the highest accuracy
-            if accuracy > highest_accuracy:
-                highest_accuracy = accuracy
-                used_method = f'{n_repeats[j]}-Repeated {k[i]}-fold'
+            kfold[f'{n_repeats[j]}-Repeated {k[i]}-fold'] = (accuracy, wf1, report)
 
     # Create table for accuracy
-    accuracy_results = {'LOO': loo_accuracy}
-    for k, v in kfold_metrics.items():
+    accuracy_results = {'loo_acc': loo_accuracy}
+    for k, v in kfold.items():
         accuracy_results[f'{k}'] = v[0]
     display(HTML(nice_table(accuracy_results, "Cross-Validation Accuracy")))
 
     # Create table for wf1
-    wf1_results = {'LOO': loo_wf1}
-    for k, v in kfold_metrics.items():
+    wf1_results = {'loo_wf1': loo_wf1}
+    for k, v in kfold.items():
         wf1_results[f'{k}'] = v[1]
     display(HTML(nice_table(wf1_results, "Cross-Validation Weighted F1-Score")))
 
-    # Print the method with the highest accuracy
-    print(f'The {used_method} method has the highest accuracy: {highest_accuracy:.3f}')
-    if used_method == 'LOO': final_report = loo_report
-    else: final_report = kfold_metrics[f'{used_method}'][2]
-    return highest_accuracy, final_report
+    return loo_dict, kfold
+

@@ -1,6 +1,6 @@
 from sklearn.model_selection import StratifiedKFold, validation_curve, learning_curve
 from sklearn.metrics import classification_report
-from sklearn.model_selection import cross_val_predict
+from sklearn.model_selection import cross_val_predict, LeaveOneOut, RepeatedKFold
 from sklearn.feature_selection import RFECV
 import matplotlib.pyplot as plt
 import numpy as np
@@ -304,3 +304,39 @@ def learning_curves(clf, x_data, y_data, cv,N):
     plt.plot(train_sizes, 1- test_scores.mean(axis=1), markersize=5, label='Validation Error' )
     plt.legend(loc="best")
     plt.show()
+
+
+def cross_validation(mlq, clf, x_data_d, y_data_d, k=[], n_repeats=[], random_state=1):
+   '''
+   Performs cross validation on the given data and model using Leave-One-Out and Repeated K-fold.
+   '''
+
+   # Leave one out cross validation
+   loo = LeaveOneOut()
+   y_pred = mlq.l(cross_val_predict)(clf, x_data_d, y_data_d, cv=loo)
+   accuracy = np.mean(y_pred == y_data_d)
+   mlq.log_metrics(accuracy=accuracy.item())
+
+   print(f"Leave-One-Out gives Accuracy: {accuracy}")
+   print(classification_report(y_data_d, y_pred))
+
+   # Repeated K-fold cross validation
+   kfold_accuracy = dict() # key=(k,n_repeats), value=accuracy
+   for i in range(len(k)):
+      for j in range(len(n_repeats)):
+         rkf = RepeatedKFold(n_splits=k[i], n_repeats=n_repeats[j], random_state=random_state)
+         y_pred= np.zeros(len(y_data_d))  # prediction array 
+
+         for train_index, test_index in rkf.split(x_data_d): 
+            x_train, x_test = x_data_d.iloc[train_index], x_data_d.iloc[test_index] 
+            y_train, _ = y_data_d[train_index], y_data_d[test_index]
+            clf.fit(x_train, y_train)
+            y_pred[test_index] = clf.predict(x_test)
+
+         accuracy = np.mean(y_pred == y_data_d)
+         mlq.log_metrics(accuracy=accuracy.item())
+
+         print(f"{n_repeats[j]}-Repeated {k[i]}-fold gives Accuracy: {accuracy}")
+         print(classification_report(y_data_d, y_pred))
+
+         kfold_accuracy[k[i],n_repeats[i]] = accuracy

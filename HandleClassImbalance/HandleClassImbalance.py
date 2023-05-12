@@ -116,7 +116,6 @@ def show_difference(y,y_bal):
 #-----------------------------------------------------------------------------
 def plot_results(metric ,methods=None, k=None , sample_ratio=None, title=""):
 
-    plt.style.use('dark_background')
     if methods: labels = methods
     if sample_ratio: 
         for i in range(len(sample_ratio)):
@@ -124,12 +123,13 @@ def plot_results(metric ,methods=None, k=None , sample_ratio=None, title=""):
             sample_ratio[i]=', '.join(sample_ratio[i])
         labels = sample_ratio
     if k: labels = k
+    
+    plt.style.use('dark_background')
     plt.bar(labels, metric, color =COLOR,width = 0.4)
     plt.xticks(fontsize=7)
     plt.title(title,fontsize=10)
     plt.ylabel('Weighted F1-Score',fontsize=10)
-    # change size of the plot
-    plt.rcParams['figure.figsize'] = [6, 5]
+    plt.figure(figsize=(6,5))
     plt.show()
  
 #-----------------------------------------------------------------------------

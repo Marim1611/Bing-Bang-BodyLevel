@@ -1,4 +1,4 @@
-from sklearn.model_selection import StratifiedKFold, validation_curve, learning_curve
+from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold, validation_curve, learning_curve
 from sklearn.metrics import classification_report
 from sklearn.model_selection import cross_val_predict, LeaveOneOut, RepeatedKFold
 from sklearn.feature_selection import RFECV
@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 sys.path.append("../../")
-from utils import nice_table
+from utils import nice_table, save_hyperparameters
 from IPython.display import display, HTML, Markdown
 from IPython.display import clear_output, HTML
 import warnings
@@ -347,4 +347,9 @@ def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
     display(HTML(nice_table(wf1_results, "Cross-Validation Weighted F1-Score")))
 
     return loo_dict, kfold
+
+def svm_score(clf, X, y):
+    clf.fit(X, y)
+    n_support = np.sum(clf.n_support_)
+    return - n_support
 

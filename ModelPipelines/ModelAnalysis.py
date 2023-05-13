@@ -87,25 +87,41 @@ def log_weights_analysis(clf,x_data_d):
     Display weights of each class for logistic regression.
     '''
     # get the weights of the model
-    weights= clf.coef_
+    # RandomForestClassifier special case
+    if hasattr(clf, "feature_importances_"):
+        weights = clf.feature_importances_
+        plt.rcParams['figure.dpi'] = 300
+        plt.style.use('dark_background')
+        plt.figure(figsize=(10, 6))
+        plt.bar(range(len(weights)), weights, width=0.3)
+        plt.axhline(y=0)
+        plt.title("Feature Importance")
+        plt.xlabel("Feature")
+        plt.ylabel("Importance")
+        plt.xticks(range(len(weights)), x_data_d.columns)
+        plt.xticks(rotation=90)
+        plt.show()
+    # General case
+    else:
+        weights= clf.coef_
 
-    plt.rcParams['figure.dpi'] = 300
-    plt.style.use('dark_background')
-    fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 8))
-    for i in range(2):
-        for j in range(2):
-            axs[i, j].bar(range(len(weights[i])), weights[i], width=0.3)
-            axs[i, j].axhline(y=0)
-            axs[i, j].set_title(f"Body Level {j+i*2}")
-            axs[i, j].set_xlabel("Feature")
-            axs[i, j].set_ylabel("Importance")
-            # make x-ticks be the feature names
-            axs[i, j].set_xticks(range(len(weights[i])))
-            cols = x_data_d.columns
-            cols = [col.replace("_", "\n") for col in cols]
-            axs[i, j].set_xticklabels(cols, rotation=90)
-            axs[i, j].tick_params(axis='both', which='major', labelsize=7)
-            plt.subplots_adjust(hspace=0.5)
+        plt.rcParams['figure.dpi'] = 300
+        plt.style.use('dark_background')
+        fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(15, 8))
+        for i in range(2):
+            for j in range(2):
+                axs[i, j].bar(range(len(weights[i])), weights[i], width=0.3)
+                axs[i, j].axhline(y=0)
+                axs[i, j].set_title(f"Body Level {j+i*2}")
+                axs[i, j].set_xlabel("Feature")
+                axs[i, j].set_ylabel("Importance")
+                # make x-ticks be the feature names
+                axs[i, j].set_xticks(range(len(weights[i])))
+                cols = x_data_d.columns
+                cols = [col.replace("_", "\n") for col in cols]
+                axs[i, j].set_xticklabels(cols, rotation=90)
+                axs[i, j].tick_params(axis='both', which='major', labelsize=7)
+                plt.subplots_adjust(hspace=0.5)
     plt.show()
 
 

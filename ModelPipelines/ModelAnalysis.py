@@ -113,7 +113,11 @@ def vc_dimension_check(clf, x_data_d):
     '''
     Given a model that provides a coef_ and intercept_ attribute, check if the VC bound is satisfied.
     '''
-    dvc =  (np.sum([param.size for param in clf.coef_]) +  np.sum([param.size for param in clf.intercept_])) + 1
+    #if clf is random forest
+    if hasattr(clf, 'estimators_'):
+        dvc = sum(tree.tree_.node_count for tree in clf.estimators_) * 5
+    else:
+        dvc =  (np.sum([param.size for param in clf.coef_]) +  np.sum([param.size for param in clf.intercept_])) + 1
     N = x_data_d.shape[0]
     if 10 * dvc > N:
         analysis = f'''<font size=4>By estimating the VC dimension of the model, 

@@ -4,25 +4,45 @@
             "21:43:01",
             "21:45:12",
             "21:45:57",
-            "21:46:33"
+            "21:46:33",
+            "15:58:51",
+            "15:59:34",
+            "15:59:42",
+            "16:03:41",
+            "16:07:44"
         ],
         "date": [
             "05/10/23",
             "05/10/23",
             "05/10/23",
-            "05/10/23"
+            "05/10/23",
+            "05/13/23",
+            "05/13/23",
+            "05/13/23",
+            "05/13/23",
+            "05/13/23"
         ],
         "duration": [
             "1.67 s",
             "2.07 s",
             "2.68 s",
-            "2.04 s"
+            "2.04 s",
+            "2.34 s",
+            "2.47 s",
+            "2.50 s",
+            "3.06 s",
+            "8.80 min"
         ],
         "id": [
             1,
             2,
             3,
-            4
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
         ]
     },
     "read_data": {
@@ -30,47 +50,65 @@
             null,
             null,
             "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
             "Numerical"
-        ],
-        "standardize": [
-            "True",
-            "False",
-            "True",
-            "False"
         ],
         "split": [
             "train",
             "train",
             "train",
+            "train",
+            "train",
+            "train",
+            "train",
+            "train",
             "train"
+        ],
+        "standardize": [
+            "True",
+            "False",
+            "True",
+            "False",
+            "True",
+            "True",
+            "True",
+            "True",
+            "True"
         ],
         "encode": [
             "OneHot",
             "OneHot",
             null,
+            null,
+            null,
+            null,
+            null,
+            null,
             null
         ]
     },
     "RandomForestClassifier": {
-        "n_estimators": [
-            "100",
-            "100",
-            "100",
-            "100"
-        ],
         "criterion": [
             "gini",
             "gini",
             "gini",
-            "gini"
-        ],
-        "min_samples_split": [
-            "2",
-            "2",
-            "2",
-            "2"
+            "gini",
+            "entropy",
+            "entropy",
+            "entropy",
+            "entropy",
+            "entropy"
         ],
         "min_samples_leaf": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
             "1",
             "1",
             "1",
@@ -80,9 +118,19 @@
             "0.0",
             "0.0",
             "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
             "0.0"
         ],
         "max_features": [
+            "sqrt",
+            "sqrt",
+            "sqrt",
+            "sqrt",
+            "sqrt",
             "sqrt",
             "sqrt",
             "sqrt",
@@ -92,9 +140,19 @@
             "0.0",
             "0.0",
             "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
             "0.0"
         ],
         "bootstrap": [
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
             "True",
             "True",
             "True",
@@ -104,9 +162,19 @@
             "False",
             "False",
             "False",
+            "False",
+            "False",
+            "False",
+            "False",
+            "False",
             "False"
         ],
         "verbose": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0",
             "0",
             "0",
@@ -116,13 +184,124 @@
             "False",
             "False",
             "False",
+            "False",
+            "False",
+            "False",
+            "False",
+            "False",
             "False"
         ],
         "ccp_alpha": [
             "0.0",
             "0.0",
             "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
             "0.0"
+        ],
+        "n_estimators": [
+            "100",
+            "100",
+            "100",
+            "100",
+            null,
+            null,
+            null,
+            null,
+            null
+        ],
+        "min_samples_split": [
+            "2",
+            "2",
+            "2",
+            "2",
+            null,
+            null,
+            null,
+            null,
+            null
+        ]
+    },
+    "metrics": {
+        "train_acc": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.99
+        ],
+        "train_wf1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.99
+        ],
+        "loo_acc": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9559
+        ],
+        "loo_wf1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9554
+        ],
+        "repeated_10fold_acc": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9534
+        ],
+        "repeated_10fold_wf1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9528
+        ],
+        "accuracy": [
+            0.9313559322033899,
+            0.9313559322033899,
+            0.9457627118644067,
+            0.95,
+            0.9466101694915254,
+            0.9466101694915254,
+            0.9491525423728814,
+            0.9491525423728814,
+            null
         ]
     },
     "cross_val_predict": {
@@ -130,33 +309,45 @@
             "4",
             "5",
             "5",
-            "5"
+            "5",
+            "5",
+            "5",
+            "5",
+            "5",
+            null
         ],
         "verbose": [
             "0",
             "0",
             "0",
-            "0"
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            null
         ],
         "pre_dispatch": [
             "2*n_jobs",
             "2*n_jobs",
             "2*n_jobs",
-            "2*n_jobs"
+            "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
+            null
         ],
         "method": [
             "predict",
             "predict",
             "predict",
-            "predict"
-        ]
-    },
-    "metrics": {
-        "accuracy": [
-            0.9313559322033899,
-            0.9313559322033899,
-            0.9457627118644067,
-            0.95
+            "predict",
+            "predict",
+            "predict",
+            "predict",
+            "predict",
+            null
         ]
     }
 }

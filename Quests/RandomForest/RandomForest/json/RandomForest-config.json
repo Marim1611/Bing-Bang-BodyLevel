@@ -7,14 +7,12 @@
     },
     "read_data": {
         "kind": "true",
-        "standardize": "true",
         "split": "false",
+        "standardize": "false",
         "encode": "false"
     },
     "RandomForestClassifier": {
-        "n_estimators": "false",
         "criterion": "false",
-        "min_samples_split": "false",
         "min_samples_leaf": "false",
         "min_weight_fraction_leaf": "false",
         "max_features": "false",
@@ -23,15 +21,23 @@
         "oob_score": "false",
         "verbose": "false",
         "warm_start": "false",
-        "ccp_alpha": "false"
+        "ccp_alpha": "false",
+        "n_estimators": "false",
+        "min_samples_split": "false"
+    },
+    "metrics": {
+        "train_acc": "true",
+        "train_wf1": "true",
+        "loo_acc": "true",
+        "loo_wf1": "true",
+        "repeated_10fold_acc": "true",
+        "repeated_10fold_wf1": "true",
+        "accuracy": "true"
     },
     "cross_val_predict": {
         "cv": "true",
         "verbose": "false",
         "pre_dispatch": "false",
         "method": "false"
-    },
-    "metrics": {
-        "accuracy": "true"
     }
 }

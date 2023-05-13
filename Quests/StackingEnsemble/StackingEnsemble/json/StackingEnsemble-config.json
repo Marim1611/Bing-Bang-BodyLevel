@@ -6,9 +6,10 @@
         "id": "true"
     },
     "read_data": {
-        "kind": "true",
+        "kind": "false",
         "standardize": "true",
-        "split": "false"
+        "split": "false",
+        "encode": "false"
     },
     "StackingClassifier": {
         "final_estimator": "true",

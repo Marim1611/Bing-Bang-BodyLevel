@@ -12,10 +12,16 @@
         "encode": "false"
     },
     "StackingClassifier": {
-        "final_estimator": "true",
         "stack_method": "false",
         "passthrough": "false",
-        "verbose": "false"
+        "verbose": "false",
+        "final_estimator": "false"
+    },
+    "metrics": {
+        "train_acc": "true",
+        "train_wf1": "true",
+        "repeated_10fold_wf1": "true",
+        "accuracy": "true"
     },
     "cross_val_predict": {
         "estimator": "true",
@@ -23,8 +29,5 @@
         "verbose": "false",
         "pre_dispatch": "false",
         "method": "false"
-    },
-    "metrics": {
-        "accuracy": "true"
     }
 }

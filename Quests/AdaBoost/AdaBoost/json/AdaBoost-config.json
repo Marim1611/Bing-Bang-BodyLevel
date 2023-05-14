@@ -6,22 +6,22 @@
         "id": "true"
     },
     "read_data": {
-        "encode": "true",
-        "standardize": "false",
-        "split": "false",
-        "kind": "false"
+        "kind": "false",
+        "standardize": "true",
+        "split": "true",
+        "encode": "true"
     },
     "AdaBoostClassifier": {
         "n_estimators": "false",
-        "learning_rate": "false",
-        "algorithm": "false",
-        "base_estimator": "false"
+        "learning_rate": "true",
+        "algorithm": "true",
+        "base_estimator": "true"
     },
     "cross_val_predict": {
         "cv": "true",
-        "verbose": "false",
-        "pre_dispatch": "false",
-        "method": "false"
+        "verbose": "true",
+        "pre_dispatch": "true",
+        "method": "true"
     },
     "metrics": {
         "accuracy": "true"

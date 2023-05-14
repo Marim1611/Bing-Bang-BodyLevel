@@ -1,16 +1,25 @@
 <table>
 <tr>
 <th colspan=4 style="text-align: center; vertical-align: middle;">info</th>
-<th colspan=1 style="text-align: center; vertical-align: middle;">read_data</th>
-<th colspan=1 style="text-align: center; vertical-align: middle;">cross_val_predict</th>
+<th colspan=3 style="text-align: center; vertical-align: middle;">read_data</th>
+<th colspan=3 style="text-align: center; vertical-align: middle;">AdaBoostClassifier</th>
+<th colspan=4 style="text-align: center; vertical-align: middle;">cross_val_predict</th>
 <th colspan=1 style="text-align: center; vertical-align: middle;">metrics</th>
 </tr>
 <th style="text-align: center; vertical-align: middle;">time</th>
 <th style="text-align: center; vertical-align: middle;">date</th>
 <th style="text-align: center; vertical-align: middle;">duration</th>
 <th style="text-align: center; vertical-align: middle;">id</th>
+<th style="text-align: center; vertical-align: middle;">standardize</th>
+<th style="text-align: center; vertical-align: middle;">split</th>
 <th style="text-align: center; vertical-align: middle;">encode</th>
+<th style="text-align: center; vertical-align: middle;">learning_rate</th>
+<th style="text-align: center; vertical-align: middle;">algorithm</th>
+<th style="text-align: center; vertical-align: middle;">base_estimator</th>
 <th style="text-align: center; vertical-align: middle;">cv</th>
+<th style="text-align: center; vertical-align: middle;">verbose</th>
+<th style="text-align: center; vertical-align: middle;">pre_dispatch</th>
+<th style="text-align: center; vertical-align: middle;">method</th>
 <th style="text-align: center; vertical-align: middle;">accuracy</th>
 </tr>
 <tr>
@@ -18,8 +27,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.11 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>0.611864406779661</font></td>
 </tr>
 <tr>
@@ -27,8 +44,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.60 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>2</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6067796610169491</font></td>
 </tr>
 <tr>
@@ -36,8 +61,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.01 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>3</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6279661016949153</font></td>
 </tr>
 <tr>
@@ -45,8 +78,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.39 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7093220338983051</font></td>
 </tr>
 <tr>
@@ -54,8 +95,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.51 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7533898305084745</font></td>
 </tr>
 <tr>
@@ -63,8 +112,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>838.76 ms</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>6</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.635593220338983</font></td>
 </tr>
 <tr>
@@ -72,8 +129,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>888.60 ms</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>7</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7533898305084745</font></td>
 </tr>
 <tr>
@@ -81,8 +146,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>3.89 min</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>8</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>OneHot</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>0.7533898305084745</font></td>
 </tr>
 <tr>
@@ -90,8 +163,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.11 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>9</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>OneHot</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7093220338983051</font></td>
 </tr>
 <tr>
@@ -99,8 +180,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>893.91 ms</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>10</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>OneHot</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7033898305084746</font></td>
 </tr>
 <tr>
@@ -108,8 +197,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>927.17 ms</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>11</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>OneHot</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7533898305084745</font></td>
 </tr>
 <tr>
@@ -117,8 +214,16 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>2.69 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>12</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>OneHot</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.5322033898305085</font></td>
 </tr>
 <tr>
@@ -126,7 +231,117 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/10/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>940.93 ms</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>13</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>OneHot</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>deprecated</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.7533898305084745</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15:43:51</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/14/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>19.85 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>14</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6033898305084746</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15:44:33</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/14/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>10.72 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6084745762711864</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15:47:20</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/14/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.74 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6042372881355932</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15:52:01</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/14/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.74 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>17</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6033898305084746</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16:02:45</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/14/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15.27 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>18</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6042372881355932</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16:03:14</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/14/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>10.91 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>19</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>train</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>2*n_jobs</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>predict</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.6084745762711864</font></td>
 </tr>

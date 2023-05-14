@@ -17,7 +17,11 @@
             "16:07:29",
             "16:09:31",
             "16:11:27",
-            "16:24:34"
+            "16:24:34",
+            "15:28:15",
+            "15:32:42",
+            "15:33:41",
+            "15:35:03"
         ],
         "date": [
             "05/11/23",
@@ -36,7 +40,11 @@
             "05/11/23",
             "05/11/23",
             "05/11/23",
-            "05/11/23"
+            "05/11/23",
+            "05/14/23",
+            "05/14/23",
+            "05/14/23",
+            "05/14/23"
         ],
         "duration": [
             "26.57 s",
@@ -55,7 +63,11 @@
             "20.15 s",
             "1.13 min",
             "19.37 s",
-            "19.83 s"
+            "19.83 s",
+            "3.81 min",
+            "31.52 s",
+            "53.63 s",
+            "1.70 min"
         ],
         "id": [
             1,
@@ -74,7 +86,11 @@
             14,
             15,
             16,
-            17
+            17,
+            18,
+            19,
+            20,
+            21
         ]
     },
     "read_data": {
@@ -95,9 +111,17 @@
             "Numerical",
             null,
             "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
             "Numerical"
         ],
         "standardize": [
+            "True",
+            "True",
+            "True",
+            "True",
             "True",
             "True",
             "True",
@@ -133,6 +157,10 @@
             "train",
             "train",
             "train",
+            "train",
+            "train",
+            "train",
+            "train",
             "train"
         ],
         "encode": [
@@ -152,30 +180,19 @@
             null,
             "OneHot",
             null,
+            null,
+            null,
+            null,
+            null,
             null
         ]
     },
     "StackingClassifier": {
-        "final_estimator": [
-            "LogisticRegression(multi_class='multinomial')",
-            "LogisticRegression(multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=2000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1500, multi_class='multinomial')",
-            "LogisticRegression(max_iter=900, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
-            "LogisticRegression(max_iter=1000, multi_class='multinomial')"
-        ],
         "stack_method": [
+            "auto",
+            "auto",
+            "auto",
+            "auto",
             "auto",
             "auto",
             "auto",
@@ -211,6 +228,10 @@
             "False",
             "False",
             "False",
+            "False",
+            "False",
+            "False",
+            "False",
             "False"
         ],
         "verbose": [
@@ -230,7 +251,128 @@
             "0",
             "0",
             "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
+        ],
+        "final_estimator": [
+            "LogisticRegression(multi_class='multinomial')",
+            "LogisticRegression(multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=2000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1500, multi_class='multinomial')",
+            "LogisticRegression(max_iter=900, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression(max_iter=1000, multi_class='multinomial')",
+            "LogisticRegression()",
+            null,
+            null
+        ]
+    },
+    "metrics": {
+        "train_acc": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.991,
+            0.991,
+            0.993,
+            0.993
+        ],
+        "train_wf1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.991,
+            0.991,
+            0.993,
+            0.993
+        ],
+        "repeated_10fold_wf1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9813,
+            0.9813,
+            0.9814,
+            0.9814
+        ],
+        "accuracy": [
+            0.964406779661017,
+            0.9771186440677966,
+            0.9779661016949153,
+            0.976271186440678,
+            0.9771186440677966,
+            0.976271186440678,
+            0.9779661016949153,
+            0.976271186440678,
+            0.9745762711864406,
+            0.9771186440677966,
+            0.9771186440677966,
+            0.9771186440677966,
+            0.9796610169491525,
+            0.9813559322033898,
+            0.9771186440677966,
+            0.9813559322033898,
+            0.9805084745762712,
+            null,
+            null,
+            null,
+            null
         ]
     },
     "cross_val_predict": {
@@ -251,7 +393,11 @@
             "StackingClassifier(estimators=[('rf', RandomForestClassifier...",
             "StackingClassifier(estimators=[('rf', RandomForestClassifier...",
             "StackingClassifier(estimators=[('rf', RandomForestClassifier...",
-            "StackingClassifier(estimators=[('rf', RandomForestClassifier..."
+            "StackingClassifier(estimators=[('rf', RandomForestClassifier...",
+            null,
+            null,
+            null,
+            null
         ],
         "cv": [
             "5",
@@ -270,7 +416,11 @@
             "5",
             "5",
             "5",
-            "5"
+            "5",
+            null,
+            null,
+            null,
+            null
         ],
         "verbose": [
             "0",
@@ -289,7 +439,11 @@
             "0",
             "0",
             "0",
-            "0"
+            "0",
+            null,
+            null,
+            null,
+            null
         ],
         "pre_dispatch": [
             "2*n_jobs",
@@ -308,7 +462,11 @@
             "2*n_jobs",
             "2*n_jobs",
             "2*n_jobs",
-            "2*n_jobs"
+            "2*n_jobs",
+            null,
+            null,
+            null,
+            null
         ],
         "method": [
             "predict",
@@ -327,28 +485,11 @@
             "predict",
             "predict",
             "predict",
-            "predict"
-        ]
-    },
-    "metrics": {
-        "accuracy": [
-            0.964406779661017,
-            0.9771186440677966,
-            0.9779661016949153,
-            0.976271186440678,
-            0.9771186440677966,
-            0.976271186440678,
-            0.9779661016949153,
-            0.976271186440678,
-            0.9745762711864406,
-            0.9771186440677966,
-            0.9771186440677966,
-            0.9771186440677966,
-            0.9796610169491525,
-            0.9813559322033898,
-            0.9771186440677966,
-            0.9813559322033898,
-            0.9805084745762712
+            "predict",
+            null,
+            null,
+            null,
+            null
         ]
     }
 }

@@ -13,7 +13,13 @@
             "21:02:07",
             "21:02:17",
             "21:20:30",
-            "21:20:49"
+            "21:20:49",
+            "15:43:51",
+            "15:44:33",
+            "15:47:20",
+            "15:52:01",
+            "16:02:45",
+            "16:03:14"
         ],
         "date": [
             "05/10/23",
@@ -28,7 +34,13 @@
             "05/10/23",
             "05/10/23",
             "05/10/23",
-            "05/10/23"
+            "05/10/23",
+            "05/14/23",
+            "05/14/23",
+            "05/14/23",
+            "05/14/23",
+            "05/14/23",
+            "05/14/23"
         ],
         "duration": [
             "1.11 s",
@@ -43,7 +55,13 @@
             "893.91 ms",
             "927.17 ms",
             "2.69 s",
-            "940.93 ms"
+            "940.93 ms",
+            "19.85 s",
+            "10.72 s",
+            "1.74 min",
+            "1.74 min",
+            "15.27 s",
+            "10.91 s"
         ],
         "id": [
             1,
@@ -58,24 +76,36 @@
             10,
             11,
             12,
-            13
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
         ]
     },
     "read_data": {
-        "encode": [
+        "kind": [
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
             null,
             null,
             null,
             null,
             null,
             null,
-            null,
-            "OneHot",
-            "OneHot",
-            "OneHot",
-            "OneHot",
-            "OneHot",
-            "OneHot"
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical"
         ],
         "standardize": [
             "True",
@@ -90,6 +120,12 @@
             "True",
             "True",
             "True",
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
+            "False",
             "True"
         ],
         "split": [
@@ -105,16 +141,28 @@
             "train",
             "train",
             "train",
+            "train",
+            "train",
+            "train",
+            "train",
+            "train",
+            "train",
             "train"
         ],
-        "kind": [
-            "Numerical",
-            "Numerical",
-            "Numerical",
-            "Numerical",
-            "Numerical",
-            "Numerical",
-            "Numerical",
+        "encode": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "OneHot",
+            "OneHot",
+            "OneHot",
+            "OneHot",
+            "OneHot",
+            "OneHot",
             null,
             null,
             null,
@@ -137,9 +185,21 @@
             "3",
             "2",
             "200",
-            "2"
+            "2",
+            "200",
+            "2000",
+            "20000",
+            "20000",
+            "2000",
+            "2000"
         ],
         "learning_rate": [
+            "1.0",
+            "1.0",
+            "1.0",
+            "1.0",
+            "1.0",
+            "1.0",
             "1.0",
             "1.0",
             "1.0",
@@ -167,6 +227,12 @@
             "SAMME.R",
             "SAMME.R",
             "SAMME.R",
+            "SAMME.R",
+            "SAMME.R",
+            "SAMME.R",
+            "SAMME.R",
+            "SAMME.R",
+            "SAMME.R",
             "SAMME.R"
         ],
         "base_estimator": [
@@ -182,11 +248,23 @@
             "deprecated",
             "deprecated",
             "deprecated",
-            "deprecated"
+            "deprecated",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
         ]
     },
     "cross_val_predict": {
         "cv": [
+            "4",
+            "4",
+            "4",
+            "4",
+            "4",
+            "4",
             "4",
             "4",
             "4",
@@ -214,6 +292,12 @@
             "0",
             "0",
             "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
         ],
         "pre_dispatch": [
@@ -229,9 +313,21 @@
             "2*n_jobs",
             "2*n_jobs",
             "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
+            "2*n_jobs",
             "2*n_jobs"
         ],
         "method": [
+            "predict",
+            "predict",
+            "predict",
+            "predict",
+            "predict",
+            "predict",
             "predict",
             "predict",
             "predict",
@@ -261,7 +357,13 @@
             0.7033898305084746,
             0.7533898305084745,
             0.5322033898305085,
-            0.7533898305084745
+            0.7533898305084745,
+            0.6033898305084746,
+            0.6084745762711864,
+            0.6042372881355932,
+            0.6033898305084746,
+            0.6042372881355932,
+            0.6084745762711864
         ]
     }
 }

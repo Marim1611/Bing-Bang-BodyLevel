@@ -9,7 +9,10 @@
             "15:59:34",
             "15:59:42",
             "16:03:41",
-            "16:07:44"
+            "16:07:44",
+            "15:13:03",
+            "15:15:01",
+            "15:24:21"
         ],
         "date": [
             "05/10/23",
@@ -20,7 +23,10 @@
             "05/13/23",
             "05/13/23",
             "05/13/23",
-            "05/13/23"
+            "05/13/23",
+            "05/14/23",
+            "05/14/23",
+            "05/14/23"
         ],
         "duration": [
             "1.67 s",
@@ -31,7 +37,10 @@
             "2.47 s",
             "2.50 s",
             "3.06 s",
-            "8.80 min"
+            "8.80 min",
+            "29.49 s",
+            "5.17 min",
+            "2.46 min"
         ],
         "id": [
             1,
@@ -42,7 +51,10 @@
             6,
             7,
             8,
-            9
+            9,
+            10,
+            11,
+            12
         ]
     },
     "read_data": {
@@ -55,9 +67,29 @@
             "Numerical",
             "Numerical",
             "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
             "Numerical"
         ],
+        "select": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "True"
+        ],
         "split": [
+            "train",
+            "train",
+            "train",
             "train",
             "train",
             "train",
@@ -77,11 +109,17 @@
             "True",
             "True",
             "True",
+            "True",
+            "True",
+            "True",
             "True"
         ],
         "encode": [
             "OneHot",
             "OneHot",
+            null,
+            null,
+            null,
             null,
             null,
             null,
@@ -101,20 +139,29 @@
             "entropy",
             "entropy",
             "entropy",
+            "entropy",
+            "entropy",
+            "entropy",
             "entropy"
         ],
-        "min_samples_leaf": [
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1",
-            "1"
+        "n_estimators": [
+            "100",
+            "100",
+            "100",
+            "100",
+            null,
+            null,
+            null,
+            null,
+            null,
+            "100",
+            "1000",
+            "1000"
         ],
         "min_weight_fraction_leaf": [
+            "0.0",
+            "0.0",
+            "0.0",
             "0.0",
             "0.0",
             "0.0",
@@ -134,9 +181,15 @@
             "sqrt",
             "sqrt",
             "sqrt",
+            "sqrt",
+            "sqrt",
+            "sqrt",
             "sqrt"
         ],
         "min_impurity_decrease": [
+            "0.0",
+            "0.0",
+            "0.0",
             "0.0",
             "0.0",
             "0.0",
@@ -156,6 +209,9 @@
             "True",
             "True",
             "True",
+            "True",
+            "True",
+            "True",
             "True"
         ],
         "oob_score": [
@@ -167,9 +223,15 @@
             "False",
             "False",
             "False",
+            "False",
+            "False",
+            "False",
             "False"
         ],
         "verbose": [
+            "0",
+            "0",
+            "0",
             "0",
             "0",
             "0",
@@ -189,6 +251,9 @@
             "False",
             "False",
             "False",
+            "False",
+            "False",
+            "False",
             "False"
         ],
         "ccp_alpha": [
@@ -200,15 +265,21 @@
             "0.0",
             "0.0",
             "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
             "0.0"
         ],
-        "n_estimators": [
-            "100",
-            "100",
-            "100",
-            "100",
-            null,
-            null,
+        "min_samples_leaf": [
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
             null,
             null,
             null
@@ -218,6 +289,9 @@
             "2",
             "2",
             "2",
+            null,
+            null,
+            null,
             null,
             null,
             null,
@@ -235,7 +309,10 @@
             null,
             null,
             null,
-            0.99
+            0.99,
+            0.986,
+            0.991,
+            0.989
         ],
         "train_wf1": [
             null,
@@ -246,40 +323,10 @@
             null,
             null,
             null,
-            0.99
-        ],
-        "loo_acc": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            0.9559
-        ],
-        "loo_wf1": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            0.9554
-        ],
-        "repeated_10fold_acc": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            null,
-            0.9534
+            0.99,
+            0.986,
+            0.991,
+            0.989
         ],
         "repeated_10fold_wf1": [
             null,
@@ -290,7 +337,52 @@
             null,
             null,
             null,
-            0.9528
+            0.9528,
+            0.9563,
+            0.959,
+            0.9624
+        ],
+        "loo_acc": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9559,
+            null,
+            null,
+            null
+        ],
+        "loo_wf1": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9554,
+            null,
+            null,
+            null
+        ],
+        "repeated_10fold_acc": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.9534,
+            null,
+            null,
+            null
         ],
         "accuracy": [
             0.9313559322033899,
@@ -301,6 +393,9 @@
             0.9466101694915254,
             0.9491525423728814,
             0.9491525423728814,
+            null,
+            null,
+            null,
             null
         ]
     },
@@ -314,6 +409,9 @@
             "5",
             "5",
             "5",
+            null,
+            null,
+            null,
             null
         ],
         "verbose": [
@@ -325,6 +423,9 @@
             "0",
             "0",
             "0",
+            null,
+            null,
+            null,
             null
         ],
         "pre_dispatch": [
@@ -336,6 +437,9 @@
             "2*n_jobs",
             "2*n_jobs",
             "2*n_jobs",
+            null,
+            null,
+            null,
             null
         ],
         "method": [
@@ -347,6 +451,9 @@
             "predict",
             "predict",
             "predict",
+            null,
+            null,
+            null,
             null
         ]
     }

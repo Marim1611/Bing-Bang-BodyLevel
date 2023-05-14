@@ -315,8 +315,8 @@ def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
     loo = LeaveOneOut()
     y_pred = cross_val_predict(clf, x_data, y_data, cv=loo)
     loo_report = classification_report(y_data, y_pred, digits=4)
-    loo_accuracy, loo_wf1 = get_metrics(loo_report)
-    loo_dict = { 'loo_acc': loo_accuracy, 'loo_wf1': loo_wf1, 'loo_report': loo_report}
+    _, loo_wf1 = get_metrics(loo_report)
+    loo_dict = { 'loo_wf1': loo_wf1, 'loo_report': loo_report}
 
     # Repeated K-fold cross-validation
     kfold = {} # key=(k, n_repeats), value=(accuracy, wf1, report)
@@ -331,19 +331,19 @@ def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
                 y_pred[test_index] = clf.predict(x_test)
 
             report = classification_report(y_data, y_pred, digits=4)
-            accuracy, wf1 = get_metrics(report)
-            kfold[f'{n_repeats[j]}-Repeated {k[i]}-fold'] = (accuracy, wf1, report)
+            _, wf1 = get_metrics(report)
+            kfold[f'{n_repeats[j]}-Repeated {k[i]}-fold'] = ( wf1, report)
 
     # Create table for accuracy
-    accuracy_results = {'loo_acc': loo_accuracy}
-    for k, v in kfold.items():
-        accuracy_results[f'{k}'] = v[0]
-    display(HTML(nice_table(accuracy_results, "Cross-Validation Accuracy")))
+    # accuracy_results = {'loo_acc': loo_accuracy}
+    # for k, v in kfold.items():
+    #     accuracy_results[f'{k}'] = v[0]
+    # display(HTML(nice_table(accuracy_results, "Cross-Validation Accuracy")))
 
     # Create table for wf1
     wf1_results = {'loo_wf1': loo_wf1}
     for k, v in kfold.items():
-        wf1_results[f'{k}'] = v[1]
+        wf1_results[f'{k}'] = v[0]
     display(HTML(nice_table(wf1_results, "Cross-Validation Weighted F1-Score")))
 
     return loo_dict, kfold

@@ -6,10 +6,10 @@
         "id": "true"
     },
     "read_data": {
-        "selected": "true",
         "split": "true",
-        "standardize": "true",
         "encode": "true",
+        "standardize": "true",
+        "selected": "true",
         "kind": "true"
     },
     "Perceptron": {

@@ -6,10 +6,10 @@
         "id": "true"
     },
     "read_data": {
-        "kind": "true",
-        "selected": "true",
         "split": "true",
+        "kind": "true",
         "standardize": "true",
+        "selected": "true",
         "encode": "true"
     },
     "LogisticRegression": {

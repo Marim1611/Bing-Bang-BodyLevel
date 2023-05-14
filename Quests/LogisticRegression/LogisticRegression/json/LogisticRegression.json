@@ -3,9 +3,11 @@
         "time": [
             "15:54:31",
             "15:56:09",
-            "16:00:51"
+            "16:00:51",
+            "16:19:45"
         ],
         "date": [
+            "05/14/23",
             "05/14/23",
             "05/14/23",
             "05/14/23"
@@ -13,38 +15,45 @@
         "duration": [
             "7.54 s",
             "11.66 s",
-            "49.76 s"
+            "49.76 s",
+            "7.69 s"
         ],
         "id": [
             1,
             2,
-            3
+            3,
+            4
         ]
     },
     "read_data": {
-        "kind": [
-            "Numerical",
-            null,
-            "Numerical"
-        ],
-        "selected": [
-            null,
-            null,
-            "True"
-        ],
         "split": [
             "train",
             "train",
-            "train"
+            "train",
+            "all"
+        ],
+        "kind": [
+            "Numerical",
+            null,
+            "Numerical",
+            "Numerical"
         ],
         "standardize": [
             "True",
             "True",
+            "True",
             "True"
+        ],
+        "selected": [
+            null,
+            null,
+            "True",
+            null
         ],
         "encode": [
             null,
             "Frequency",
+            null,
             null
         ]
     },
@@ -52,9 +61,11 @@
         "class_weight": [
             "balanced",
             "balanced",
+            "balanced",
             "balanced"
         ],
         "multi_class": [
+            "multinomial",
             "multinomial",
             "multinomial",
             "multinomial"
@@ -62,9 +73,11 @@
         "penalty": [
             "l2",
             "l2",
+            "l2",
             "l2"
         ],
         "solver": [
+            "newton-cg",
             "newton-cg",
             "newton-cg",
             "newton-cg"
@@ -72,9 +85,11 @@
         "dual": [
             "False",
             "False",
+            "False",
             "False"
         ],
         "tol": [
+            "0.0",
             "0.0",
             "0.0",
             "0.0"
@@ -82,9 +97,11 @@
         "fit_intercept": [
             "True",
             "True",
+            "True",
             "True"
         ],
         "intercept_scaling": [
+            "1",
             "1",
             "1",
             "1"
@@ -92,14 +109,17 @@
         "max_iter": [
             "100",
             "100",
+            "100",
             "100"
         ],
         "verbose": [
             "0",
             "0",
+            "0",
             "0"
         ],
         "warm_start": [
+            "False",
             "False",
             "False",
             "False"
@@ -109,12 +129,14 @@
         "train_wf1": [
             0.987,
             0.995,
-            0.985
+            0.985,
+            0.991
         ],
         "val_wf1": [
             0.9822,
             0.9814,
-            0.9814
+            0.9814,
+            0.9831
         ]
     }
 }

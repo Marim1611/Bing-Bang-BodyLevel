@@ -1,14 +1,16 @@
 {
     "info": {
-        "time": "false",
-        "date": "false",
-        "duration": "false",
+        "time": "true",
+        "date": "true",
+        "duration": "true",
         "id": "true"
     },
     "read_data": {
         "kind": "true",
+        "selected": "true",
         "split": "true",
-        "standardize": "true"
+        "standardize": "true",
+        "encode": "true"
     },
     "SVC": {
         "kernel": "true",
@@ -25,14 +27,10 @@
         "decision_function_shape": "true",
         "break_ties": "true"
     },
-    "cross_val_predict": {
-        "estimator": "true",
-        "cv": "true",
-        "verbose": "true",
-        "pre_dispatch": "true",
-        "method": "true"
-    },
     "metrics": {
-        "accuracy": "true"
+        "train_acc": "true",
+        "train_wf1": "true",
+        "val_wf1": "true",
+        "sv": "true"
     }
 }

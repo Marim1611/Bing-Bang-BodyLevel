@@ -4,9 +4,11 @@
             "15:54:31",
             "15:56:09",
             "16:00:51",
-            "16:19:45"
+            "16:19:45",
+            "23:17:39"
         ],
         "date": [
+            "05/14/23",
             "05/14/23",
             "05/14/23",
             "05/14/23",
@@ -16,13 +18,15 @@
             "7.54 s",
             "11.66 s",
             "49.76 s",
-            "7.69 s"
+            "7.69 s",
+            "14.63 s"
         ],
         "id": [
             1,
             2,
             3,
-            4
+            4,
+            5
         ]
     },
     "read_data": {
@@ -30,15 +34,18 @@
             "train",
             "train",
             "train",
+            "all",
             "all"
         ],
         "kind": [
             "Numerical",
             null,
             "Numerical",
+            "Numerical",
             "Numerical"
         ],
         "standardize": [
+            "True",
             "True",
             "True",
             "True",
@@ -48,11 +55,13 @@
             null,
             null,
             "True",
+            null,
             null
         ],
         "encode": [
             null,
             "Frequency",
+            null,
             null,
             null
         ]
@@ -62,9 +71,11 @@
             "balanced",
             "balanced",
             "balanced",
+            "balanced",
             "balanced"
         ],
         "multi_class": [
+            "multinomial",
             "multinomial",
             "multinomial",
             "multinomial",
@@ -74,9 +85,11 @@
             "l2",
             "l2",
             "l2",
+            "l2",
             "l2"
         ],
         "solver": [
+            "newton-cg",
             "newton-cg",
             "newton-cg",
             "newton-cg",
@@ -86,9 +99,11 @@
             "False",
             "False",
             "False",
+            "False",
             "False"
         ],
         "tol": [
+            "0.0",
             "0.0",
             "0.0",
             "0.0",
@@ -98,9 +113,11 @@
             "True",
             "True",
             "True",
+            "True",
             "True"
         ],
         "intercept_scaling": [
+            "1",
             "1",
             "1",
             "1",
@@ -110,15 +127,18 @@
             "100",
             "100",
             "100",
+            "100",
             "100"
         ],
         "verbose": [
             "0",
             "0",
             "0",
+            "0",
             "0"
         ],
         "warm_start": [
+            "False",
             "False",
             "False",
             "False",
@@ -130,12 +150,14 @@
             0.987,
             0.995,
             0.985,
+            0.991,
             0.991
         ],
         "val_wf1": [
             0.9822,
             0.9814,
             0.9814,
+            0.9831,
             0.9831
         ]
     }

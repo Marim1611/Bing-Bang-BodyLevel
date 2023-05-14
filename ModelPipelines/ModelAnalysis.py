@@ -326,17 +326,18 @@ def learning_curves(clf, x_data, y_data, cv,N):
     plt.show()
 
 
-def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
+def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1,loo=False):
     '''
     Performs cross validation on the given data and model using Leave-One-Out and Repeated K-fold.
     '''
 
     # Leave-One-Out cross-validation
-    loo = LeaveOneOut()
-    y_pred = cross_val_predict(clf, x_data, y_data, cv=loo)
-    loo_report = classification_report(y_data, y_pred, digits=4)
-    _, loo_wf1 = get_metrics(loo_report)
-    loo_dict = { 'loo_wf1': loo_wf1, 'loo_report': loo_report}
+    if loo:
+        loo_cv = LeaveOneOut()
+        y_pred = cross_val_predict(clf, x_data, y_data, cv=loo_cv)
+        loo_report = classification_report(y_data, y_pred, digits=4)
+        _, loo_wf1 = get_metrics(loo_report)
+        loo_dict = { 'loo_wf1': loo_wf1, 'loo_report': loo_report}
 
     # Repeated K-fold cross-validation
     kfold = {} # key=(k, n_repeats), value=(accuracy, wf1, report)
@@ -354,19 +355,17 @@ def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1):
             _, wf1 = get_metrics(report)
             kfold[f'{n_repeats[j]}-Repeated {k[i]}-fold'] = ( wf1, report)
 
-    # Create table for accuracy
-    # accuracy_results = {'loo_acc': loo_accuracy}
-    # for k, v in kfold.items():
-    #     accuracy_results[f'{k}'] = v[0]
-    # display(HTML(nice_table(accuracy_results, "Cross-Validation Accuracy")))
-
     # Create table for wf1
-    wf1_results = {'loo_wf1': loo_wf1}
+    if loo:     wf1_results = {'loo_wf1': loo_wf1}
+    else:       wf1_results={}
+
     for k, v in kfold.items():
         wf1_results[f'{k}'] = v[0]
     display(HTML(nice_table(wf1_results, "Cross-Validation Weighted F1-Score")))
 
-    return loo_dict, kfold
+    if loo: return loo_dict, kfold
+    else:   return kfold
+    
 
 def svm_score(clf, X, y):
     clf.fit(X, y)

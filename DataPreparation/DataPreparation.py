@@ -10,7 +10,7 @@ sys.path.append('../')
 from utils import nice_table
 
 
-def read_data(kind=None, encode=None, split="train", standardize=True ,**kwargs):
+def read_data(kind=None, encode=None, split="all", standardize=True ,**kwargs):
     '''
     reads the dataset from the folder and return it. 
     If kind is specified, it returns only the categorical or numerical features.

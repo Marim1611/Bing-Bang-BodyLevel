@@ -15,9 +15,9 @@ from utils import nice_table, get_metrics
 def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, disp=True):
     '''
     Recursive feature elimination recursively removes the weakest feature as determined by the given classifier.
-    It stops when the desired number of features is reached or accuracy is no longer improving.
+    It stops when the desired number of features is reached or wf1 is no longer improving.
     '''
-    rfecv = RFECV(estimator=clf, cv=StratifiedKFold(cv), scoring="accuracy", min_features_to_select=min_feats)
+    rfecv = RFECV(estimator=clf, cv=StratifiedKFold(cv), scoring="f1_weighted", min_features_to_select=min_feats)
     rfecv.fit(x_data_d, y_data_d)
     opt_feats = rfecv.get_feature_names_out(x_data_d.columns)
     # average the weights for the four classes (coef[0], coef[1], coef[2], coef[3])
@@ -30,7 +30,7 @@ def recursive_feature_elimination(clf, min_feats, cv, x_data_d, y_data_d, disp=T
         plt.style.use('dark_background')
         plt.figure(figsize=(10, 6))
         plt.xlabel("Number of features selected")
-        plt.ylabel("Mean test accuracy")
+        plt.ylabel("Mean test wf1")
         plt.errorbar(range(min_feats, len(rfecv.cv_results_["mean_test_score"])+min_feats), 
                     rfecv.cv_results_["mean_test_score"])
         # draw a dashed red line through the selected number of features
@@ -190,7 +190,7 @@ def validation_curves(clf,x_data,y_data,cv, hyperparameters):
             categorical = True
 
         train_scores, test_scores = validation_curve(clf, x_data, y_data, param_name=param_name, param_range=param_range,
-                                    cv=StratifiedKFold(cv), scoring="accuracy", n_jobs=4)
+                                    cv=StratifiedKFold(cv), scoring="f1_weighted", n_jobs=4)
         
         train_scores= 1-np.mean(train_scores, axis=1)
         test_scores= 1-np.mean(test_scores, axis=1)
@@ -289,12 +289,6 @@ def BiasVariance(clf, x_data_d, y_data_d, cv=4):
     report_val = classification_report(y_data_d, y_pred_val, digits=3)
     val_acc, val_wf1 = get_metrics(report_val)
     
-    bias_var_acc = {
-        'Train Accuracy': train_acc,
-        'Val Accuracy': val_acc,
-        'Aviodable Bias <': 1 - train_acc,
-        'Variance': train_acc - val_acc,
-    }
     
     bias_var_wf1 = {
         'Train WF1': train_wf1,
@@ -303,7 +297,6 @@ def BiasVariance(clf, x_data_d, y_data_d, cv=4):
         'Variance': train_wf1 - val_wf1,
     }
     
-    display(HTML(nice_table(bias_var_acc, "BV Analysis Using Accuracy")))
     display(HTML(nice_table(bias_var_wf1, "BV Analysis Using WF1")))
 
 def learning_curves(clf, x_data, y_data, cv,N):
@@ -312,7 +305,7 @@ def learning_curves(clf, x_data, y_data, cv,N):
     Plot the learning curve for a given model.
     '''
     train_sizes, train_scores, test_scores = learning_curve(clf, x_data, y_data, cv=StratifiedKFold(cv), n_jobs=4, 
-                                                            train_sizes=N, scoring="accuracy")
+                                                            train_sizes=N, scoring="f1_weighted")
 
     plt.rcParams['figure.dpi'] = 300
     plt.style.use('dark_background')
@@ -340,7 +333,7 @@ def cross_validation(clf, x_data, y_data, k=[], n_repeats=[], random_state=1,loo
         loo_dict = { 'loo_wf1': loo_wf1, 'loo_report': loo_report}
 
     # Repeated K-fold cross-validation
-    kfold = {} # key=(k, n_repeats), value=(accuracy, wf1, report)
+    kfold = {} # key=(k, n_repeats), value=(wf1, report)
     for i in range(len(k)):
         for j in range(len(n_repeats)):
             rkf = RepeatedKFold(n_splits=k[i], n_repeats=n_repeats[j], random_state=random_state)

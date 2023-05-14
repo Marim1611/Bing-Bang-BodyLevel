@@ -75,7 +75,7 @@ class VisualizeModel():
                                                                                 
             # save the list of images as an animated GIF
             path = f'../../Saved/{self.filename}.gif' 
-            imageio.mimsave(path, frames, self.fps)          # make a gif out of the frames where there are 15 frames per second
+            imageio.mimsave(path, frames,format='gif', fps=self.fps)          # make a gif out of the frames where there are 15 frames per second
             if show:    display(Im(path))
 
     def illustrate_features_2D(self, show=False):
@@ -131,29 +131,27 @@ class VisualizeModel():
         # Read the two gifs
         gif1 = imageio.mimread(f'../../Saved/{self.filename}.gif', memtest=False)
         gif2 = Image.open(f'../../Saved/{self.filename}.png')
-        gif1 = np.array(gif1)
+        gif1 = np.array([frame[:, :, :3] for frame in gif1])  # remove alpha channel
         gif2 = np.array(gif2)
-        
+                
         # Adjusting the size of the two gifs (must have same height) and number of frames
         h1 = gif1.shape[1]                      # height of the 3d gif
-        h2, w2, _ = gif2.shape                  # height and width of the 2d gif
+        h2, w2 = gif2.shape[:2]                 # height and width of the 2d gif
         wnew = int(w2 * h1 / h2)                # new width of the 2d gif after h2 = h1
         gif2 = Image.fromarray(gif2)
-        # Pad it with black pixels so its not too big
+        # Pad it with black pixels so it's not too big
         gif2 = ImageOps.expand(gif2, border=60, fill='black')
         # Now do the resizing
         gif2 = gif2.resize((wnew, h1), resample=Image.Resampling.BICUBIC)   
         gif2 = np.array(gif2)
 
-        # repeat the 2d image along a new axis which will be 0 so it mathces the 3d image
-        gif2 = np.repeat(gif2[np.newaxis,...], gif1.shape[0], axis=0)
-        
+        # repeat the 2d image along a new axis which will be 0 so it matches the 3d image
+        gif2 = np.repeat(gif2[np.newaxis, ...], gif1.shape[0], axis=0)
+
         # Concatenate the two gifs along the width axis
         print(gif1.shape, gif2.shape)
-        gif = np.concatenate((gif1, gif2), axis=2)
-        
+        gif = np.concatenate((gif1, gif2[..., :3]), axis=2)  # remove alpha channel from gif2
+
         # Save and display the gif
         imageio.mimsave(f'../../Saved/{self.filename}-D.gif', gif, fps=self.fps if animated else 0.1)
         display(Im(f'../../Saved/{self.filename}-D.gif'))
-        
-        

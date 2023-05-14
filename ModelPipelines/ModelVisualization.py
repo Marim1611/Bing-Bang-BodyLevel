@@ -100,7 +100,7 @@ class VisualizeModel():
         
         # Color any pont in the grid based on the value of Z (prediction)
         colors = np.array(['#799FFA', '#ffff00', '#5fff4a', '#f781bf'])
-        ax.contourf(x1x1, x2x2, Z, cmap=matplotlib.colors.ListedColormap(colors))
+        ax.contourf(x1x1, x2x2,     Z, cmap=matplotlib.colors.ListedColormap(colors))
         ax.axis('off')
 
         # Plot the training points
@@ -133,7 +133,6 @@ class VisualizeModel():
         gif2 = Image.open(f'../../Saved/{self.filename}.png')
         gif1 = np.array(gif1)
         gif2 = np.array(gif2)
-        gif2 = gif2[:,:,:3]
         
         # Adjusting the size of the two gifs (must have same height) and number of frames
         h1 = gif1.shape[1]                      # height of the 3d gif
@@ -143,13 +142,15 @@ class VisualizeModel():
         # Pad it with black pixels so its not too big
         gif2 = ImageOps.expand(gif2, border=60, fill='black')
         # Now do the resizing
-        gif2 = gif2.resize((wnew, h1), resample=Image.Resampling.BICUBIC)
+        gif2 = gif2.resize((wnew, h1), resample=Image.Resampling.BICUBIC)   
         gif2 = np.array(gif2)
 
         # repeat the 2d image along a new axis which will be 0 so it mathces the 3d image
         gif2 = np.repeat(gif2[np.newaxis,...], gif1.shape[0], axis=0)
         
         # Concatenate the two gifs along the width axis
+        #gif1 = gif1[:,:,:,:3]
+        #gif2 = gif2[:,:,:,:3]
         print(gif1.shape, gif2.shape)
         gif = np.concatenate((gif1, gif2), axis=2)
         

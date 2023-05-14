@@ -6,34 +6,27 @@
         "id": "true"
     },
     "read_data": {
-        "kind": "true",
+        "selected": "true",
         "split": "true",
         "standardize": "true",
-        "display": "true"
+        "encode": "true",
+        "kind": "true"
     },
     "Perceptron": {
-        "tol": "true",
-        "random_state": "true",
-        "alpha": "true",
         "l1_ratio": "true",
         "fit_intercept": "true",
         "max_iter": "true",
+        "tol": "true",
         "shuffle": "true",
         "verbose": "true",
-        "eta0": "true",
+        "random_state": "true",
         "early_stopping": "true",
         "validation_fraction": "true",
         "n_iter_no_change": "true",
         "warm_start": "true"
     },
-    "cross_val_predict": {
-        "estimator": "true",
-        "cv": "true",
-        "verbose": "true",
-        "pre_dispatch": "true",
-        "method": "true"
-    },
     "metrics": {
-        "accuracy": "true"
+        "train_wf1": "true",
+        "val_wf1": "true"
     }
 }

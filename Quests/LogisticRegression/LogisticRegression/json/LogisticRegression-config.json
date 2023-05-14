@@ -7,33 +7,26 @@
     },
     "read_data": {
         "kind": "true",
-        "split": "false",
-        "standardize": "false"
+        "selected": "true",
+        "split": "true",
+        "standardize": "true",
+        "encode": "true"
     },
     "LogisticRegression": {
+        "class_weight": "true",
         "multi_class": "true",
-        "C": "true",
+        "penalty": "true",
         "solver": "true",
-        "penalty": "false",
-        "dual": "false",
-        "tol": "false",
-        "fit_intercept": "false",
-        "intercept_scaling": "false",
-        "max_iter": "false",
-        "verbose": "false",
-        "warm_start": "false"
-    },
-    "cross_val_predict": {
-        "estimator": "true",
-        "cv": "true",
-        "verbose": "false",
-        "pre_dispatch": "false",
-        "method": "false"
+        "dual": "true",
+        "tol": "true",
+        "fit_intercept": "true",
+        "intercept_scaling": "true",
+        "max_iter": "true",
+        "verbose": "true",
+        "warm_start": "true"
     },
     "metrics": {
-        "train_acc": "true",
         "train_wf1": "true",
-        "val_acc": "true",
         "val_wf1": "true"
     }
 }

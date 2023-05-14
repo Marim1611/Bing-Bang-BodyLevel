@@ -1,57 +1,38 @@
 {
     "info": {
         "time": [
-            "11:44:38",
-            "11:45:26",
-            "11:46:08",
-            "11:46:48",
-            "11:47:17",
-            "11:47:28",
-            "11:48:16"
+            "15:54:31",
+            "15:56:09",
+            "16:00:51"
         ],
         "date": [
-            "05/12/23",
-            "05/12/23",
-            "05/12/23",
-            "05/12/23",
-            "05/12/23",
-            "05/12/23",
-            "05/12/23"
+            "05/14/23",
+            "05/14/23",
+            "05/14/23"
         ],
         "duration": [
-            "576.23 ms",
-            "526.39 ms",
-            "415.64 ms",
-            "538.73 ms",
-            "435.81 ms",
-            "749.53 ms",
-            "504.72 ms"
+            "7.54 s",
+            "11.66 s",
+            "49.76 s"
         ],
         "id": [
             1,
             2,
-            3,
-            4,
-            5,
-            6,
-            7
+            3
         ]
     },
     "read_data": {
         "kind": [
             "Numerical",
-            "Numerical",
-            "Numerical",
-            "Numerical",
-            "Numerical",
-            "Numerical",
+            null,
             "Numerical"
         ],
+        "selected": [
+            null,
+            null,
+            "True"
+        ],
         "split": [
-            "train",
-            "train",
-            "train",
-            "train",
             "train",
             "train",
             "train"
@@ -59,55 +40,36 @@
         "standardize": [
             "True",
             "True",
-            "True",
-            "True",
-            "True",
-            "True",
             "True"
+        ],
+        "encode": [
+            null,
+            "Frequency",
+            null
         ]
     },
     "LogisticRegression": {
+        "class_weight": [
+            "balanced",
+            "balanced",
+            "balanced"
+        ],
         "multi_class": [
-            "multinomial",
-            "multinomial",
-            "multinomial",
-            "multinomial",
             "multinomial",
             "multinomial",
             "multinomial"
         ],
-        "C": [
-            "140",
-            "140",
-            "140",
-            "140",
-            "140",
-            "1400",
-            "1400"
-        ],
-        "solver": [
-            "lbfgs",
-            "newton-cg",
-            "newton-cg",
-            "newton-cg",
-            "newton-cg",
-            "newton-cg",
-            "newton-cg"
-        ],
         "penalty": [
-            "l2",
-            "l2",
-            "l2",
-            "l2",
             "l2",
             "l2",
             "l2"
         ],
+        "solver": [
+            "newton-cg",
+            "newton-cg",
+            "newton-cg"
+        ],
         "dual": [
-            "False",
-            "False",
-            "False",
-            "False",
             "False",
             "False",
             "False"
@@ -115,17 +77,9 @@
         "tol": [
             "0.0",
             "0.0",
-            "0.0",
-            "0.0",
-            "0.0",
-            "0.0",
             "0.0"
         ],
         "fit_intercept": [
-            "True",
-            "True",
-            "True",
-            "True",
             "True",
             "True",
             "True"
@@ -133,17 +87,9 @@
         "intercept_scaling": [
             "1",
             "1",
-            "1",
-            "1",
-            "1",
-            "1",
             "1"
         ],
         "max_iter": [
-            "100",
-            "100",
-            "100",
-            "100",
             "100",
             "100",
             "100"
@@ -151,105 +97,24 @@
         "verbose": [
             "0",
             "0",
-            "0",
-            "0",
-            "0",
-            "0",
             "0"
         ],
         "warm_start": [
             "False",
             "False",
-            "False",
-            "False",
-            "False",
-            "False",
             "False"
         ]
     },
-    "cross_val_predict": {
-        "estimator": [
-            "LogisticRegression(C=140, multi_class='multinomial')",
-            "LogisticRegression(C=140, multi_class='multinomial', solver=...",
-            "LogisticRegression(C=140, multi_class='multinomial', solver=...",
-            "LogisticRegression(C=140, multi_class='multinomial', solver=...",
-            "LogisticRegression(C=140, multi_class='multinomial', solver=...",
-            "LogisticRegression(C=1400, multi_class='multinomial', solver...",
-            "LogisticRegression(C=1400, multi_class='multinomial', solver..."
-        ],
-        "cv": [
-            "4",
-            "4",
-            "4",
-            "4",
-            "4",
-            "4",
-            "4"
-        ],
-        "verbose": [
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0"
-        ],
-        "pre_dispatch": [
-            "2*n_jobs",
-            "2*n_jobs",
-            "2*n_jobs",
-            "2*n_jobs",
-            "2*n_jobs",
-            "2*n_jobs",
-            "2*n_jobs"
-        ],
-        "method": [
-            "predict",
-            "predict",
-            "predict",
-            "predict",
-            "predict",
-            "predict",
-            "predict"
-        ]
-    },
     "metrics": {
-        "train_acc": [
-            0.988,
-            0.987,
-            0.987,
-            0.987,
-            0.987,
-            0.992,
-            0.992
-        ],
         "train_wf1": [
-            0.988,
             0.987,
-            0.987,
-            0.987,
-            0.987,
-            0.992,
-            0.992
-        ],
-        "val_acc": [
-            0.978,
-            0.978,
-            0.978,
-            0.978,
-            0.978,
-            0.982,
-            0.982
+            0.995,
+            0.985
         ],
         "val_wf1": [
-            0.978,
-            0.978,
-            0.978,
-            0.978,
-            0.978,
-            0.982,
-            0.982
+            0.9822,
+            0.9814,
+            0.9814
         ]
     }
 }

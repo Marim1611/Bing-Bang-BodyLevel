@@ -1,19 +1,19 @@
 {
     "info": {
         "time": [
-            "20:43:22",
-            "23:16:40",
-            "18:31:15"
+            "16:11:21",
+            "16:11:49",
+            "16:14:37"
         ],
         "date": [
-            "04/13/23",
-            "04/13/23",
-            "04/20/23"
+            "05/14/23",
+            "05/14/23",
+            "05/14/23"
         ],
         "duration": [
-            "12.60 s",
-            "119.36 ms",
-            "146.50 ms"
+            "2.09 s",
+            "2.93 s",
+            "1.95 s"
         ],
         "id": [
             1,
@@ -22,10 +22,10 @@
         ]
     },
     "read_data": {
-        "kind": [
-            "Numerical",
-            "Numerical",
-            "Numerical"
+        "selected": [
+            null,
+            null,
+            "True"
         ],
         "split": [
             "train",
@@ -33,32 +33,22 @@
             "train"
         ],
         "standardize": [
-            null,
+            "True",
             "True",
             "True"
         ],
-        "display": [
-            "False",
+        "encode": [
+            null,
+            "Frequency",
+            null
+        ],
+        "kind": [
+            "Numerical",
             null,
             null
         ]
     },
     "Perceptron": {
-        "tol": [
-            "0.001",
-            "0.001",
-            "0.001"
-        ],
-        "random_state": [
-            "0",
-            "0",
-            "0"
-        ],
-        "alpha": [
-            "0.0",
-            "0.0",
-            "0.0"
-        ],
         "l1_ratio": [
             "0.15",
             "0.15",
@@ -74,6 +64,11 @@
             "1000",
             "1000"
         ],
+        "tol": [
+            "0.001",
+            "0.001",
+            "0.001"
+        ],
         "shuffle": [
             "True",
             "True",
@@ -84,10 +79,10 @@
             "0",
             "0"
         ],
-        "eta0": [
-            "1.0",
-            "1.0",
-            "1.0"
+        "random_state": [
+            "0",
+            "0",
+            "0"
         ],
         "early_stopping": [
             "False",
@@ -110,38 +105,16 @@
             "False"
         ]
     },
-    "cross_val_predict": {
-        "estimator": [
-            "Perceptron()",
-            "Perceptron()",
-            "Perceptron()"
-        ],
-        "cv": [
-            "4",
-            "4",
-            "4"
-        ],
-        "verbose": [
-            "0",
-            "0",
-            "0"
-        ],
-        "pre_dispatch": [
-            "2*n_jobs",
-            "2*n_jobs",
-            "2*n_jobs"
-        ],
-        "method": [
-            "predict",
-            "predict",
-            "predict"
-        ]
-    },
     "metrics": {
-        "accuracy": [
-            0.5949152542372881,
-            0.7991525423728814,
-            0.7991525423728814
+        "train_wf1": [
+            0.764,
+            0.82,
+            0.749
+        ],
+        "val_wf1": [
+            0.764,
+            0.7941,
+            0.7885
         ]
     }
 }

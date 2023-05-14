@@ -1,5 +1,6 @@
 .DS_Store
-__pycache__/utils.cpython-39.pyc
+**/__pycache__/*
 DataPreparation/__pycache__/DataPreparation.cpython-39.pyc
 DataPreparation/__pycache__/DataPreparation.cpython-39.pyc
 *.pyc
+DataPreparation/__pycache__/DataPreparation.cpython-38.pyc

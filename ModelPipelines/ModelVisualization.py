@@ -75,7 +75,7 @@ class VisualizeModel():
                                                                                 
             # save the list of images as an animated GIF
             path = f'../../Saved/{self.filename}.gif' 
-            imageio.mimsave(path, frames, fps=self.fps)          # make a gif out of the frames where there are 15 frames per second
+            imageio.mimsave(path, frames, duration=1000/self.fps)          # make a gif out of the frames where there are 15 frames per second
             if show:    display(Im(path))
 
     def illustrate_features_2D(self, show=False):
@@ -133,6 +133,7 @@ class VisualizeModel():
         gif2 = Image.open(f'../../Saved/{self.filename}.png')
         gif1 = np.array(gif1)
         gif2 = np.array(gif2)
+        gif2 = gif2[:,:,:3]
         
         # Adjusting the size of the two gifs (must have same height) and number of frames
         h1 = gif1.shape[1]                      # height of the 3d gif
@@ -149,10 +150,11 @@ class VisualizeModel():
         gif2 = np.repeat(gif2[np.newaxis,...], gif1.shape[0], axis=0)
         
         # Concatenate the two gifs along the width axis
+        print(gif1.shape, gif2.shape)
         gif = np.concatenate((gif1, gif2), axis=2)
         
         # Save and display the gif
-        imageio.mimsave(f'../../Saved/{self.filename}-D.gif', gif, fps=self.fps if animated else 0.1)
+        imageio.mimsave(f'../../Saved/{self.filename}-D.gif', gif, duration=1000/self.fps if animated else 1000/0.1)
         display(Im(f'../../Saved/{self.filename}-D.gif'))
         
         

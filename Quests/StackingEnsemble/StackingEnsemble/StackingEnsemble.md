@@ -1,7 +1,7 @@
 <table>
 <tr>
 <th colspan=4 style="text-align: center; vertical-align: middle;">info</th>
-<th colspan=2 style="text-align: center; vertical-align: middle;">read_data</th>
+<th colspan=1 style="text-align: center; vertical-align: middle;">read_data</th>
 <th colspan=1 style="text-align: center; vertical-align: middle;">StackingClassifier</th>
 <th colspan=2 style="text-align: center; vertical-align: middle;">cross_val_predict</th>
 <th colspan=1 style="text-align: center; vertical-align: middle;">metrics</th>
@@ -10,7 +10,6 @@
 <th style="text-align: center; vertical-align: middle;">date</th>
 <th style="text-align: center; vertical-align: middle;">duration</th>
 <th style="text-align: center; vertical-align: middle;">id</th>
-<th style="text-align: center; vertical-align: middle;">kind</th>
 <th style="text-align: center; vertical-align: middle;">standardize</th>
 <th style="text-align: center; vertical-align: middle;">final_estimator</th>
 <th style="text-align: center; vertical-align: middle;">estimator</th>
@@ -22,7 +21,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>26.57 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -34,7 +32,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>26.41 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>2</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -46,7 +43,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>26.18 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>3</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -58,7 +54,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>27.59 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>LogisticRegression(max_iter=2000, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -70,7 +65,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>26.26 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -82,7 +76,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>20.62 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>6</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -94,7 +87,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>33.76 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>7</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -106,7 +98,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>34.09 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>8</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>LogisticRegression(max_iter=1500, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -118,7 +109,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>32.69 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>9</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>LogisticRegression(max_iter=900, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -130,7 +120,6 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>32.88 s</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>10</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
@@ -142,11 +131,65 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.06 min</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>12</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>StackingClassifier(estimators=[('rf',
                       ...</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>0.9771186440677966</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15:56:48</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>34.74 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>13</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9796610169491525</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16:07:29</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>20.15 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>14</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9813559322033898</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16:09:31</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.13 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>15</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9771186440677966</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16:11:27</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>19.37 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9813559322033898</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>16:24:34</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/11/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>19.83 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>17</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>LogisticRegression(max_iter=1000, multi_class='multinomial')</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>StackingClassifier(estimators=[('rf', RandomForestClassifier...</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>5</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9805084745762712</font></td>
 </tr>

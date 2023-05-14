@@ -124,3 +124,27 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.991</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9831</font></td>
 </tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>01:48:36</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/15/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>17.70 s</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>6</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>balanced</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>multinomial</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>l2</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>newton-cg</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>100</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.986</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9838</font></td>
+</tr>

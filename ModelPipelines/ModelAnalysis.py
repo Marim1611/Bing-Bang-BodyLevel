@@ -101,6 +101,9 @@ def log_weights_analysis(clf,x_data_d):
         plt.xticks(range(len(weights)), x_data_d.columns)
         plt.xticks(rotation=90)
         plt.show()
+        # sort x_data_d columns by importance (descending)
+        x_data_d = x_data_d[x_data_d.columns[np.argsort(weights)]]
+        return x_data_d
     # General case
     else:
         weights= clf.coef_

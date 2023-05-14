@@ -5,28 +5,32 @@
             "15:56:09",
             "16:00:51",
             "16:19:45",
-            "23:17:39"
+            "23:17:39",
+            "01:48:36"
         ],
         "date": [
             "05/14/23",
             "05/14/23",
             "05/14/23",
             "05/14/23",
-            "05/14/23"
+            "05/14/23",
+            "05/15/23"
         ],
         "duration": [
             "7.54 s",
             "11.66 s",
             "49.76 s",
             "7.69 s",
-            "14.63 s"
+            "14.63 s",
+            "17.70 s"
         ],
         "id": [
             1,
             2,
             3,
             4,
-            5
+            5,
+            6
         ]
     },
     "read_data": {
@@ -35,6 +39,7 @@
             "train",
             "train",
             "all",
+            "all",
             "all"
         ],
         "kind": [
@@ -42,9 +47,11 @@
             null,
             "Numerical",
             "Numerical",
+            "Numerical",
             "Numerical"
         ],
         "standardize": [
+            "True",
             "True",
             "True",
             "True",
@@ -56,11 +63,13 @@
             null,
             "True",
             null,
+            null,
             null
         ],
         "encode": [
             null,
             "Frequency",
+            null,
             null,
             null,
             null
@@ -72,9 +81,11 @@
             "balanced",
             "balanced",
             "balanced",
+            "balanced",
             "balanced"
         ],
         "multi_class": [
+            "multinomial",
             "multinomial",
             "multinomial",
             "multinomial",
@@ -86,9 +97,11 @@
             "l2",
             "l2",
             "l2",
+            "l2",
             "l2"
         ],
         "solver": [
+            "newton-cg",
             "newton-cg",
             "newton-cg",
             "newton-cg",
@@ -100,9 +113,11 @@
             "False",
             "False",
             "False",
+            "False",
             "False"
         ],
         "tol": [
+            "0.0",
             "0.0",
             "0.0",
             "0.0",
@@ -114,9 +129,11 @@
             "True",
             "True",
             "True",
+            "True",
             "True"
         ],
         "intercept_scaling": [
+            "1",
             "1",
             "1",
             "1",
@@ -128,6 +145,7 @@
             "100",
             "100",
             "100",
+            "100",
             "100"
         ],
         "verbose": [
@@ -135,9 +153,11 @@
             "0",
             "0",
             "0",
+            "0",
             "0"
         ],
         "warm_start": [
+            "False",
             "False",
             "False",
             "False",
@@ -151,14 +171,16 @@
             0.995,
             0.985,
             0.991,
-            0.991
+            0.991,
+            0.986
         ],
         "val_wf1": [
             0.9822,
             0.9814,
             0.9814,
             0.9831,
-            0.9831
+            0.9831,
+            0.9838
         ]
     }
 }

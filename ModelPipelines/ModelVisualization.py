@@ -149,7 +149,6 @@ class VisualizeModel():
         gif2 = np.repeat(gif2[np.newaxis, ...], gif1.shape[0], axis=0)
 
         # Concatenate the two gifs along the width axis
-        print(gif1.shape, gif2.shape)
         gif = np.concatenate((gif1, gif2[..., :3]), axis=2)  # remove alpha channel from gif2
 
         # Save and display the gif

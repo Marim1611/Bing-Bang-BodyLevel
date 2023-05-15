@@ -1,7 +1,4 @@
 {
-    "metrics": {
-        "accuracy": "true"
-    },
     "info": {
         "time": "true",
         "date": "true",
@@ -10,8 +7,9 @@
     },
     "read_data": {
         "kind": "true",
+        "split": "true",
         "standardize": "true",
-        "split": "true"
+        "selected": "true"
     },
     "BaggingClassifier": {
         "base_estimator": "true",
@@ -23,6 +21,12 @@
         "oob_score": "true",
         "warm_start": "true",
         "verbose": "true"
+    },
+    "metrics": {
+        "train_acc": "true",
+        "train_wf1": "true",
+        "val_wf1": "true",
+        "accuracy": "true"
     },
     "cross_val_predict": {
         "cv": "true",

@@ -3,9 +3,21 @@
         "time": [
             "01:05:41",
             "01:06:33",
-            "02:03:48"
+            "02:03:48",
+            "14:56:25",
+            "14:59:30",
+            "15:12:24",
+            "15:20:42",
+            "15:27:59",
+            "15:30:01"
         ],
         "date": [
+            "05/15/23",
+            "05/15/23",
+            "05/15/23",
+            "05/15/23",
+            "05/15/23",
+            "05/15/23",
             "05/15/23",
             "05/15/23",
             "05/15/23"
@@ -13,16 +25,34 @@
         "duration": [
             "13.91 s",
             "2.22 min",
-            "2.81 min"
+            "2.81 min",
+            "31.83 s",
+            "48.28 s",
+            "52.43 s",
+            "52.75 s",
+            "49.74 s",
+            "8.71 min"
         ],
         "id": [
             1,
             2,
-            3
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
         ]
     },
     "read_data": {
         "kind": [
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
             "Numerical",
             "Numerical",
             "Numerical"
@@ -30,9 +60,21 @@
         "select": [
             "True",
             "True",
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
             "True"
         ],
         "split": [
+            "all",
+            "all",
+            "all",
+            "all",
+            "all",
+            "all",
             "all",
             "all",
             "all"
@@ -40,41 +82,100 @@
         "standardize": [
             "True",
             "True",
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
             "True"
         ]
     },
     "RandomForestClassifier": {
-        "max_features": [
-            "log2",
-            "log2",
-            "1"
-        ],
-        "criterion": [
-            "entropy",
-            "entropy",
-            "entropy"
-        ],
-        "n_estimators": [
-            "100",
-            "1000",
-            "500"
-        ],
-        "min_weight_fraction_leaf": [
-            "0.0",
-            "0.0",
-            "0.0"
-        ],
-        "min_impurity_decrease": [
-            "0.0",
-            "0.0",
-            "0.0"
-        ],
         "bootstrap": [
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
+            "True",
             "True",
             "True",
             "True"
         ],
+        "ccp_alpha": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ],
+        "criterion": [
+            "entropy",
+            "entropy",
+            "entropy",
+            "gini",
+            "entropy",
+            "entropy",
+            "entropy",
+            "entropy",
+            "entropy"
+        ],
+        "max_features": [
+            "log2",
+            "log2",
+            "1",
+            "sqrt",
+            "log2",
+            "log2",
+            "log2",
+            "log2",
+            "log2"
+        ],
+        "min_impurity_decrease": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ],
+        "min_weight_fraction_leaf": [
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0",
+            "0.0"
+        ],
+        "n_estimators": [
+            "100",
+            "1000",
+            "500",
+            "100",
+            "100",
+            "100",
+            "100",
+            "100",
+            "1000"
+        ],
         "oob_score": [
+            "False",
+            "False",
+            "False",
+            "False",
+            "False",
+            "False",
             "False",
             "False",
             "False"
@@ -82,29 +183,48 @@
         "verbose": [
             "0",
             "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
         ],
         "warm_start": [
             "False",
             "False",
+            "False",
+            "False",
+            "False",
+            "False",
+            "False",
+            "False",
             "False"
-        ],
-        "ccp_alpha": [
-            "0.0",
-            "0.0",
-            "0.0"
         ]
     },
     "metrics": {
         "train_wf1": [
             0.993,
             0.995,
-            0.985
+            0.985,
+            0.993,
+            0.999,
+            0.998,
+            0.998,
+            1.0,
+            1.0
         ],
         "val_wf1": [
             0.9728,
             0.9763,
-            0.9451
+            0.9451,
+            0.9566,
+            0.9654,
+            0.9709,
+            0.9675,
+            0.9756,
+            0.9763
         ]
     }
 }

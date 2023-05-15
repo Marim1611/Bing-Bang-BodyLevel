@@ -12,16 +12,16 @@
         "standardize": "true"
     },
     "RandomForestClassifier": {
-        "max_features": "true",
-        "criterion": "true",
-        "n_estimators": "true",
-        "min_weight_fraction_leaf": "true",
-        "min_impurity_decrease": "true",
         "bootstrap": "true",
+        "ccp_alpha": "true",
+        "criterion": "true",
+        "max_features": "true",
+        "min_impurity_decrease": "true",
+        "min_weight_fraction_leaf": "true",
+        "n_estimators": "true",
         "oob_score": "true",
         "verbose": "true",
-        "warm_start": "true",
-        "ccp_alpha": "true"
+        "warm_start": "true"
     },
     "metrics": {
         "train_wf1": "true",

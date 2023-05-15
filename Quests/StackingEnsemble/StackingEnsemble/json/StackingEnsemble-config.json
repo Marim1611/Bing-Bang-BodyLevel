@@ -12,10 +12,10 @@
         "encode": "false"
     },
     "StackingClassifier": {
+        "final_estimator": "false",
         "stack_method": "false",
         "passthrough": "false",
-        "verbose": "false",
-        "final_estimator": "false"
+        "verbose": "false"
     },
     "metrics": {
         "train_acc": "true",

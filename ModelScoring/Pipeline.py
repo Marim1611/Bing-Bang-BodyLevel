@@ -18,30 +18,11 @@ def read_sample():
         x_data[feat] = x_data[feat].astype(float)
 
     # standardize the numerical features
-    mean_dict = {    
-    "Age":              24.290420,
-    "Height":            1.701602,
-    "Weight":           86.542290,
-    "Veg_Consump":       2.421912,
-    "Water_Consump":     2.005120,
-    "Meal_Count":        2.682104,
-    "Phys_Act":          1.023106,
-    "Time_E_Dev":        0.650672,
-    }
-    std_dict = {
-    "Age":               6.323081,
-    "Height":            0.094654,
-    "Weight":           26.278277,
-    "Veg_Consump":       0.540711,
-    "Water_Consump":     0.620307,
-    "Meal_Count":        0.790751,
-    "Phys_Act":          0.844840,
-    "Time_E_Dev":        0.605199,
-    }
+    means=[24.30154547138047, 1.7044246599326598, 86.24393004377106, 2.4137310067340065, 1.9985143434343435, 2.603423063973064, 1.0657414511784513, 0.6401021212121212] 
+    stds=[6.187403093300774, 0.09328631635951697, 25.765476944060072, 0.5586174649270286, 0.6404876859634282, 0.8226938923003604, 0.8170331197353868, 0.5959943002074906,0.98989898989899]
+    for i,feat in enumerate(x_data.columns):
+        x_data[feat] = (x_data[feat] - means[i])/stds[i]
 
-    for feat in x_data.columns:
-        x_data[feat] = (x_data[feat] - mean_dict[feat]) / std_dict[feat]
-    
     return x_data
 
 def load_model(model_path):

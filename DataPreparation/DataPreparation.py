@@ -19,7 +19,7 @@ def read_data(kind=None, encode=None, split="all", standardize=True ,**kwargs):
     module_dir = os.path.dirname(__file__)
     if split == "train":    path = os.path.join(module_dir, '../DataFiles/train.csv')
     elif split == "val":    path = os.path.join(module_dir, '../DataFiles/val.csv')
-    elif split == "all":   path = os.path.join(module_dir, '../DataFiles/dataset.csv')
+    elif split == "all":    path = os.path.join(module_dir, '../DataFiles/dataset.csv')
     
     ds = pd.read_csv(path)
     # all columns except Body_Level go to x_data
@@ -270,4 +270,26 @@ def read_sample(path):
     '''
     A read_sample function for when the model is to be evaluated
     '''
-    pass
+
+    module_dir = os.path.dirname(__file__)
+    path = os.path.join(module_dir, path)
+
+    x_data = pd.read_csv(path)
+
+    # extract only the numerical features
+    cont_feats = [feat for feat in x_data.columns if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) != str]
+    x_data = x_data[cont_feats]
+    for feat in x_data.columns:
+        x_data[feat] = x_data[feat].astype(float)
+
+    # standardize the numerical features
+    for feat in x_data.columns:
+        x_data[feat] = (x_data[feat] - x_data[feat].mean())/x_data[feat].std()
+
+    return x_data
+
+
+
+
+    
+

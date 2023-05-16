@@ -291,3 +291,55 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
 </tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>17:44:30</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/16/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>14.94 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>24</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.999</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.999</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9905</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>18:05:27</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/16/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.59 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>25</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.99</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.99</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9824</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>18:09:46</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/16/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>43.86 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>26</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.998</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.998</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9892</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>18:54:39</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/16/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>9.83 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>27</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.999</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.999</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.9912</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white></font></td>
+</tr>

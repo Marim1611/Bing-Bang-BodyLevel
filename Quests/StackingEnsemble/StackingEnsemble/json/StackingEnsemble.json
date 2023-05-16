@@ -23,7 +23,11 @@
             "15:33:41",
             "15:35:03",
             "15:52:17",
-            "15:55:33"
+            "15:55:33",
+            "17:44:30",
+            "18:05:27",
+            "18:09:46",
+            "18:54:39"
         ],
         "date": [
             "05/11/23",
@@ -48,7 +52,11 @@
             "05/14/23",
             "05/14/23",
             "05/15/23",
-            "05/15/23"
+            "05/15/23",
+            "05/16/23",
+            "05/16/23",
+            "05/16/23",
+            "05/16/23"
         ],
         "duration": [
             "26.57 s",
@@ -73,7 +81,11 @@
             "53.63 s",
             "1.70 min",
             "2.34 min",
-            "1.68 min"
+            "1.68 min",
+            "14.94 min",
+            "1.59 min",
+            "43.86 min",
+            "9.83 min"
         ],
         "id": [
             1,
@@ -98,7 +110,11 @@
             20,
             21,
             22,
-            23
+            23,
+            24,
+            25,
+            26,
+            27
         ]
     },
     "read_data": {
@@ -125,9 +141,17 @@
             "Numerical",
             "Numerical",
             "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
+            "Numerical",
             "Numerical"
         ],
         "standardize": [
+            "True",
+            "True",
+            "True",
+            "True",
             "True",
             "True",
             "True",
@@ -175,6 +199,10 @@
             "train",
             "train",
             "all",
+            "all",
+            "all",
+            "all",
+            "all",
             "all"
         ],
         "encode": [
@@ -193,6 +221,10 @@
             null,
             null,
             "OneHot",
+            null,
+            null,
+            null,
+            null,
             null,
             null,
             null,
@@ -227,9 +259,17 @@
             null,
             null,
             null,
-            "LogisticRegression(C=40.073995011106156, class_weight='balan..."
+            "LogisticRegression(C=40.073995011106156, class_weight='balan...",
+            "SVC(C=91.84229517898171, gamma=0.04091224489795919, kernel='...",
+            "SVC(C=91.84229517898171, gamma=0.04091224489795919, kernel='...",
+            "SVC(C=91.84229517898171, gamma=0.04091224489795919, kernel='...",
+            "SVC(C=91.84229517898171, gamma=0.04091224489795919, kernel='..."
         ],
         "stack_method": [
+            "auto",
+            "auto",
+            "auto",
+            "auto",
             "auto",
             "auto",
             "auto",
@@ -277,9 +317,17 @@
             "False",
             "False",
             "False",
+            "False",
+            "False",
+            "False",
+            "False",
             "False"
         ],
         "verbose": [
+            "0",
+            "0",
+            "0",
+            "0",
             "0",
             "0",
             "0",
@@ -329,7 +377,11 @@
             0.993,
             0.993,
             0.989,
-            0.989
+            0.989,
+            0.999,
+            0.99,
+            0.998,
+            0.999
         ],
         "train_wf1": [
             null,
@@ -354,7 +406,11 @@
             0.993,
             0.993,
             0.989,
-            0.989
+            0.989,
+            0.999,
+            0.99,
+            0.998,
+            0.999
         ],
         "repeated_10fold_wf1": [
             null,
@@ -379,7 +435,11 @@
             0.9814,
             0.9814,
             0.9838,
-            0.9831
+            0.9831,
+            0.9905,
+            0.9824,
+            0.9892,
+            0.9912
         ],
         "accuracy": [
             0.964406779661017,
@@ -399,6 +459,10 @@
             0.9771186440677966,
             0.9813559322033898,
             0.9805084745762712,
+            null,
+            null,
+            null,
+            null,
             null,
             null,
             null,
@@ -431,6 +495,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
+            null,
             null
         ],
         "cv": [
@@ -451,6 +519,10 @@
             "5",
             "5",
             "5",
+            null,
+            null,
+            null,
+            null,
             null,
             null,
             null,
@@ -481,6 +553,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
+            null,
             null
         ],
         "pre_dispatch": [
@@ -506,6 +582,10 @@
             null,
             null,
             null,
+            null,
+            null,
+            null,
+            null,
             null
         ],
         "method": [
@@ -526,6 +606,10 @@
             "predict",
             "predict",
             "predict",
+            null,
+            null,
+            null,
+            null,
             null,
             null,
             null,

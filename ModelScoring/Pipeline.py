@@ -2,9 +2,26 @@
 The final pipeline goes here (competition model) and its evaluation.
 '''
 import pickle 
-import sys; sys.path.append('../')
-from DataPreparation.DataPreparation import read_sample
+import pandas as pd
 
+def read_sample():
+    '''
+    A read_sample function for when the model is to be evaluated
+    '''
+
+    x_data = pd.read_csv('test.csv')
+
+    # extract only the numerical features
+    cont_feats = [feat for feat in x_data.columns if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) != str]
+    x_data = x_data[cont_feats]
+    for feat in x_data.columns:
+        x_data[feat] = x_data[feat].astype(float)
+
+    # standardize the numerical features
+    for feat in x_data.columns:
+        x_data[feat] = (x_data[feat] - x_data[feat].mean())/x_data[feat].std()
+
+    return x_data
 
 def load_model(model_path):
     '''
@@ -25,10 +42,10 @@ def predict(model, x_test):
 
 
 # Read the data
-x_test = read_sample('../ModelScoring/test.csv')
+x_test = read_sample()
 
 # Load the model
-model = load_model('../ModelScoring/StackingEnsemble.pkl')
+model = load_model('StackingEnsemble.pkl')
 
 # Predict the target variable
 y_pred = predict(model, x_test)

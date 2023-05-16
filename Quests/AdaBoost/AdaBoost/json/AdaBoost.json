@@ -3,26 +3,31 @@
         "time": [
             "01:44:44",
             "01:45:25",
-            "01:48:07"
+            "01:48:07",
+            "23:50:08"
         ],
         "date": [
             "05/15/23",
             "05/15/23",
-            "05/15/23"
+            "05/15/23",
+            "05/16/23"
         ],
         "duration": [
             "18.23 s",
             "2.35 min",
-            "10.75 min"
+            "10.75 min",
+            "1.20 min"
         ],
         "id": [
             1,
             2,
-            3
+            3,
+            4
         ]
     },
     "read_data": {
         "kind": [
+            "Numerical",
             "Numerical",
             "Numerical",
             "Numerical"
@@ -30,26 +35,31 @@
         "select": [
             "True",
             "True",
+            "True",
             "True"
-        ],
-        "split": [
-            "all",
-            "all",
-            "all"
         ],
         "standardize": [
             "True",
             "True",
-            "True"
+            "True",
+            "False"
+        ],
+        "split": [
+            "all",
+            "all",
+            "all",
+            "all"
         ]
     },
     "AdaBoostClassifier": {
         "n_estimators": [
             "1000",
             "10000",
-            "100000"
+            "100000",
+            "10000"
         ],
         "random_state": [
+            "42",
             "42",
             "42",
             "42"
@@ -57,9 +67,11 @@
         "learning_rate": [
             "1.0",
             "1.0",
+            "1.0",
             "1.0"
         ],
         "algorithm": [
+            "SAMME.R",
             "SAMME.R",
             "SAMME.R",
             "SAMME.R"
@@ -69,12 +81,14 @@
         "train_wf1": [
             0.639,
             0.639,
+            0.639,
             0.639
         ],
         "val_wf1": [
             0.5515,
             0.5205,
-            0.5306
+            0.5306,
+            0.5205
         ]
     }
 }

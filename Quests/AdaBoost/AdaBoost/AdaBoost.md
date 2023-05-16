@@ -11,8 +11,8 @@
 <th style="text-align: center; vertical-align: middle;">id</th>
 <th style="text-align: center; vertical-align: middle;">kind</th>
 <th style="text-align: center; vertical-align: middle;">select</th>
-<th style="text-align: center; vertical-align: middle;">split</th>
 <th style="text-align: center; vertical-align: middle;">standardize</th>
+<th style="text-align: center; vertical-align: middle;">split</th>
 <th style="text-align: center; vertical-align: middle;">n_estimators</th>
 <th style="text-align: center; vertical-align: middle;">random_state</th>
 <th style="text-align: center; vertical-align: middle;">learning_rate</th>
@@ -27,8 +27,8 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1000</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>42</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
@@ -43,8 +43,8 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>2</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>10000</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>42</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
@@ -59,12 +59,28 @@
 <td style="text-align: center; vertical-align: middle;"> <font color=white>3</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
-<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>100000</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>42</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=white>0.639</font></td>
 <td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.5306</font></td>
+</tr>
+<tr>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>23:50:08</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>05/16/23</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.20 min</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>4</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>Numerical</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>True</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>False</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>all</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>10000</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>42</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>1.0</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>SAMME.R</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=white>0.639</font></td>
+<td style="text-align: center; vertical-align: middle;"> <font color=yellow>0.5205</font></td>
 </tr>

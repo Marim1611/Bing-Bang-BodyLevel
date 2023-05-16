@@ -8,8 +8,8 @@
     "read_data": {
         "kind": "true",
         "select": "true",
-        "split": "true",
-        "standardize": "true"
+        "standardize": "true",
+        "split": "true"
     },
     "AdaBoostClassifier": {
         "n_estimators": "true",

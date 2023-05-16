@@ -1,0 +1,26 @@
+{
+    "info": {
+        "time": "true",
+        "date": "true",
+        "duration": "true",
+        "id": "true"
+    },
+    "read_data": {
+        "kind": "true",
+        "select": "true",
+        "split": "true",
+        "standardize": "true"
+    },
+    "XGBClassifier": {
+        "subsample": "true",
+        "min_child_weight": "true",
+        "max_depth": "true",
+        "gamma": "true",
+        "colsample_bytree": "true",
+        "objective": "true"
+    },
+    "metrics": {
+        "train_wf1": "true",
+        "val_wf1": "true"
+    }
+}

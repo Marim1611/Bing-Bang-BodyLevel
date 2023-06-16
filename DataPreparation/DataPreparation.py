@@ -19,9 +19,18 @@ def read_data(kind=None, encode=None, split="all", standardize=True ,**kwargs):
     module_dir = os.path.dirname(__file__)
     if split == "train":    path = os.path.join(module_dir, '../DataFiles/train.csv')
     elif split == "val":    path = os.path.join(module_dir, '../DataFiles/val.csv')
+    elif split == "test":    path = os.path.join(module_dir, '../DataFiles/test.csv')
     elif split == "all":    path = os.path.join(module_dir, '../DataFiles/dataset.csv')
+    elif split == "all-test":   path = os.path.join(module_dir, '../DataFiles/dataset-with-test.csv')
     
     ds = pd.read_csv(path)
+    # sort ds by Body_Level
+    ds = ds.sort_values(by=['Body_Level'])
+    # Body_Level goes to y_data
+    y_data = ds['Body_Level']
+    # convert y_data to integer labels
+    y_data = pd.factorize(y_data)[0]
+    
     # all columns except Body_Level go to x_data
     x_data = ds.drop('Body_Level', axis=1)
     
@@ -54,18 +63,24 @@ def read_data(kind=None, encode=None, split="all", standardize=True ,**kwargs):
             if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) == str:
                 x_data[feat] = x_data[feat].map(x_data[feat].value_counts())/len(x_data)
     
-    
-    if standardize:
+    if standardize and split=="train" or split=="all":
         # standardize the numerical features
+        means, stds = [], []
         for feat in x_data.columns:
             if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) != str:
+                means.append(x_data[feat].mean())
+                stds.append(x_data[feat].std())
                 x_data[feat] = (x_data[feat] - x_data[feat].mean())/x_data[feat].std()
-                    
-    
-    # Body_Level goes to y_data
-    y_data = ds['Body_Level']
-    # transform the classes into integers
-    y_data = pd.factorize(y_data)[0]
+        # save the means and stds for later use
+        np.save(os.path.join(module_dir, '../Saved') + '/means.npy', means)
+        np.save(os.path.join(module_dir, '../Saved') + '/stds.npy', stds)
+        
+    elif standardize and split=="val" or split=="test":
+        means = np.load(os.path.join(module_dir, '../Saved') + '/means.npy')
+        stds = np.load(os.path.join(module_dir, '../Saved') + '/stds.npy')
+        for i, feat in enumerate(x_data.columns):
+            if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) != str:
+                x_data[feat] = (x_data[feat] - means[i])/stds[i]
         
     return x_data, y_data
 
@@ -81,23 +96,23 @@ def basic_info(x_data, y_data):
     display(HTML(nice_table(column_dict, title='Features')))
 
 
-def prior_distribution(y_data):
+def prior_distribution(y_data, title="Prior Distribution of Points"):
     '''
     plots the prior distribution of the dataset which is helpful for class imbalance
     '''
     # plot the prior distribution of the dataset
+    plt.style.use('dark_background')
     plt.figure(figsize=(10, 5))
     # make a bar chart for the unique values of y_data
     plt.bar(np.unique(y_data), np.bincount(y_data), color='aqua', edgecolor='black', alpha=0.7)
-    plt.title('Prior distribution of the dataset')
+    for i, v in enumerate(np.bincount(y_data)):
+        plt.text(i, v, str(v), color='white', fontweight='bold', ha='center', va='bottom')
+    plt.title(title)
     plt.xlabel('Body Level')
     plt.ylabel('Number of samples')
     plt.show()
     
-    class_dict = {}
-    for i in range(len(np.unique(y_data))):
-        class_dict['Class '+str(i)] = len(y_data[y_data == i])
-    display(HTML(nice_table(class_dict, title='Number of samples in each class')))
+   
 
 
 def features_histograms(x_data):
@@ -159,6 +174,7 @@ def visualize_continuous_data(x_data, y_data):
     c = pd.factorize(y_data)[0]
     
     # plot each combination of 2 features in grid of 8C2 = 28 plots
+    plt.style.use('dark_background')
     fig, axs = plt.subplots(4, 7, figsize=(20, 20))
     for i in range(4):
         for j in range(7):
@@ -199,6 +215,7 @@ def visualize_categorical_data(x_data, y_data, normalize=True):
         # plot the grouped bar chart with same color for each class
         ax = axs.flatten()[i]                                           #  to select the ith subplot
         ax.set_title(feature)
+        plt.style.use('dark_background')
         sns.barplot(x=np.repeat(unique_vals, 4), y=np.array(counts).flatten(), hue=np.tile(np.arange(4), len(unique_vals)), ax=ax, palette="dark:aqua")
         
     plt.show()
@@ -227,7 +244,7 @@ def HoeffdingCheck(dataset, ratio=None, ϵ=None, δ=None):
                     </font>
                     '''
             display(Markdown(analysis))
-            return None
+            return analysis
     
     if ϵ is None:
         ϵ = np.sqrt(np.log(2/δ)/(2*N))
@@ -248,6 +265,7 @@ def HoeffdingCheck(dataset, ratio=None, ϵ=None, δ=None):
                     </font>
                     '''
     display(Markdown(analysis))
+    return analysis
 
 
                 

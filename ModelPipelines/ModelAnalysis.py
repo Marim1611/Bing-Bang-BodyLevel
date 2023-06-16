@@ -147,6 +147,7 @@ def vc_dimension_check(clf, x_data_d):
                     </font>
                     '''
         display(Markdown(analysis))
+        return analysis
     else:
         analysis = f'''<font size=4>By estimating the VC dimension of the model, 
                     we have $d_{{vc}}={dvc}$. 
@@ -156,6 +157,7 @@ def vc_dimension_check(clf, x_data_d):
                     </font>
                     '''
         display(Markdown(analysis))
+        return analysis
 
 def show_hyperparams(clf):
     '''

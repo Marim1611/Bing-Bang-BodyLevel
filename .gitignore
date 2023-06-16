@@ -2,3 +2,6 @@
 *.pyc
 *.gif
 *.png
+DataFiles/dataset-with-test.csv
+DataFiles/test.csv
+*.npy

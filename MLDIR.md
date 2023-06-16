@@ -1,32 +1,25 @@
 ## 📜 The MLDir Manifesto
-➜ Each stage in the ML pipeline should be a separate directory.
+□ Each stage in the ML pipeline should be a separate directory.
 
-➜ If that stage is further broken down into sub-stages, each sub-stage should be a separate directory.
+□ For any pipeline stage, each alternative that implements that stage should be in a separate directory within that stage's folder. For example, different models or features in the model or feature extraction stages respectively.
 
-➜ For any pipeline stage, each alternative that implements that stage should be in a separate directory within that stage's folder.
+□ Any implementation of a stage is a set of functions and it is defined in a .py file within the directory of the specific alternative of the stage. If a function is used over different alternatives then the .py file can be at the same level as the directories of the alternatives.
 
-➜ Any implementation of a stage is a set of functions.
+□ Notebooks are only for demonstration or running entire pipelines (e.g., training and hyperparameter tuning). Functions are never defined in them.
 
-➜ Functions are defined only in .py files not in notebooks.
-
-➜ Notebooks are only for testing or running entire pipelines (e.g., training and hyperparameter tuning). They import the needed functions from pipeline stages.
+□ Any notebook cell should be preced with a clear heading that describes what it does.
 
 
+□ Call the training, validation and testing data x_train, x_val and x_test respectively. x_val is x_val even if x_test doesn't exist (yet). The variable name may be appended with an _{letter} to indicate the stage of the pipeline that has produced it.
 
-### 📜 A more fine-grained version of the MLDir Manifesto also specifies
+□ Include a Saved directory for saving trained models, figures and other artifacts.
 
-➜ In the implementation of any stage, any logic not specifically related to the stage's implementation such as saving or visualizion should be in a seperate function in the file.
+□ If a pipeline stage may benefit from visualizion then provide a method for that.
 
-➜ Call the training, validation and testing data x_train, x_val and x_test respectively. x_val is x_val even if x_test doesn't exist (yet). The variable name may be appended with an _{letter} to indicate the stage of the pipeline that resulted in it.
+□ Similar or related visualizations should be grouped together in the same figure whenever possible.
 
-➜ Once the experimentation phase is over (converged on a pipeline with fixed hyperparameters), the pipeline should be implemented in a single .py file with a single pipeline function. The project, except for this file can be archived at this point (along with a requirements.txt).
+□ Logging should be implemented for every pipeline.
 
-### 📜 Which also has the following extension
-
-➜ If a pipeline stage takes time then provide a way to save its results and load them later.
-
-➜ If a pipeline stage may benefit from visualizion then provide a method for that.
-
-➜ Logging should be implemented for every pipeline.
+□ Once the experimentation phase is over (converged on a pipeline with fixed hyperparameters), the pipeline should be implemented in a single .py file with a single pipeline function. The project, except for this file can be archived at this point after producing a requirements.txt
 
 

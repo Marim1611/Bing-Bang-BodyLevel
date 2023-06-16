@@ -319,7 +319,7 @@ Different hyperparameters within specific resampling approach(es) were analyzed 
 As illustrated above.
 
 ## 📜 Conventions
-We have set the following set of working [standards](https://github.com/Marim1611/ML_Project/tree/main/MLDIR.md/) before undertaking the project.
+We have set the following set of working [standards](https://github.com/Marim1611/ML_Project/tree/main/MLDIR.md/) before undertaking the project. If you wish to contribute for any reason then please respect such standards.
 
 
 ## 👥 Collaborators

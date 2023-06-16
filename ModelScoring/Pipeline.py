@@ -2,9 +2,28 @@
 The final pipeline goes here (competition model) and its evaluation.
 '''
 import pickle 
-import sys; sys.path.append('../')
-from DataPreparation.DataPreparation import read_sample
+import pandas as pd
 
+def read_sample():
+    '''
+    A read_sample function for when the model is to be evaluated
+    '''
+
+    x_data = pd.read_csv('test.csv')
+
+    # extract only the numerical features
+    cont_feats = [feat for feat in x_data.columns if type(x_data.iloc[0, x_data.columns.get_loc(feat)]) != str]
+    x_data = x_data[cont_feats]
+    for feat in x_data.columns:
+        x_data[feat] = x_data[feat].astype(float)
+
+    # standardize the numerical features
+    means=[24.30154547138047, 1.7044246599326598, 86.24393004377106, 2.4137310067340065, 1.9985143434343435, 2.603423063973064, 1.0657414511784513, 0.6401021212121212] 
+    stds=[6.187403093300774, 0.09328631635951697, 25.765476944060072, 0.5586174649270286, 0.6404876859634282, 0.8226938923003604, 0.8170331197353868, 0.5959943002074906,0.98989898989899]
+    for i,feat in enumerate(x_data.columns):
+        x_data[feat] = (x_data[feat] - means[i])/stds[i]
+
+    return x_data
 
 def load_model(model_path):
     '''
@@ -25,10 +44,10 @@ def predict(model, x_test):
 
 
 # Read the data
-x_test = read_sample('../ModelScoring/test.csv')
+x_test = read_sample()
 
 # Load the model
-model = load_model('../ModelScoring/StackingEnsemble.pkl')
+model = load_model('StackingEnsemble.pkl')
 
 # Predict the target variable
 y_pred = predict(model, x_test)

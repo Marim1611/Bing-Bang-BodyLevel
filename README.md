@@ -4,7 +4,7 @@ The project comprises tackling the supervised problem of body level classificati
 
 ## 🚀 Pipeline
 Our solution to said problem utilitizes the following pipeline
-<img width="1017" alt="image" src="https://github.com/Marim1611/ML_Project/assets/49572294/1dcc5e78-2033-45f8-82e3-017ebe9e64fc">
+<img width="1017" alt="image" src="./Assets/1.png">
 
 ## 📂 Folder Structure
 The following is the implied folder structure:
@@ -85,7 +85,7 @@ Best results for WF1 are as follows under 10-Repeated-10-Fold Cross Validation (
 </table>
 
 The following visually depicts SVM's over the most important features
-![output](https://github.com/Marim1611/ML_Project/assets/49572294/3d76dc31-b253-4806-9c8b-40a58fa6c57b)
+![output](./Assets/2.gif)
 
 Which we did not end up choosing in the end, instead we considered forming Ensembles of these models via Voting, Bagging and Stacking. Yielding the following
 <table>
@@ -137,27 +137,27 @@ In light of guiding model initiation by studying the population and the target f
 ### ◉ Variable Distributions
 In this, we analyzed the distribution of each variable via a bar chart or kernel estimated density depending on whether its numerical or categorical respectively.
 
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/5fc3c033-2f12-4008-a923-76c8daeb1142)
+![image](./Assets/3.png)
 
 ### ◉ Prior Distribution
 For purposes of studying imbalance between classes.
 
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/7816f812-c989-4b1d-a5d5-0bedcb49d53d)
+![image](./Assets/4.png)
 
 ### ◉ Variable Correlations
 We analyzed correlations among all pairs of numerical variables using Pearson's, then all pairs of categorical variables using Crammer's V and then all pairs of numerical and categorical variables using Pearson's correlation ratio.
 
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/0d05bd12-7f01-4b77-98f9-db05c63d30dd)
+![image](./Assets/5.png)
 
 ### ◉ Separability with Numerical Variables
 Here, the separability of the target is analyzed under all possible pairs of numerical variables. 
 
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/c37bd89d-1010-45ce-a916-254c9da8a12d)
+![image](./Assets/6.png)
 
 ### ◉ Separability with Categorical Variables
 In this, we study the separability of the target under different categories of each categorical variable.
 
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/37875233-8c3c-40a8-ad7d-7c3587b93d17)
+![image](./Assets/7.png)
 
 ### ◉ Theoritical Generalization Guarantees
 We automated a generalization check given any two of validation set size, maximum allowed error and probability of violating that error. This was used to inspire the decision of the number of splits for cross validation (tuning each model) and the size of the validation set (choosing between models).
@@ -251,7 +251,7 @@ The purpose of this stage is to get familiar with the model and its hyperparamet
 
 ### 💡 Basic Model Analysis
 #### ◉ Testing Log-Linearity Assumption
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/1149fad5-be5d-4642-bd80-5c18dde356fd)
+![image](./Assets/8.png)
 
 
 #### ◉ VC Dimension Analysis
@@ -272,13 +272,13 @@ In this, the number of parameters of the model were used to estimate its general
 The bias and variance of the model were heuristically computed here (Andrew NG's style) 
 
 #### ◉ Learning Curve
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/5b4b8559-db26-4073-9087-2e12795ab2a9)
+![image](./Assets/9.png)
 
 This helps indicate the bias of the model and sheds light on whether it would benefit from adding more data.
 
 ### 🔎 Hyperparameter Analysis
 #### Validation Curves
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/c78537e5-448b-4bdd-8f11-5f25294b9dcb)
+![image](./Assets/10.png)
 
 To study the effects of specific hyperparameters on the model's performance (in-sample and out-of-sample error) and mark the point where the model starts to overfit.
 
@@ -400,12 +400,12 @@ We used in-notebook experiment logging using the <a href="https://github.com/Ess
 
 ### 🚦 Features Analysis
 #### ◉ Feature Importance Analysis
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/01294529-8ad7-4ea4-b691-b517b05f5c58)
+![image](./Assets/11.png)
 
 In this, we analyzed the importance of each feature as assigned by the model's weights.
 
 #### ◉ Recursive Feature Elimination
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/3dda1615-1faa-4818-87c0-dfbcf7a556c4)
+![image](./Assets/12.png)
 Top 3 Features
 | Veg_Consump | Height | Weight  |
 |-------------|--------|---------|
@@ -415,12 +415,12 @@ As suggested by one of Vapnik’s papers, a decent feature selection strategy is
 
 ### ⚖️ Class Imbalance Analysis
 #### ◉ Analyzing Different Methods
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/c8b1d62e-9934-4152-ac44-e543fc6e642b)
+![image](./Assets/13.png)
 
 The purpose of this was to compare different resampling approaches and class-weighting.
 
 #### ◉ Analyzing Different Hyperparameters
-![image](https://github.com/Marim1611/ML_Project/assets/49572294/cfea0718-263f-4ec2-b459-366be6788e5e)
+![image](./Assets/14.png)
 
 Different hyperparameters within specific resampling approach(es) were analyzed here.
 

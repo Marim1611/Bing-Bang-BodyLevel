@@ -1,6 +1,5 @@
 .DS_Store
 *.pyc
-*.gif
 DataFiles/dataset-with-test.csv
 DataFiles/test.csv
 *.npy

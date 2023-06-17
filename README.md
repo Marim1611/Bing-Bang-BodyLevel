@@ -469,3 +469,6 @@ We have set the following set of working [standards](https://github.com/Marim161
 ## 📈 Progress Tracking
 We have utilized [Notion](https://www.notion.so/) for progress tracking and task assignment among the team.
 
+<h2 align="center"> 💖 Thank you. 💖 </h2>
+
+

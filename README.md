@@ -4,7 +4,7 @@ The project comprises tackling the supervised problem of body level classificati
 
 ## 🚀 Pipeline
 Our solution to said problem utilitizes the following pipeline
-<img width="1275" alt="image" src="https://github.com/Marim1611/ML_Project/assets/49572294/7a63d80f-5aa0-4e0f-a3b3-242c297764b0">
+<img width="1017" alt="image" src="https://github.com/Marim1611/ML_Project/assets/49572294/1dcc5e78-2033-45f8-82e3-017ebe9e64fc">
 
 ## 📂 Folder Structure
 The following is the implied folder structure:

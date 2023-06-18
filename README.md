@@ -101,7 +101,7 @@ Which we did not end up choosing in the end, instead we considered forming Ensem
   </tr>
 </table>
 
-By this, our final model was stacking. 
+By this, our final model was stacking. It yields 99% on the competition's test set; as for why it did not make it high on the leaderboard, check the [autopsy](./Autopsy.md) report.
 
 We shall illustrate the whole pipeline including the analysis stages in the rest of the README. For an extensive overview of the the <b>insights extracted</b> and analysis results for the rest of the models please check the [report](https://github.com/Marim1611/ML_Project/tree/main/Report.pdf/) or the demonstration notebooks herein.
 
